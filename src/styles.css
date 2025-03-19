@@ -1,5 +1,12 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui" {
-  themes:  light --prefersdark, cupcake;
+  themes:  light --prefersdark, dark, retro ,cyberpunk,valentine,aqua;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+.font-family-karla {
+    font-family: karla;
+}
+
