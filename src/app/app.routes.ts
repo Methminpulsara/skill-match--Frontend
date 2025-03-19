@@ -1,6 +1,8 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './page/login/login.component';
 import { SingInComponent } from './page/sing-in/sing-in.component';
+
+
 
 export const routes: Routes = [
   {
@@ -15,3 +17,4 @@ export const routes: Routes = [
     component: SingInComponent
   }
 ];
+
