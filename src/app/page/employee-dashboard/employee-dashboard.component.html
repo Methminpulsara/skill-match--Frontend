@@ -1,1 +1,360 @@
-<p>employee-dashboard works!</p>
+<!-- employee-dashboard.component.html -->
+<div class="min-h-screen bg-gray-50 flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-indigo-600">SkillMatch</h1>
+        <span class="ml-2 text-gray-500 text-sm">Employee Skill Manager</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search skills or employees..." class="w-64 pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="flex items-center">
+          <img src="/api/placeholder/40/40" alt="User avatar" class="h-8 w-8 rounded-full">
+          <span class="ml-2 text-gray-700">John Smith</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content with Sidebar Navigation -->
+  <main class="flex-1 flex">
+    <!-- Left Sidebar Navigation -->
+    <div class="w-64 bg-white shadow-lg">
+      <!-- User Profile Summary -->
+      <div class="p-4 border-b border-gray-200">
+        <div class="flex items-center">
+          <img src="/api/placeholder/50/50" alt="User avatar" class="h-12 w-12 rounded-full">
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-900">John Smith</p>
+            <p class="text-xs text-gray-500">Senior Software Engineer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="mt-4">
+        <div class="px-2 space-y-1">
+          <!-- Active Tab -->
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            Dashboard
+          </button>
+
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            Profile
+          </button>
+
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+            </svg>
+            My Skills
+          </button>
+
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+            Career Paths
+          </button>
+
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+            </svg>
+            Training
+          </button>
+
+          <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+            Help & Support
+          </button>
+
+          <div class="pt-4 mt-4 border-t border-gray-200">
+            <button class="flex items-center w-full px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 hover:text-red-900 rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+              </svg>
+              Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 overflow-auto">
+      <div class="py-6 px-4 sm:px-6 lg:px-8">
+        <div class="mb-6">
+          <h1 class="text-2xl font-bold text-gray-900">My Dashboard</h1>
+          <p class="mt-1 text-sm text-gray-600">Welcome back, John! Here's an overview of your skills and progress.</p>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="space-y-6">
+          <!-- Overview Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dt class="text-sm font-medium text-gray-500 truncate">Top Skill</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">Angular Development</div>
+                    </dd>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">95% proficiency</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dt class="text-sm font-medium text-gray-500 truncate">Career Progress</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">75%</div>
+                    </dd>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View goal details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dt class="text-sm font-medium text-gray-500 truncate">Learning Opportunities</dt>
+                    <dd class="flex items-baseline">
+                      <div class="text-2xl font-semibold text-gray-900">3</div>
+                    </dd>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">View recommendations</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex items-center justify-between">
+              <h3 class="text-lg font-medium leading-6 text-gray-900">My Skills</h3>
+              <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Add New Skill
+              </button>
+            </div>
+            <div class="px-4 py-5 sm:p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Skill Card -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-medium text-gray-800">Angular Development</h4>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Expert</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-3">3+ years experience with Angular framework</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">Proficiency</span>
+                    <span class="text-xs font-medium text-gray-700">95%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                    <div class="bg-green-500 h-1 rounded-full" style="width: 95%"></div>
+                  </div>
+                  <div class="mt-3 flex justify-end">
+                    <button class="text-sm text-indigo-600 hover:text-indigo-500">Edit</button>
+                  </div>
+                </div>
+
+                <!-- Skill Card -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-medium text-gray-800">TypeScript</h4>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Expert</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-3">4+ years of TypeScript development</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">Proficiency</span>
+                    <span class="text-xs font-medium text-gray-700">90%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                    <div class="bg-green-500 h-1 rounded-full" style="width: 90%"></div>
+                  </div>
+                  <div class="mt-3 flex justify-end">
+                    <button class="text-sm text-indigo-600 hover:text-indigo-500">Edit</button>
+                  </div>
+                </div>
+
+                <!-- Skill Card -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-medium text-gray-800">CSS/SCSS</h4>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Advanced</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-3">Experienced with Tailwind, Bootstrap, Material</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">Proficiency</span>
+                    <span class="text-xs font-medium text-gray-700">85%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                    <div class="bg-blue-500 h-1 rounded-full" style="width: 85%"></div>
+                  </div>
+                  <div class="mt-3 flex justify-end">
+                    <button class="text-sm text-indigo-600 hover:text-indigo-500">Edit</button>
+                  </div>
+                </div>
+
+                <!-- Skill Card -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-medium text-gray-800">RESTful API Design</h4>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Advanced</span>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-3">Designed APIs following REST principles</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">Proficiency</span>
+                    <span class="text-xs font-medium text-gray-700">80%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                    <div class="bg-blue-500 h-1 rounded-full" style="width: 80%"></div>
+                  </div>
+                  <div class="mt-3 flex justify-end">
+                    <button class="text-sm text-indigo-600 hover:text-indigo-500">Edit</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 text-center">
+                <button class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  View All Skills
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Path and Recommended Training -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Career Path -->
+            <div class="bg-white shadow rounded-lg">
+              <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Suggested Career Path</h3>
+              </div>
+              <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-4">
+                  <div class="flex items-center p-3 bg-indigo-50 rounded-lg">
+                    <div class="flex-shrink-0 bg-indigo-100 rounded-md p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <div class="ml-3">
+                      <p class="text-sm font-medium text-gray-900">Technical Lead</p>
+                      <p class="text-xs text-gray-500">3 skills to develop</p>
+                    </div>
+                    <div class="ml-auto">
+                      <button class="text-sm text-indigo-600 hover:text-indigo-500">View</button>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center p-3 rounded-lg">
+                    <div class="flex-shrink-0 bg-gray-100 rounded-md p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                      </svg>
+                    </div>
+                    <div class="ml-3">
+                      <p class="text-sm font-medium text-gray-900">Engineering Manager</p>
+                      <p class="text-xs text-gray-500">5 skills to develop</p>
+                    </div>
+                    <div class="ml-auto">
+                      <button class="text-sm text-indigo-600 hover:text-indigo-500">View</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                  <button class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Explore All Paths
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Training Recommendations -->
+            <div class="bg-white shadow rounded-lg">
+              <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Recommended Training</h3>
+              </div>
+              <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-4">
+                  <div class="flex items-start p-4 bg-indigo-50 rounded-lg">
+                    <div class="flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <h4 class="text-sm font-medium text-gray-900">Advanced Project Management</h4>
+                      <p class="mt-1 text-sm text-gray-600">This course will help you develop leadership skills needed for the Technical Lead position.</p>
+                      <button class="mt-2 text-sm text-indigo-600 hover:text-indigo-500">Enroll</button>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start p-4 rounded-lg">
+                    <div class="flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <h4 class="text-sm font-medium text-gray-900">System Design for Senior Engineers</h4>
+                      <p class="mt-1 text-sm text-gray-600">Learn advanced system design patterns and architecture principles.</p>
+                      <button class="mt-2 text-sm text-indigo-600 hover:text-indigo-500">Enroll</button>
+                    </div>
+                  </div>
+                </div>
+                  
