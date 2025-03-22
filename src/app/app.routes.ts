@@ -18,10 +18,10 @@ export const routes: Routes = [
     path:"singin",
     component: SingInComponent
   },{
-    path:"companydashborad",
+    path:"company-dashboard",
     component:CompanyComponent
   },{
-    path:"employeedashborad",
+    path:"employee-dashboard",
     component:EmployeeDashboardComponent
   }
 ];
