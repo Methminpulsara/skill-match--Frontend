@@ -19,14 +19,18 @@ export const routes: Routes = [
     path:"singin",
     component: SingInComponent
   },{
-    path:"company-dashboard",
+    path:"companydashboard",
     component:CompanyComponent
   },{
     path:"employee-dashboard",
     component:EmployeeDashboardComponent,
-  },{
-    path:"profile"
-    component : 
-  }
+    children:[
+      {
+        path:"profile",
+        component:EmployeeProfileComponent
+      }
+    ]
+  },
+
 ];
 
