@@ -21,7 +21,7 @@ export const routes: Routes = [
     path:"singin",
     component: SingInComponent
   },{
-    path:"companydashboard",
+    path:"company-dashboard",
     component:CompanyComponent
   },{
     path:"employee-dashboard",
