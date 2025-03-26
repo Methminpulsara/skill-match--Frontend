@@ -6,7 +6,7 @@ import { TheamComponent } from './page/theam/theam.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,TheamComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

@@ -4,7 +4,7 @@ import { TheamComponent } from '../theam/theam.component';
 
 @Component({
   selector: 'app-employee-dashboard',
-  imports: [RouterLink,RouterOutlet,TheamComponent],
+  imports: [RouterLink,RouterOutlet],
   templateUrl: './employee-dashboard.component.html',
   styleUrl: './employee-dashboard.component.css'
 })
