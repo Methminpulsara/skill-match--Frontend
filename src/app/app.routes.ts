@@ -5,6 +5,7 @@ import { CompanyComponent } from './page/company/company.component';
 import { EmployeeDashboardComponent } from './page/employee-dashboard/employee-dashboard.component';
 import { EmployeeProfileComponent } from './page/employee/employee-profile/employee-profile.component';
 import { SikllComponent } from './page/employee/sikll/sikll.component';
+import { CareerGrowthComponent } from './page/employee/career-growth/career-growth.component';
 
 
 
@@ -32,6 +33,9 @@ export const routes: Routes = [
       },{
         path:"skills",
         component:SikllComponent
+      },{
+        path:"career",
+        component:CareerGrowthComponent
       }
     ]
   },
