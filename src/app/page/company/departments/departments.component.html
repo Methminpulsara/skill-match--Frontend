@@ -1,1 +1,34 @@
-<p>departments works!</p>
+<div class="p-6 bg-gray-100 min-h-screen">
+  <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Department Management</h2>
+    
+    <!-- Add New Department Button -->
+    <button class="mb-4 px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition">
+      + Add New Department
+    </button>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Department Card 1 -->
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md border border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-700">Engineering</h3>
+        <p class="text-sm text-gray-600">Head: Alice Johnson</p>
+        <p class="text-sm text-gray-600">Employees: <strong>50</strong></p>
+        <div class="mt-3 flex space-x-2">
+          <button class="px-4 py-2 bg-yellow-600 text-white text-sm rounded-lg hover:bg-yellow-700 transition">Edit</button>
+          <button class="px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition">Delete</button>
+        </div>
+      </div>
+      
+      <!-- Department Card 2 -->
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md border border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-700">Human Resources</h3>
+        <p class="text-sm text-gray-600">Head: Michael Smith</p>
+        <p class="text-sm text-gray-600">Employees: <strong>20</strong></p>
+        <div class="mt-3 flex space-x-2">
+          <button class="px-4 py-2 bg-yellow-600 text-white text-sm rounded-lg hover:bg-yellow-700 transition">Edit</button>
+          <button class="px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
