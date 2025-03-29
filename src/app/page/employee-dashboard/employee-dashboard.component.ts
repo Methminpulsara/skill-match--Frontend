@@ -9,5 +9,8 @@ import { TheamComponent } from '../theam/theam.component';
   styleUrl: './employee-dashboard.component.css'
 })
 export class EmployeeDashboardComponent {
-
+  changeTheme(event: any) {
+    const theme = event.target.checked ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  }
 }

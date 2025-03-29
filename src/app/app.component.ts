@@ -10,11 +10,14 @@ import { InternaliJobBoardComponent } from './page/company/internali-job-board/i
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,TrainingsComponent,CompanyEmployeesComponent,DepartmentsComponent,InternaliJobBoardComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent   {
   title = 'web-app';
+
+
+
 
 }
