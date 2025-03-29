@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { TheamComponent } from '../theam/theam.component';
 
 @Component({
   selector: 'app-employee-dashboard',
