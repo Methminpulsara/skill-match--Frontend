@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SingInComponent } from './page/sing-in/sing-in.component';
 import { RouterOutlet } from '@angular/router';
-import { EmployeeProfileComponent } from './page/employee/employee-profile/employee-profile.component';
-import { TheamComponent } from './page/theam/theam.component';
-import { TrainingsComponent } from './page/company/trainings/trainings.component';
-import { CompanyEmployeesComponent } from './page/company/company-employees/company-employees.component';
-import { DepartmentsComponent } from './page/company/departments/departments.component';
-import { InternaliJobBoardComponent } from './page/company/internali-job-board/internali-job-board.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   currentTheme: string = 'light';
@@ -20,10 +13,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     this.setTheme(savedTheme);
+
+    // Update checkbox state on load
+    const themeToggle = document.querySelector('.theme-controller') as HTMLInputElement;
+    if (themeToggle) {
+      themeToggle.checked = savedTheme === 'dark';
+    }
   }
 
-  toggleTheme(event: any) {
-    this.currentTheme = event.target.checked ? 'dark' : 'light';
+  toggleTheme(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.currentTheme = isChecked ? 'dark' : 'light';
     this.setTheme(this.currentTheme);
   }
 
