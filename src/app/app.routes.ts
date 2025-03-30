@@ -11,6 +11,7 @@ import { CompanyEmployeesComponent } from './page/company/company-employees/comp
 import { DepartmentsComponent } from './page/company/departments/departments.component';
 import { TrainingsComponent } from './page/company/trainings/trainings.component';
 import { DashComponent } from './page/company/dash/dash.component';
+import { InternaliJobBoardComponent } from './page/company/internali-job-board/internali-job-board.component';
 
 
 
@@ -29,10 +30,9 @@ export const routes: Routes = [
     path:"company-dashboard",
     component:CompanyComponent,
     children:[{
-      path:"",
-      component:DashComponent      
-    },
-      {
+        path:"",
+        component:DashComponent      
+      },{
         path:"employees",
         component:CompanyEmployeesComponent
       },{
@@ -41,6 +41,9 @@ export const routes: Routes = [
       },{
         path:"training",
         component:TrainingsComponent
+      },{
+        path:"projects",
+        component:InternaliJobBoardComponent
       }
     ]
   },{
