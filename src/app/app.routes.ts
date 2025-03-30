@@ -6,6 +6,7 @@ import { EmployeeDashboardComponent } from './page/employee-dashboard/employee-d
 import { EmployeeProfileComponent } from './page/employee/employee-profile/employee-profile.component';
 import { SikllComponent } from './page/employee/sikll/sikll.component';
 import { CareerGrowthComponent } from './page/employee/career-growth/career-growth.component';
+import { TraingprogramsComponent } from './page/employee/traingprograms/traingprograms.component';
 
 
 
@@ -36,6 +37,9 @@ export const routes: Routes = [
       },{
         path:"career",
         component:CareerGrowthComponent
+      },{
+        path:"trainingprograms",
+        component:TraingprogramsComponent
       }
     ]
   },
