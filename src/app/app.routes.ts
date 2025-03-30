@@ -7,6 +7,10 @@ import { EmployeeProfileComponent } from './page/employee/employee-profile/emplo
 import { SikllComponent } from './page/employee/sikll/sikll.component';
 import { CareerGrowthComponent } from './page/employee/career-growth/career-growth.component';
 import { TraingprogramsComponent } from './page/employee/traingprograms/traingprograms.component';
+import { CompanyEmployeesComponent } from './page/company/company-employees/company-employees.component';
+import { DepartmentsComponent } from './page/company/departments/departments.component';
+import { TrainingsComponent } from './page/company/trainings/trainings.component';
+import { DashComponent } from './page/company/dash/dash.component';
 
 
 
@@ -23,7 +27,22 @@ export const routes: Routes = [
     component: SingInComponent
   },{
     path:"company-dashboard",
-    component:CompanyComponent
+    component:CompanyComponent,
+    children:[{
+      path:"",
+      component:DashComponent      
+    },
+      {
+        path:"employees",
+        component:CompanyEmployeesComponent
+      },{
+        path:"departments",
+        component:DepartmentsComponent
+      },{
+        path:"training",
+        component:TrainingsComponent
+      }
+    ]
   },{
     path:"employee-dashboard",
     component:EmployeeDashboardComponent,
