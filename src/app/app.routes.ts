@@ -46,7 +46,8 @@ export const routes: Routes = [
         component:InternaliJobBoardComponent
       }
     ]
-  },{
+  },
+  {
     path:"employee-dashboard",
     component:EmployeeDashboardComponent,
     children:[
