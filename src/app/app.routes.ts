@@ -13,6 +13,8 @@ import { TrainingsComponent } from './page/company/trainings/trainings.component
 import { DashComponent } from './page/company/dash/dash.component';
 import { InternaliJobBoardComponent } from './page/company/internali-job-board/internali-job-board.component';
 import { LandingpageComponent } from './page/landingpage/landingpage.component';
+import { EmployeeRegisterComponent } from './page/employee/employee-register/employee-register.component';
+import { CompanyRegisterComponent } from './page/company/company-register/company-register.component';
 
 
 
@@ -22,11 +24,13 @@ export const routes: Routes = [
     component: LandingpageComponent
   },{
     path:"login",
-    component: LoginComponent
-  },
-  {
-    path:"singin",
-    component: SingInComponent
+    component:LoginComponent
+  },{
+    path:"employee-signup",
+    component:EmployeeRegisterComponent
+  },{
+    path:"company-signup",
+    component:CompanyRegisterComponent
   },{
     path:"company-dashboard",
     component:CompanyComponent,

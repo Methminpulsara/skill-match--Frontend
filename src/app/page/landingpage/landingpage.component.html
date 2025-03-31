@@ -10,7 +10,7 @@
         <a href="#home" class="text-purple-300 hover:text-white transition">Home</a>
         <a href="#features" class="text-purple-300 hover:text-white transition">Features</a>
         <a href="#about" class="text-purple-300 hover:text-white transition">About</a>
-        <a href="#" class="text-purple-300 hover:text-white transition">Login</a>
+        <a routerLink="/login" class="text-purple-300 hover:text-white transition">Login</a>
         <button id="openSignupModal" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-purple-500/50 transition">Sign Up</button>
       </div>
       <!-- Mobile menu button -->
@@ -28,7 +28,7 @@
         <a href="#home" class="block py-2 text-purple-300 hover:text-white transition">Home</a>
         <a href="#features" class="block py-2 text-purple-300 hover:text-white transition">Features</a>
         <a href="#about" class="block py-2 text-purple-300 hover:text-white transition">About</a>
-        <a href="#" class="block py-2 text-purple-300 hover:text-white transition">Login</a>
+        <a routerLink="/login" class="block py-2 text-purple-300 hover:text-white transition">Login</a>
         <button id="openSignupModalMobile" class="w-full bg-gradient-to-r from-purple-800 to-purple-600 text-white px-4 py-2 rounded-lg shadow-lg transition my-2">Sign Up</button>
       </div>
     </div>
@@ -42,10 +42,10 @@
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gradient">Unlock Your Career Potential</h1>
           <p class="text-xl text-purple-200 mb-8">SkillMatch helps you track your skills and discover new opportunities. Companies can find internal talent for promotions.</p>
           <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <button id="employeeSignup" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-purple-500/50 transition text-lg">
+            <button routerLink="/employee-signup" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-purple-500/50 transition text-lg">
               Register as Employee
             </button>
-            <button id="companySignup" class="bg-black bg-opacity-30 border border-purple-500 hover:bg-purple-900/40 text-white px-6 py-3 rounded-lg shadow-lg transition text-lg">
+            <button  routerLink="/company-signup" class="bg-black bg-opacity-30 border border-purple-500 hover:bg-purple-900/40 text-white px-6 py-3 rounded-lg shadow-lg transition text-lg">
               Register as Company
             </button>
           </div>

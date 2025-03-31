@@ -1,31 +1,13 @@
 
-.glass-effect {
-  background: rgba(15, 15, 20, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-}
-
-.bg-pattern {
-  background-color: #0f0f13;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 40%);
-}
-
-.form-input-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 12px;
-  color: #4b24c0;
-}
-
-.form-input-with-icon {
-  padding-left: 40px;
-}
-
-.font-family-karla {
-  font-family: karla;
-}
+  .bg-pattern {
+    background-color: #0c0118;
+    background-image: radial-gradient(circle at 25px 25px, rgba(128, 0, 255, 0.2) 2%, transparent 0%),
+                      radial-gradient(circle at 75px 75px, rgba(128, 0, 255, 0.2) 2%, transparent 0%);
+    background-size: 100px 100px;
+  }
+  
+  .glass-effect {
+    background: rgba(30, 10, 60, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
