@@ -12,13 +12,14 @@ import { DepartmentsComponent } from './page/company/departments/departments.com
 import { TrainingsComponent } from './page/company/trainings/trainings.component';
 import { DashComponent } from './page/company/dash/dash.component';
 import { InternaliJobBoardComponent } from './page/company/internali-job-board/internali-job-board.component';
+import { LandingpageComponent } from './page/landingpage/landingpage.component';
 
 
 
 export const routes: Routes = [
   {
     path:"",
-    component: LoginComponent
+    component: LandingpageComponent
   },{
     path:"login",
     component: LoginComponent

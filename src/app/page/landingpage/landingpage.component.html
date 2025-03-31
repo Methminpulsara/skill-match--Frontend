@@ -1,0 +1,369 @@
+<!-- Main Landing Page with Navigation -->
+<div class="min-h-screen bg-pattern text-white">
+  <!-- Navigation Bar -->
+  <nav class="glass-effect fixed w-full z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-white">SkillMatch</h1>
+      </div>
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#home" class="text-purple-300 hover:text-white transition">Home</a>
+        <a href="#features" class="text-purple-300 hover:text-white transition">Features</a>
+        <a href="#about" class="text-purple-300 hover:text-white transition">About</a>
+        <a href="#" class="text-purple-300 hover:text-white transition">Login</a>
+        <button id="openSignupModal" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-purple-500/50 transition">Sign Up</button>
+      </div>
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobileMenuButton" class="text-purple-300 hover:text-white focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-purple-900/90 backdrop-blur-md">
+      <div class="container mx-auto px-4 py-2 space-y-2">
+        <a href="#home" class="block py-2 text-purple-300 hover:text-white transition">Home</a>
+        <a href="#features" class="block py-2 text-purple-300 hover:text-white transition">Features</a>
+        <a href="#about" class="block py-2 text-purple-300 hover:text-white transition">About</a>
+        <a href="#" class="block py-2 text-purple-300 hover:text-white transition">Login</a>
+        <button id="openSignupModalMobile" class="w-full bg-gradient-to-r from-purple-800 to-purple-600 text-white px-4 py-2 rounded-lg shadow-lg transition my-2">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-24 md:pt-32 pb-12 md:pb-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gradient">Unlock Your Career Potential</h1>
+          <p class="text-xl text-purple-200 mb-8">SkillMatch helps you track your skills and discover new opportunities. Companies can find internal talent for promotions.</p>
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <button id="employeeSignup" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-purple-500/50 transition text-lg">
+              Register as Employee
+            </button>
+            <button id="companySignup" class="bg-black bg-opacity-30 border border-purple-500 hover:bg-purple-900/40 text-white px-6 py-3 rounded-lg shadow-lg transition text-lg">
+              Register as Company
+            </button>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="/api/placeholder/500/400" alt="Skills development" class="rounded-lg shadow-2xl max-w-full h-auto border border-purple-900/30" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-12 md:py-24 bg-black/20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20 hover:border-purple-500/50 transition group">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-700 to-purple-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Skill Tracking System</h3>
+          <p class="text-purple-200">Add, update, and manage your skills in one organized platform. Keep track of your progress.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20 hover:border-purple-500/50 transition group">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-700 to-purple-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Career Growth</h3>
+          <p class="text-purple-200">Get personalized suggestions for potential career paths based on your skills and goals.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20 hover:border-purple-500/50 transition group">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-700 to-purple-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Company Dashboard</h3>
+          <p class="text-purple-200">Employers can search employees based on skills and receive detailed analytics reports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-12 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0 order-2 md:order-1">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Why Choose SkillMatch?</h2>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-xl font-bold">Track Your Progress</h3>
+                <p class="text-purple-200">Monitor your skill development and career growth over time with detailed analytics.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-xl font-bold">Internal Talent Discovery</h3>
+                <p class="text-purple-200">Companies can identify and promote internal talent based on verified skills and metrics.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-xl font-bold">Data-Driven Decisions</h3>
+                <p class="text-purple-200">Make informed career and promotion decisions with comprehensive skill analytics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+          <img src="/api/placeholder/500/400" alt="SkillMatch dashboard" class="rounded-lg shadow-2xl max-w-full h-auto border border-purple-900/30" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-12 md:py-24 bg-black/20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">What Users Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-xl font-bold">J</div>
+            <div class="ml-4">
+              <h4 class="font-bold">Jessica K.</h4>
+              <p class="text-purple-300 text-sm">Software Developer</p>
+            </div>
+          </div>
+          <p class="text-purple-100">"SkillMatch helped me identify gaps in my skill set and provided a clear path for career growth. Within 6 months, I got promoted to a senior position!"</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-xl font-bold">M</div>
+            <div class="ml-4">
+              <h4 class="font-bold">Michael T.</h4>
+              <p class="text-purple-300 text-sm">HR Director</p>
+            </div>
+          </div>
+          <p class="text-purple-100">"As a company, we've reduced our hiring costs by 40% by identifying and promoting internal talent through SkillMatch. The analytics are incredibly insightful."</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-purple-900/20 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-purple-600/20">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-xl font-bold">A</div>
+            <div class="ml-4">
+              <h4 class="font-bold">Alex W.</h4>
+              <p class="text-purple-300 text-sm">Marketing Specialist</p>
+            </div>
+          </div>
+          <p class="text-purple-100">"The career growth suggestions were spot on! I discovered skills I hadn't considered that were highly valuable in my field and managed to pivot my career successfully."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Boost Your Career?</h2>
+      <p class="text-xl text-purple-200 mb-8 max-w-3xl mx-auto">Join SkillMatch today and take control of your professional development. Whether you're an employee looking to grow or a company searching for talent, we've got you covered.</p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <button id="cta-employee-signup" class="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-purple-500/50 transition text-lg">
+          Register as Employee
+        </button>
+        <button id="cta-company-signup" class="bg-black bg-opacity-30 border border-purple-500 hover:bg-purple-900/40 text-white px-8 py-3 rounded-lg shadow-lg transition text-lg">
+          Register as Company
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black/40 py-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-6 md:mb-0">
+          <h2 class="text-2xl font-bold mb-4">SkillMatch</h2>
+          <p class="text-purple-300 max-w-md">Track your skills and career growth while companies discover internal talent for promotions.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4">Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#home" class="text-purple-300 hover:text-white transition">Home</a></li>
+              <li><a href="#features" class="text-purple-300 hover:text-white transition">Features</a></li>
+              <li><a href="#about" class="text-purple-300 hover:text-white transition">About</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Legal</h3>
+            <ul class="space-y-2">
+              <li><a  class="text-purple-300 hover:text-white transition">Privacy Policy</a></li>
+              <li><a  class="text-purple-300 hover:text-white transition">Terms of Service</a></li>
+              <li><a  class="text-purple-300 hover:text-white transition">Cookie Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Contact</h3>
+            <ul class="space-y-2">
+              <li><a  class="text-purple-300 hover:text-white transition">Support</a></li>
+              <li><a class="text-purple-300 hover:text-white transition">Sales</a></li>
+              <li><a  class="text-purple-300 hover:text-white transition">Careers</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-purple-900/50 mt-8 pt-8 text-center text-purple-400">
+        <p>&copy; 2025 SkillMatch. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Employee Signup Modal -->
+  <div id="employeeSignupModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <div class="glass-effect rounded-xl shadow-2xl border border-purple-600/30 w-full max-w-md relative">
+        <!-- Close button -->
+        <button id="closeEmployeeModal" class="absolute top-4 right-4 text-purple-300 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Modal content -->
+        <div class="p-8">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-white">Employee Registration</h2>
+            <p class="text-purple-300">Create your employee account</p>
+          </div>
+
+          <form>
+            <!-- Email Input -->
+            <div class="mb-4">
+              <label for="employeeEmail" class="block text-sm font-medium text-purple-300 mb-1">Email</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="form-input-icon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <input type="email" id="employeeEmail" class="form-input-with-icon w-full px-2 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <!-- Full Name Input -->
+            <div class="mb-4">
+              <label for="employeeName" class="block text-sm font-medium text-purple-300 mb-1">Full Name</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="form-input-icon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <input type="text" id="employeeName" class="form-input-with-icon w-full px-2 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" placeholder="John Doe" required>
+              </div>
+            </div>
+
+            <!-- Current Job Title -->
+            <div class="mb-4">
+              <label for="jobTitle" class="block text-sm font-medium text-purple-300 mb-1">Current Job Title</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="form-input-icon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <input type="text" id="jobTitle" class="form-input-with-icon w-full px-2 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" placeholder="Software Developer">
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-4">
+              <label for="employeePassword" class="block text-sm font-medium text-purple-300 mb-1">Password</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="form-input-icon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <input type="password" id="employeePassword" class="form-input-with-icon w-full px-2 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" required>
+              </div>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="mb-6">
+              <label for="employeeConfirmPassword" class="block text-sm font-medium text-purple-300 mb-1">Confirm Password</label>
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="form-input-icon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <input type="password" id="employeeConfirmPassword" class="form-input-with-icon w-full px-2 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" required>
+              </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="flex items-center mb-6">
+              <input type="checkbox" id="employeeTerms" class="w-4 h-4 text-purple-600 bg-black border-purple-500 rounded">
+              <label for="employeeTerms" class="ml-2 text-purple-300 text-sm">I agree to the <a href="#" class="text-purple-400 hover:text-purple-300 underline">Terms and Conditions</a></label>
+            </div>
+
+            <!-- Register Button -->
+            <button type="submit" class="w-full py-2 px-4 bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white font-medium rounded-lg shadow-lg hover:shadow-purple-500/50 transition ease-in-out transform hover:-translate-y-1">
+              Create Account
+            </button>
+
+            <!-- Sign In Link -->
+            <div class="text-center mt-6">
+              <p class="text-purple-300 text-sm">
+                Already have an account?
+                <a href="#" class="font-medium text-purple-400 hover:text-purple-300 underline">Sign In</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Company Signup Modal -->
+  <div id="companySignupModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <div class="glass-effect rounded-xl shadow-2xl border border-purple-600/30 w-full max-w-md relative">
+        <!-- Close button -->
+        <button id="closeCompanyModal" class="absolute top-4 right-4 text-purple-300 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Modal content -->
+        <div class="p-8">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-white">Company Registration</h2>
+            <p class="text-purple-300">Create your company account</p>
+          </div>
+
+        </div></div></div></div></div>
