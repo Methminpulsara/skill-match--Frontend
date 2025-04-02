@@ -1,82 +1,89 @@
-<div class="min-h-screen bg-base-200 flex">
+<!-- company-dashboard.component.html -->
+<div class="min-h-screen bg-base-200 flex flex-col lg:flex-row">
   <!-- Sidebar Navigation -->
-  <div class="w-64 bg-base-100 shadow-md h-screen fixed flex flex-col">
-    <!-- Profile Summary -->
+  <div id="sidebar" class="w-64 bg-base-100 shadow-xl h-screen fixed lg:sticky top-0 left-0 transition-all duration-300 z-40">
+    <!-- Company Logo and Info -->
     <div class="p-5 border-b border-base-300 flex items-center">
-      <img src="/api/placeholder/50/50" alt="Company logo" class="h-12 w-12 rounded-full">
+      <div class="h-12 w-12 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
+        TC
+      </div>
       <div class="ml-3">
-        <p class="text-sm font-semibold text-primary">TechCorp Inc.</p>
+        <p class="text-base font-semibold text-primary">TechCorp Inc.</p>
         <p class="text-xs text-secondary">Technology Solutions</p>
       </div>
     </div>
 
     <!-- Navigation Menu -->
-    <nav class="flex-1 mt-4">
-      <ul class="space-y-1 px-3">
+    <nav class="flex-1 mt-4 overflow-y-auto">
+      <ul class="menu menu-compact p-3 space-y-2">
         <li>
-          <a routerLink="/company-dashboard" class="flex items-center p-2 text-base-content hover:bg-base-300 rounded-lg">
+          <a routerLink="/company-dashboard" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg">
             <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
             </svg>
-            Dashboard
+            <span class="font-medium">Dashboard</span>
+            <span class="badge badge-sm badge-primary ml-auto">New</span>
           </a>
         </li>
         <li>
-          <a routerLink="/company-dashboard/employees" class="flex items-center p-2 mt-1 text-base-content hover:bg-base-300 rounded-lg">
-            <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
+          <a routerLink="/company-dashboard/employees" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg group transition-all duration-200">
+            <svg class="h-5 w-5 text-primary mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
             </svg>
-            Employees
+            <span class="font-medium">Employees</span>
           </a>
         </li>
         <li>
-          <a routerLink="/company-dashboard/departments" class="flex items-center p-2 mt-1 text-base-content hover:bg-base-300 rounded-lg">
-            <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
+          <a routerLink="/company-dashboard/departments" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg group transition-all duration-200">
+            <svg class="h-5 w-5 text-primary mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
             </svg>
-            Departments
+            <span class="font-medium">Departments</span>
           </a>
         </li>
         <li>
-          <a routerLink="/company-dashboard/projects" class="flex items-center p-2 mt-1 text-base-content hover:bg-base-300 rounded-lg">
-            <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
+          <a routerLink="/company-dashboard/projects" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg group transition-all duration-200">
+            <svg class="h-5 w-5 text-primary mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
               <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
             </svg>
-            Projects
+            <span class="font-medium">Projects</span>
           </a>
         </li>
         <li>
-          <a routerLink="/company-dashboard/training" class="flex items-center p-2 mt-1 text-base-content hover:bg-base-300 rounded-lg">
-            <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+          <a routerLink="/company-dashboard/training" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg group transition-all duration-200">
+            <svg class="h-5 w-5 text-primary mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
             </svg>
-            Training Programs
+            <span class="font-medium">Training Programs</span>
           </a>
         </li>
         <li>
-          <a routerLink="/company-dashboard/reports" class="flex items-center p-2 mt-1 text-base-content hover:bg-base-300 rounded-lg">
-            <svg class="h-5 w-5 text-primary mr-3" viewBox="0 0 20 20" fill="currentColor">
+          <a routerLink="/company-dashboard/reports" routerLinkActive="active" class="flex items-center p-3 text-base-content hover:bg-base-300 rounded-lg group transition-all duration-200">
+            <svg class="h-5 w-5 text-primary mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
-            Reports
-          </a>
-        </li>
-        <li>
-          <a routerLink="/company-dashboard/logout" class="flex items-center p-2 mt-1 text-red-600 hover:bg-red-50 hover:text-red-900 rounded-lg">
-            <svg class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-            </svg>
-            Logout
+            <span class="font-medium">Reports</span>
           </a>
         </li>
       </ul>
     </nav>
+
+    <!-- Logout Button -->
+    <div class="p-4 border-t border-base-300">
+      <button class="btn btn-outline btn-error btn-block group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+        </svg>
+        Sign Out
+      </button>
+    </div>
   </div>
 
   <!-- Main Content Area -->
-  <div class="flex-1 ml-64 p-6">
+  <div class="flex-1 lg:ml-0 p-6 pt-16 lg:pt-6">
     <div class="container mx-auto">
+      <!-- Rendering the selected component from router -->
       <router-outlet></router-outlet>
     </div>
   </div>
