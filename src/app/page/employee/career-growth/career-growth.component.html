@@ -1,30 +1,135 @@
-<div class="w-full h-full p-6 bg-base-200">
-  <div class="max-w-4xl mx-auto bg-base-100 shadow-lg rounded-lg overflow-hidden">
-    <div class="p-6">
-      <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-primary">Career Growth</h1>
-        <button class="btn btn-primary">Explore Paths</button>
+<div class="p-6 bg-base-200 rounded-lg">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-primary">Career Growth</h1>
+    <div class="flex space-x-2">
+      <button class="btn btn-outline btn-primary">My Skills</button>
+      <button class="btn btn-primary">Explore Paths</button>
+    </div>
+  </div>
+
+  <!-- Career Progress Overview -->
+  <div class="bg-base-100 rounded-lg shadow-sm p-4 mb-6">
+    <div class="flex items-center justify-between">
+      <h2 class="text-lg font-semibold text-base-content">Your Career Progress</h2>
+      <span class="text-sm text-primary cursor-pointer">View Full Report</span>
+    </div>
+    <div class="mt-3 w-full bg-base-300 rounded-full h-2.5">
+      <div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+    </div>
+    <div class="mt-2 flex justify-between text-xs text-base-content/70">
+      <span>Current: Senior Developer</span>
+      <span>Target: Lead Developer</span>
+    </div>
+  </div>
+
+  <!-- Career Growth Suggestions -->
+  <h2 class="text-lg font-semibold mb-3 text-base-content">Recommended Career Paths</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <!-- Path 1 -->
+    <div class="card bg-base-100 shadow-md p-4 border-l-4 border-primary hover:shadow-lg transition-shadow">
+      <div class="flex justify-between">
+        <h3 class="text-lg font-semibold text-base-content">Full-Stack Developer</h3>
+        <span class="bg-success/20 text-success text-xs px-2 py-1 rounded-full">90% Match</span>
       </div>
+      <p class="text-sm text-base-content/70 mt-2">Suggested based on your JavaScript, Python, and React skills.</p>
+      <div class="mt-3 flex flex-wrap gap-1">
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">JavaScript</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">React</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">Node.js</span>
+      </div>
+      <div class="mt-3 flex space-x-2">
+        <button class="btn btn-sm btn-primary">View Details</button>
+        <button class="btn btn-sm btn-outline">Set as Goal</button>
+      </div>
+    </div>
 
-      <!-- Career Growth Suggestions -->
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Example Career Path -->
-        <div class="card bg-base-100 shadow-md p-4 border border-primary">
-          <h3 class="text-lg font-semibold text-base-900">Full-Stack Developer</h3>
-          <p class="text-sm text-base-600">Suggested based on your JavaScript and Python skills.</p>
-          <div class="mt-3 flex space-x-2">
-            <button class="btn btn-sm btn-primary">View Details</button>
-          </div>
+    <!-- Path 2 -->
+    <div class="card bg-base-100 shadow-md p-4 border-l-4 border-primary hover:shadow-lg transition-shadow">
+      <div class="flex justify-between">
+        <h3 class="text-lg font-semibold text-base-content">Data Scientist</h3>
+        <span class="bg-success/20 text-success text-xs px-2 py-1 rounded-full">85% Match</span>
+      </div>
+      <p class="text-sm text-base-content/70 mt-2">Suggested based on your Python and analytical skills.</p>
+      <div class="mt-3 flex flex-wrap gap-1">
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">Python</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">Data Analysis</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">SQL</span>
+      </div>
+      <div class="mt-3 flex space-x-2">
+        <button class="btn btn-sm btn-primary">View Details</button>
+        <button class="btn btn-sm btn-outline">Set as Goal</button>
+      </div>
+    </div>
+
+    <!-- Path 3 -->
+    <div class="card bg-base-100 shadow-md p-4 border-l-4 border-neutral/30 hover:shadow-lg transition-shadow">
+      <div class="flex justify-between">
+        <h3 class="text-lg font-semibold text-base-content">DevOps Engineer</h3>
+        <span class="bg-warning/20 text-warning text-xs px-2 py-1 rounded-full">70% Match</span>
+      </div>
+      <p class="text-sm text-base-content/70 mt-2">Build on your CI/CD and cloud infrastructure skills.</p>
+      <div class="mt-3 flex flex-wrap gap-1">
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">Docker</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">AWS</span>
+        <span class="px-2 py-1 bg-base-300 text-base-content/70 text-xs rounded-full">Kubernetes</span>
+      </div>
+      <div class="mt-3 flex space-x-2">
+        <button class="btn btn-sm btn-primary">View Details</button>
+        <button class="btn btn-sm btn-outline">Set as Goal</button>
+      </div>
+    </div>
+
+    <!-- Path 4 -->
+    <div class="card bg-base-100 shadow-md p-4 border-l-4 border-neutral/30 hover:shadow-lg transition-shadow">
+      <div class="flex justify-between">
+        <h3 class="text-lg font-semibold text-base-content">Technical Lead</h3>
+        <span class="bg-warning/20 text-warning text-xs px-2 py-1 rounded-full">75% Match</span>
+      </div>
+      <p class="text-sm text-base-content/70 mt-2">Leadership path leveraging your technical expertise.</p>
+      <div class="mt-3 flex flex-wrap gap-1">
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">Team Leadership</span>
+        <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">System Design</span>
+        <span class="px-2 py-1 bg-base-300 text-base-content/70 text-xs rounded-full">Mentoring</span>
+      </div>
+      <div class="mt-3 flex space-x-2">
+        <button class="btn btn-sm btn-primary">View Details</button>
+        <button class="btn btn-sm btn-outline">Set as Goal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill Gap Analysis -->
+  <div class="bg-base-100 rounded-lg shadow-sm p-4">
+    <h2 class="text-lg font-semibold mb-3 text-base-content">Skills to Develop</h2>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium text-base-content">Kubernetes</span>
+          <span class="text-xs text-base-content/70">30% Complete</span>
         </div>
-
-        <div class="card bg-base-100 shadow-md p-4 border border-primary">
-          <h3 class="text-lg font-semibold text-base-900">Data Scientist</h3>
-          <p class="text-sm text-base-600">Suggested based on your Python and analytical skills.</p>
-          <div class="mt-3 flex space-x-2">
-            <button class="btn btn-sm btn-primary">View Details</button>
-          </div>
+        <div class="w-full bg-base-300 rounded-full h-2">
+          <div class="bg-primary h-2 rounded-full" style="width: 30%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium text-base-content">System Design</span>
+          <span class="text-xs text-base-content/70">65% Complete</span>
+        </div>
+        <div class="w-full bg-base-300 rounded-full h-2">
+          <div class="bg-primary h-2 rounded-full" style="width: 65%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium text-base-content">Machine Learning</span>
+          <span class="text-xs text-base-content/70">45% Complete</span>
+        </div>
+        <div class="w-full bg-base-300 rounded-full h-2">
+          <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
         </div>
       </div>
     </div>
+    <button class="btn btn-sm btn-outline btn-primary mt-4">View Training Resources</button>
   </div>
 </div>
