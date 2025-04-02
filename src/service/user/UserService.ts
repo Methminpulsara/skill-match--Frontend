@@ -11,6 +11,7 @@ export default class UserService{
   addCustomer(user:User){
       return this.http.post("http://localhost:8080/api/user",user);
   }
+
   
 
 }
