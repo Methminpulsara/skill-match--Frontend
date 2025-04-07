@@ -21,6 +21,10 @@ export default  class Employee {
     return this.http.get("http://localhost:8080/api/employee/name/"+name);
   }
 
+  findBYID(employeeID:number){
+      return this.http.get("http://localhost:8080/api/employee/"+employeeID);
+  }
+
 
 
 
