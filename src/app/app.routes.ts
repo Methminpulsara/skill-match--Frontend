@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './page/login/login.component';
-import { SingInComponent } from './page/sing-in/sing-in.component';
 import { CompanyComponent } from './page/company/company.component';
 import { EmployeeDashboardComponent } from './page/employee-dashboard/employee-dashboard.component';
 import { EmployeeProfileComponent } from './page/employee/employee-profile/employee-profile.component';
