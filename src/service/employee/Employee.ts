@@ -25,6 +25,10 @@ export default  class Employee {
       return this.http.get("http://localhost:8080/api/employee/"+employeeID);
   }
 
+  update(employee:Employee){
+    return this.http.put("http://localhost:8080/api/employee/update",employee);
+  }
+
 
 
 
