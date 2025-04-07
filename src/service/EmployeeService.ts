@@ -1,11 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import Employee from "../app/model/Employee";
 
 @Injectable({
   providedIn:'root'
 })
 
-export default  class Employee {
+export default  class EmployeeService {
 
   constructor(private http:HttpClient){}
 
