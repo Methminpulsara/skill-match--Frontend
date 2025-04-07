@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import User from "../../app/model/User";
 
 @Injectable({
   providedIn:'root'
@@ -7,8 +8,8 @@ import { Injectable } from "@angular/core";
 export default class UserService{
   constructor(private http:HttpClient){}
 
-  addCustomer(){
-      return this.http.post("http://localhost:8080/api/user");
+  register(user:User){
+      return this.http.post("http://localhost:8080/api/user",user);
   }
 
 }
