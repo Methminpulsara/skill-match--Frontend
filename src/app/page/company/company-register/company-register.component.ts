@@ -31,9 +31,8 @@ public user:User={
 
   }
 
-  register(){
-    console.log(this.company);
-    
-  }
 
+  register(){
+    console.log(this.company); 
+  }
 }
