@@ -5,7 +5,6 @@ export default class Company {
     industry: string;
     location: string;
     size: string;
-    contactPerson:string;
     profileImage: string;
     userId: number;
 
@@ -15,7 +14,6 @@ export default class Company {
         industry: string,
         location: string,
         size: string,
-        contactPerson: string,
         profileImage: string,
         userId: number
     ){
@@ -24,7 +22,6 @@ export default class Company {
         this.industry = industry;
         this.location = location;
         this.size = size;
-        this.contactPerson  
         this.profileImage = profileImage;
         this.userId = userId;
     }

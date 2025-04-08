@@ -37,5 +37,7 @@ public user:User={
   register(){
     console.log(this.confiromPassword===this.user.password ? "true" : alert("Password does not match"));
     
+
+    console.log(this.company);
   }
 }
