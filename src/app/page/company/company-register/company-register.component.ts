@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import User from '../../../model/User';
 import { RoleType } from '../../../../utils/Role';
+import Company from '../../../model/Company';
 
 @Component({
   selector: 'app-company-register',
@@ -12,5 +13,27 @@ import { RoleType } from '../../../../utils/Role';
 })
 export class CompanyRegisterComponent {
 
+public user:User={
+  userID:0,
+  email:'',
+  password:'',
+  role:RoleType.COMPANY
+  }
+
+  public company:Company={
+    companyId: 0,
+    name: "",
+    industry: "",
+    location: "",
+    size: "",
+    profileImage: "",
+    userId: this.user.userID,
+
+  }
+
+  register(){
+    console.log(this.company);
+    
+  }
 
 }
