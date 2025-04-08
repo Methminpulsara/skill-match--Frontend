@@ -20,6 +20,8 @@ public user:User={
   role:RoleType.COMPANY
   }
 
+  public confiromPassword:string='';
+
   public company:Company={
     companyId: 0,
     name: "",
@@ -33,6 +35,7 @@ public user:User={
 
 
   register(){
-    console.log(this.company); 
+    console.log(this.confiromPassword===this.user.password ? "true" : alert("Password does not match"));
+    
   }
 }
