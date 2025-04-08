@@ -6,7 +6,7 @@ import { RoleType } from '../../../../utils/Role';
 
 @Component({
   selector: 'app-company-register',
-  imports: [For ,CommonModule],
+  imports: [FormsModule ,CommonModule],
   templateUrl: './company-register.component.html',
   styleUrl: './company-register.component.css'
 })
