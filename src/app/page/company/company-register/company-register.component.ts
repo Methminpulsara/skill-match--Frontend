@@ -34,7 +34,7 @@ public user:User={
     industry: "",
     size: "",
     profileImage: "",
-    user: this.user
+    userId: 0
 
   }
 
@@ -52,7 +52,7 @@ nextButtonOnAction(page:number){
         console.log('user registered');
         console.log(res);
         this.savedUserID=res.userId;
-        this.company.user.userId=this.savedUserID;
+        this.company.userId=this.savedUserID;
         this.registerCompany();
       });
     }else{

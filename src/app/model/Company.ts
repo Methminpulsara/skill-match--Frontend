@@ -7,7 +7,7 @@ export default class Company {
     industry: string;
     size: string;
     profileImage: string;
-    user: User;
+    userId: number;
 
     constructor(
         companyId: number,
@@ -15,13 +15,13 @@ export default class Company {
         industry: string,
         size: string,
         profileImage: string,
-        user: User
+        userId: number
     ){
         this.companyId = companyId;
         this.name = name;
         this.industry = industry;
         this.size = size;
         this.profileImage = profileImage;
-        this.user = user;
+        this.userId = userId;
     }
 }
