@@ -7,8 +7,8 @@
         <p class="text-purple-300">Create your company account</p>
       </div>
 
-      <form>
-        <!-- Company Name Input -->
+     
+      <div *ngIf="nextpagenumber===1">
         <div class="mb-4">
           <label for="companyName" class="block text-sm font-medium text-purple-300 mb-1">Company Name</label>
           <div class="relative">
@@ -21,19 +21,7 @@
           </div>
         </div>
 
-        <!-- Business Email Input -->
-        <div class="mb-4">
-          <label for="companyEmail" class="block text-sm font-medium text-purple-300 mb-1">Business Email</label>
-          <div class="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <input [(ngModel)]="user.email" type="text" id="companyEmail" name="email" required
-              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" 
-              placeholder="contact@yourcompany.com">
-          </div>
-        </div>
-
+   
         <!-- Industry Type -->
         <div class="mb-4">
           <label for="industry" class="block text-sm font-medium text-purple-300 mb-1">Industry</label>
@@ -58,6 +46,7 @@
               </svg>
             </div>
           </div>
+        
         </div>
 
         <!-- Company Size -->
@@ -84,6 +73,11 @@
           </div>
         </div>
 
+        <button type="button" (click)="nextButtonOnAction(2)" class="w-full py-2 px-4 bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white font-medium rounded-lg shadow-lg hover:shadow-purple-500/50 transition ease-in-out transform hover:-translate-y-1">
+          Next</button>
+      </div>
+       
+
         <!-- Contact Person Name -->
         <!-- <div class="mb-4">
           <label for="contactName" class="block text-sm font-medium text-purple-300 mb-1">Contact Person Name</label>
@@ -98,6 +92,20 @@
         </div> -->
 
         <!-- Password Input -->
+
+        <div  *ngIf="nextpagenumber===2">
+        <div class="mb-4">
+          <label for="companyEmail" class="block text-sm font-medium text-purple-300 mb-1">Business Email</label>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <input [(ngModel)]="user.email" type="text" id="companyEmail" name="email" required
+              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" 
+              placeholder="contact@yourcompany.com">
+          </div>
+        </div>
+
         <div class="mb-4">
           <label for="companyPassword" class="block text-sm font-medium text-purple-300 mb-1" >Password</label>
           <div class="relative">
@@ -117,7 +125,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            <input [(ngModel)]="confiromPassword" type="password" id="companyConfirmPassword" name="confirmPassword" required
+            <input  type="password" id="companyConfirmPassword" name="confirmPassword" required
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
               placeholder="••••••••">
           </div>
@@ -125,7 +133,7 @@
 
         <!-- Terms and Conditions -->
         <div class="flex items-center mb-6">
-          <input type="checkbox" id="companyTerms" name="termsAccepted" required
+          <input type="checkbox"  id="companyTerms" name="termsAccepted" required
             class="w-4 h-4 text-purple-600 bg-black border-purple-500 rounded">
           <label for="companyTerms" class="ml-2 text-purple-300 text-sm">I agree to the <a href="#" class="text-purple-400 hover:text-purple-300 underline">Terms and Conditions</a></label>
         </div>
@@ -141,7 +149,9 @@
             <a href="login.html" class="font-medium text-purple-400 hover:text-purple-300 underline">Sign In</a>
           </p>
         </div>
-      </form>
+      </div>
+  
+
     </div>
   </div>
 </div>

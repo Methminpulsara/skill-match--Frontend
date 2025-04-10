@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     this.setTheme(savedTheme);
-
-    // Update checkbox state on load
     const themeToggle = document.querySelector('.theme-controller') as HTMLInputElement;
     if (themeToggle) {
       themeToggle.checked = savedTheme === 'dark';
@@ -32,3 +30,7 @@ export class AppComponent implements OnInit {
     localStorage.setItem('theme', theme);
   }
 }
+function initFlowbite() {
+  throw new Error('Function not implemented.');
+}
+
