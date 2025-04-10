@@ -20,6 +20,7 @@ constructor(
 
 nextpagenumber:number=1;
 savedUserID:number=0;
+comfirmPassword:string='';
 
 public user:User={
   userId:1,
@@ -45,16 +46,22 @@ nextButtonOnAction(page:number){
 
 
   register() {
-    this.userService.register(this.user).subscribe(res => {
-   
-   
-    });
+   if(this.comfirmPassword === this.user.password)
+    {
+        this.userService.register(this.user).subscribe(res => {
+        console.log('user registered');
+        console.log(res);
+        this.savedUserID=res.userId;
+        this.company.user.userId=this.savedUserID;
+        this.registerCompany();
+      });
+      
+    }
   }
 
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
-      console.log(res);
-      
+      console.log(res); 
     });
   }
 
