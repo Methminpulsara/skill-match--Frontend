@@ -58,7 +58,6 @@ nextButtonOnAction(page:number){
       
     }
   }
-
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
       console.log(res); 
