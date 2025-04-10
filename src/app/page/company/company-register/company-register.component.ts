@@ -15,7 +15,8 @@ import { CompanyService } from '../../../../service/CompanyService';
 })
 export class CompanyRegisterComponent {
 
-constructor(private userService:UserService){}
+constructor(
+  private userService:UserService,private companyService:CompanyService){}
 
 nextpagenumber:number=1;
 savedUserID:number=0;
@@ -30,10 +31,9 @@ public user:User={
     companyId: 0,
     name: "",
     industry: "",
-
     size: "",
     profileImage: "",
-    userId: 0,
+    user: this.user
 
   }
 
@@ -46,13 +46,16 @@ nextButtonOnAction(page:number){
 
   register() {
     this.userService.register(this.user).subscribe(res => {
-      console.log(res.userId); 
-
-      this.company.userId=res.userId;
-      console.log(this.company);
-
+   
+   
     });
   }
-  
-  
+
+  registerCompany() {
+    this.companyService.create(this.company).subscribe(res => {
+      console.log(res);
+      
+    });
+  }
+
 }

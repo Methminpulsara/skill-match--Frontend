@@ -8,6 +8,9 @@ import Company from "../app/model/Company";
 
 
 export class CompanyService {
+  register(company: Company) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http:HttpClient){}
 
   create(company:Company){

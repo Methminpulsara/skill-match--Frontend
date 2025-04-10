@@ -1,3 +1,5 @@
+import User from "./User";
+
 export default class Company {
 
     companyId: number;
@@ -5,7 +7,7 @@ export default class Company {
     industry: string;
     size: string;
     profileImage: string;
-    userId: number;
+    user: User;
 
     constructor(
         companyId: number,
@@ -13,13 +15,13 @@ export default class Company {
         industry: string,
         size: string,
         profileImage: string,
-        userId: number
+        user: User
     ){
         this.companyId = companyId;
         this.name = name;
         this.industry = industry;
         this.size = size;
         this.profileImage = profileImage;
-        this.userId = userId;
+        this.user = user;
     }
 }
