@@ -55,7 +55,8 @@ nextButtonOnAction(page:number){
         this.company.user.userId=this.savedUserID;
         this.registerCompany();
       });
-      
+    }else{
+      alert('password does not match');
     }
   }
   registerCompany() {
