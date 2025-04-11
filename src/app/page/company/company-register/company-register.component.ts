@@ -22,12 +22,13 @@ nextpagenumber:number=1;
 savedUserID:number=0;
 comfirmPassword:string='';
 
-public user:User={
-  userId:1,
-  email:'',
-  password:'',
-  role:RoleType.COMPANY
+  public user:User={
+    userId:1,
+    email:'',
+    password:'',
+    role:RoleType.COMPANY
   }
+
   public company:Company={
     companyId: 0,
     name: "",
@@ -42,9 +43,6 @@ public user:User={
 nextButtonOnAction(page:number){
   this.nextpagenumber=page;
 }
-
-
-
   register() {
    if(this.comfirmPassword === this.user.password)
     {
@@ -61,8 +59,7 @@ nextButtonOnAction(page:number){
   }
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
-      console.log(res); 
+      console.log(res);
     });
   }
-
 }
