@@ -48,7 +48,7 @@ nextButtonOnAction(page:number){
     {
         this.userService.register(this.user).subscribe(res => {
         console.log('user registered');
-        console.log(res);
+        console.log(res.userId);
         this.savedUserID=res.userId;
         this.company.userId=this.savedUserID;
         this.registerCompany();
