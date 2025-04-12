@@ -18,9 +18,10 @@ export class EmployeeRegisterComponent {
 
   nextPageNumber:number=1;
   comfirmPassword:string='';
+  savedUserID:number=0;
 
   public employee:Employee={
-    employeeID:0,
+    employeeID:1,
     name:'',
     phoneNumber:'',
     location:'',
@@ -28,7 +29,7 @@ export class EmployeeRegisterComponent {
     profileImage:'',
     department:'',
     userId:0,
-    companyId:0
+    companyId:3
   }
    public user:User={
      userId:1,
@@ -47,10 +48,31 @@ export class EmployeeRegisterComponent {
 
   registerEmployee(){
 
-    this.userService.register(this.user).subscribe(res=>{
-      console.log(res.userId);
-    })
+    if(this.comfirmPassword===this.user.password){
 
+      this.userService.register(this.user).subscribe(res => {
+        console.log("FULL RESPONSE:", res);
+
+        const id = res?.userId as number;
+        if (id) {
+          this.savedUserID = id;
+          this.employee.userId = id;
+          this.employeeRegister();
+        } else {
+          console.error("User ID not received from backend.");
+        }
+      });
+
+    }
+
+  }
+
+
+  employeeRegister(){
+   this.employeeService.createAccount(this.employee).subscribe(res=>{
+      console.log(res);
+
+   })
   }
 
 
