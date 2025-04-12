@@ -6,17 +6,8 @@
         <p class="text-purple-300">Create your employee account</p>
       </div>
       <form>
-        <div class="mb-4">
-          <label for="employeeEmail" class="block text-sm font-medium text-purple-300 mb-1">Email</label>
-          <div class="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <input type="email" id="employeeEmail" name="email" required
-              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
-              placeholder="your@email.com">
-          </div>
-        </div>
+
+        <div *ngIf="nextPageNumber===1">
         <div class="mb-4">
           <label for="employeeName" class="block text-sm font-medium text-purple-300 mb-1">Full Name</label>
           <div class="relative">
@@ -72,7 +63,24 @@
             </div>
           </div>
         </div>
+        <button (click)="nextPageOnAction(2)" type="button"
+        class="w-full py-2 px-4 bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white font-medium rounded-lg shadow-lg hover:shadow-purple-500/50 transition ease-in-out transform hover:-translate-y-1">
+        Next
+      </button>
+      </div>
 
+        <div *ngIf="nextPageNumber===2">
+        <div class="mb-4">
+          <label for="employeeEmail" class="block text-sm font-medium text-purple-300 mb-1">Email</label>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <input type="email" id="employeeEmail" name="email" required
+              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
+              placeholder="your@email.com">
+          </div>
+        </div>
         <div class="mb-4">
           <label for="employeePassword" class="block text-sm font-medium text-purple-300 mb-1">Password</label>
           <div class="relative">
@@ -111,7 +119,9 @@
             <a routerLink="/login" class="font-medium text-purple-400 hover:text-purple-300 underline">Sign In</a>
           </p>
         </div>
-      </form>
+      </div>
+
+    </form>
     </div>
   </div>
 </div>
