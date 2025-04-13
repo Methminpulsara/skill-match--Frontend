@@ -32,7 +32,7 @@
 
         <div class="mb-4">
           <label for="skills" class="block text-sm font-medium text-purple-300 mb-1">City</label>
-          <div class="relative">
+          <div class="relative" >
             <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
@@ -41,19 +41,17 @@
               placeholder="Colombo,Horana,Panadura">
           </div>
         </div>
-        <!-- <div class="mb-4">
-          <label for="experience" class="block text-sm font-medium text-purple-300 mb-1">Experience Level</label>
+
+        <div class="mb-4" >
+          <label for="experience" class="block text-sm font-medium text-purple-300 mb-1">Select your Company</label>
           <div class="relative">
             <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <select id="experience" name="experience"
+            <select  id="experience" name="experience"
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white appearance-none">
-              <option value="" disabled selected>Select your experience level</option>
-              <option value="entry">Entry Level (0-2 years)</option>
-              <option value="mid">Mid Level (3-5 years)</option>
-              <option value="senior">Senior Level (6+ years)</option>
-              <option value="expert">Expert/Lead (10+ years)</option>
+              <option  value="" disabled selected>Select your experience level</option>
+              <option *ngFor="let comapny of companyList"  value="mid">{{comapny.name}}</option>
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
               <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +59,8 @@
               </svg>
             </div>
           </div>
-        </div> -->
+        </div>
+
         <button (click)="nextPageOnAction(2)" type="button"
         class="w-full py-2 px-4 bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-600 hover:to-purple-400 text-white font-medium rounded-lg shadow-lg hover:shadow-purple-500/50 transition ease-in-out transform hover:-translate-y-1">
         Next

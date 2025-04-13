@@ -34,6 +34,7 @@ comfirmPassword:string='';
     name: "",
     industry: "",
     size: "",
+    status: "active",
     profileImage: "",
     userId: 0
 
@@ -62,4 +63,6 @@ nextButtonOnAction(page:number){
       console.log(res);
     });
   }
+
+
 }

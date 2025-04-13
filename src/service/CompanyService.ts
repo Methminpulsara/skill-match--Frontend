@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import Company from "../app/model/Company";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class CompanyService {
 
   findByID(companyID:number){
     return this.http.get("http://localhost:8080/api/company/"+companyID);
+  }
+
+  getAll():Observable<Company[]>{
+    return this.http.get<Company[]>("http://localhost:8080/api/company/active");
   }
 
 

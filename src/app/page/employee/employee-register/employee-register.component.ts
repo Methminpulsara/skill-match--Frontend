@@ -7,6 +7,8 @@ import Employee from '../../../model/Employee';
 import User from '../../../model/User';
 import { RoleType } from '../../../../utils/Role';
 import UserService from '../../../../service/UserService';
+import { CompanyService } from '../../../../service/CompanyService';
+import Company from '../../../model/Company';
 
 @Component({
   selector: 'app-employee-register',
@@ -29,7 +31,7 @@ export class EmployeeRegisterComponent {
     profileImage:'',
     department:'',
     userId:0,
-    companyId:3
+    companyId:2
   }
    public user:User={
      userId:1,
@@ -38,8 +40,15 @@ export class EmployeeRegisterComponent {
      role:RoleType.EMPLOYEE
    }
 
+   companyList:Company[]=[]
 
-  constructor(private userService:UserService,private employeeService:EmployeeService){}
+
+  constructor(
+    private companyServie:CompanyService,
+    private userService:UserService,
+    private employeeService:EmployeeService){
+      this.getCompany();
+    }
 
 
   nextPageOnAction(page:number){
@@ -62,18 +71,19 @@ export class EmployeeRegisterComponent {
           console.error("User ID not received from backend.");
         }
       });
-
     }
-
   }
-
 
   employeeRegister(){
   this.employeeService.createAccount(this.employee).subscribe(res => {
     console.log(res);
-
   })
   }
 
+  getCompany(){
+    this.companyServie.getAll().subscribe(res => {
+     this.companyList=res;
+    })
+  }
 
 }

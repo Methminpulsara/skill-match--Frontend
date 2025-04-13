@@ -6,6 +6,7 @@ export default class Company {
     name: string;
     industry: string;
     size: string;
+    status: string;
     profileImage: string;
     userId: number;
 
@@ -14,6 +15,7 @@ export default class Company {
         name: string,
         industry: string,
         size: string,
+        status:string,
         profileImage: string,
         userId: number
     ){
@@ -21,6 +23,7 @@ export default class Company {
         this.name = name;
         this.industry = industry;
         this.size = size;
+        this.status = status;
         this.profileImage = profileImage;
         this.userId = userId;
     }
