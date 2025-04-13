@@ -22,6 +22,7 @@ export class EmployeeRegisterComponent {
   comfirmPassword:string='';
   savedUserID:number=0;
 
+
   public employee:Employee={
     employeeID:1,
     name:'',
@@ -39,7 +40,6 @@ export class EmployeeRegisterComponent {
      password:'',
      role:RoleType.EMPLOYEE
    }
-
    companyList:Company[]=[]
 
 
@@ -48,6 +48,7 @@ export class EmployeeRegisterComponent {
     private userService:UserService,
     private employeeService:EmployeeService){
       this.getCompany();
+
     }
 
 
@@ -77,6 +78,8 @@ export class EmployeeRegisterComponent {
   employeeRegister(){
   this.employeeService.createAccount(this.employee).subscribe(res => {
     console.log(res);
+
+
   })
   }
 
@@ -85,5 +88,12 @@ export class EmployeeRegisterComponent {
      this.companyList=res;
     })
   }
+
+
+
+
+
+
+
 
 }
