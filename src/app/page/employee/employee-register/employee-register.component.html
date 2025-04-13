@@ -48,11 +48,16 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <select  id="experience" name="experience"
-              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white appearance-none">
-              <option  value="" disabled selected>Select your experience level</option>
-              <option *ngFor="let comapny of companyList"  value="mid">{{comapny.name}}</option>
-            </select>
+            <select
+            id="experience"
+            name="experience"
+            [(ngModel)]="selectedCompanyName"
+            (change)="onCompanySelect()"
+            class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white appearance-none">
+            <option value="" disabled selected>Select your company</option>
+            <option *ngFor="let company of companyList">{{ company.name }}</option>
+          </select>
+
             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
               <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>

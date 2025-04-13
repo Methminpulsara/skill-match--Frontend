@@ -22,6 +22,8 @@ export class EmployeeRegisterComponent {
   comfirmPassword:string='';
   savedUserID:number=0;
 
+  selectedCompanyName:string="123";
+
 
   public employee:Employee={
     employeeID:1,
@@ -32,7 +34,7 @@ export class EmployeeRegisterComponent {
     profileImage:'',
     department:'',
     userId:0,
-    companyId:2
+    companyId:0
   }
    public user:User={
      userId:1,
@@ -41,6 +43,7 @@ export class EmployeeRegisterComponent {
      role:RoleType.EMPLOYEE
    }
    companyList:Company[]=[]
+
 
 
   constructor(
@@ -81,6 +84,7 @@ export class EmployeeRegisterComponent {
 
 
   })
+
   }
 
   getCompany(){
@@ -88,6 +92,22 @@ export class EmployeeRegisterComponent {
      this.companyList=res;
     })
   }
+
+
+  selectedCompanyId: any;
+
+  onCompanySelect() {
+    const selectedCompany = this.companyList.find(c => c.name === this.selectedCompanyName);
+    if (selectedCompany) {
+      this.employee.companyId=selectedCompany.companyId;
+    } else {
+      console.warn('Company not found with ID:', this.selectedCompanyId);
+    }
+  }
+
+
+
+
 
 
 
