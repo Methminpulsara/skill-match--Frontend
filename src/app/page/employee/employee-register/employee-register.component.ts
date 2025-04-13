@@ -81,12 +81,8 @@ export class EmployeeRegisterComponent {
   employeeRegister(){
   this.employeeService.createAccount(this.employee).subscribe(res => {
     console.log(res);
-
-
-  })
-
+    })
   }
-
   getCompany(){
     this.companyServie.getAll().subscribe(res => {
      this.companyList=res;
