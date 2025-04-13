@@ -77,7 +77,6 @@ export class EmployeeRegisterComponent {
       });
     }
   }
-
   employeeRegister(){
   this.employeeService.createAccount(this.employee).subscribe(res => {
     console.log(res);
@@ -88,17 +87,10 @@ export class EmployeeRegisterComponent {
      this.companyList=res;
     })
   }
-
-
-  selectedCompanyId: any;
-
   onCompanySelect() {
     const selectedCompany = this.companyList.find(c => c.name === this.selectedCompanyName);
     if (selectedCompany) {
       this.employee.companyId=selectedCompany.companyId;
-    } else {
-      console.warn('Company not found with ID:', this.selectedCompanyId);
-    }
   }
 
 
