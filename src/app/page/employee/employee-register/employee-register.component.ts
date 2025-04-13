@@ -51,10 +51,8 @@ export class EmployeeRegisterComponent {
     private userService:UserService,
     private employeeService:EmployeeService){
       this.getCompany();
-
     }
-
-
+    
   nextPageOnAction(page:number){
     this.nextPageNumber=page;
   }
