@@ -69,10 +69,10 @@ export class EmployeeRegisterComponent {
 
 
   employeeRegister(){
-   this.employeeService.createAccount(this.employee).subscribe(res=>{
-      console.log(res);
+  this.employeeService.createAccount(this.employee).subscribe(res => {
+    console.log(res);
 
-   })
+  })
   }
 
 
