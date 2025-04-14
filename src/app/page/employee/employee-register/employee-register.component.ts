@@ -81,6 +81,7 @@ export class EmployeeRegisterComponent {
       this.companyList = res;
     })
   }
+  
   onCompanySelect() {
     const selectedCompany = this.companyList.find(c => c.name === this.selectedCompanyName);
     if (selectedCompany) {
