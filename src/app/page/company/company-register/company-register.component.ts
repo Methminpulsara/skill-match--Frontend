@@ -43,6 +43,7 @@ nextButtonOnAction(page:number){
   this.nextpagenumber=page;
 }
   register() {
+
    if(this.comfirmPassword === this.user.password)
     {
         this.userService.register(this.user).subscribe(res => {
@@ -61,6 +62,4 @@ nextButtonOnAction(page:number){
       alert("Company Was Registerd !")
     });
   }
-
-
 }
