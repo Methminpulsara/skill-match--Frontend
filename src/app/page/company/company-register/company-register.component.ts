@@ -37,9 +37,7 @@ comfirmPassword:string='';
     status: "active",
     profileImage: "",
     userId: 0
-
   }
-
 
 nextButtonOnAction(page:number){
   this.nextpagenumber=page;
