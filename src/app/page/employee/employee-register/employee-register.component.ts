@@ -76,6 +76,7 @@ export class EmployeeRegisterComponent {
       alert("Employee is Registerd !");
     })
   }
+
   getCompany() {
     this.companyServie.getAll().subscribe(res => {
       this.companyList = res;
