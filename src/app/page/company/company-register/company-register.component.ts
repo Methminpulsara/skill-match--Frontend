@@ -6,18 +6,18 @@ import { RoleType } from '../../../../utils/Role';
 import Company from '../../../model/Company';
 import UserService from '../../../../service/UserService';
 import { CompanyService } from '../../../../service/CompanyService';
-import { Router } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-company-register',
-  imports: [FormsModule ,CommonModule,NgIf],
+  standalone: true,
+  imports: [FormsModule ,CommonModule,NgIf,RouterModule],
   templateUrl: './company-register.component.html',
   styleUrl: './company-register.component.css'
 })
 export class CompanyRegisterComponent {
 
 constructor(
-  private userService:UserService,private companyService:CompanyService){}
+  private userService:UserService,private companyService:CompanyService,private router: Router){}
 
 nextpagenumber:number=1;
 savedUserID:number=0;
@@ -62,7 +62,7 @@ nextButtonOnAction(page:number){
       alert("Company Was Registerd !")
       
       setTimeout(() => {
-        
+        this.router.navigate(['/company-dashboard']);
       }, 1000);
 
 
