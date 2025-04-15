@@ -64,9 +64,6 @@ nextButtonOnAction(page:number){
       setTimeout(() => {
         this.router.navigate(['/company-dashboard']);
       }, 1000);
-
-
-
     });
   }
 }
