@@ -6,6 +6,7 @@ import { RoleType } from '../../../../utils/Role';
 import Company from '../../../model/Company';
 import UserService from '../../../../service/UserService';
 import { CompanyService } from '../../../../service/CompanyService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-register',
@@ -47,8 +48,6 @@ nextButtonOnAction(page:number){
    if(this.comfirmPassword === this.user.password)
     {
         this.userService.register(this.user).subscribe(res => {
-        console.log('user registered');
-        console.log(res.userId);
         this.savedUserID=res.userId;
         this.company.userId=this.savedUserID;
         this.registerCompany();
@@ -59,7 +58,15 @@ nextButtonOnAction(page:number){
   }
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
+      console.log('user registered');
       alert("Company Was Registerd !")
+      
+      setTimeout(() => {
+        
+      }, 1000);
+
+
+
     });
   }
 }
