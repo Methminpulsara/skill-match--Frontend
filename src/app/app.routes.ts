@@ -14,6 +14,7 @@ import { InternaliJobBoardComponent } from './page/company/internali-job-board/i
 import { LandingpageComponent } from './page/landingpage/landingpage.component';
 import { EmployeeRegisterComponent } from './page/employee/employee-register/employee-register.component';
 import { CompanyRegisterComponent } from './page/company/company-register/company-register.component';
+import { CompanyProfileComponent } from './page/company/company-profile/company-profile.component';
 
 
 
@@ -48,6 +49,9 @@ export const routes: Routes = [
       },{
         path:"projects",
         component:InternaliJobBoardComponent
+      },{
+        path:"profile",
+        component:CompanyProfileComponent
       }
     ]
   },
