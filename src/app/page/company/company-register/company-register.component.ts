@@ -68,10 +68,8 @@ nextButtonOnAction(page:number){
         error: (err) => {
           console.error('Registration failed:', err);
   
-          if (err.status === 409) {
+          if (err.status === 409  || err.status === 500) {
             alert('Email is already registered.');
-          } else if (err.status === 500) {
-            alert('Server error: Please try again later.');
           } else {
             alert('An unexpected error occurred. Please check your input or try again.');
           }

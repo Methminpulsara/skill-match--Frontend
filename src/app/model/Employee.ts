@@ -1,7 +1,7 @@
 export default class Employee {
 
 
-  employeeID:number;
+  employeeId:number;
   name:string;
   phoneNumber:string;
   location:string;
@@ -13,7 +13,7 @@ export default class Employee {
 
 
   constructor(
-    employeeID:number,
+    employeeId:number,
     name:string,
     phoneNumber:string,
     location:string,
@@ -24,7 +24,7 @@ export default class Employee {
     companyId:number
 
   ){
-    this.employeeID=employeeID;
+    this.employeeId=employeeId;
     this.name=name;
     this.phoneNumber=phoneNumber;
     this.location=location;

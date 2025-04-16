@@ -24,7 +24,7 @@ export class EmployeeRegisterComponent {
   selectedCompanyName: string = "";
 
   public employee: Employee = {
-    employeeID: 1,
+    employeeId: 1,
     name: '',
     phoneNumber: '',
     location: '',
@@ -57,23 +57,36 @@ export class EmployeeRegisterComponent {
 
     if (this.comfirmPassword === this.user.password) {
 
-      this.userService.register(this.user).subscribe(res => {
-        console.log("FULL RESPONSE:", res);
+      this.userService.register(this.user).subscribe( {
+        next: (res) => {
+          console.log("FULL RESPONSE:", res);
 
-        const id = res?.userId as number;
-        if (id) {
-          this.savedUserID = id;
-          this.employee.userId = id;
-          this.employeeRegister();
-        } else {
-          console.error("User ID not received from backend.");
+          const id = res?.userId as number;
+          if (id) {
+            this.savedUserID = id;
+            this.employee.userId = id;
+            this.employeeRegister();
+          } else {
+            console.error("User ID not received from backend.");
+          }
+        },
+        error : (err) =>{
+
+          if (err.status === 409  || err.status === 500) {
+            alert('Email is already registered.');
+          } else {
+            alert('An unexpected error occurred. Please check your input or try again.');
+          }
         }
+
       });
     }
   }
   employeeRegister() {
     this.employeeService.createAccount(this.employee).subscribe(res => {
       alert("Employee is Registerd !");
+      console.log(res.employeeId)
+
     })
   }
 
@@ -82,7 +95,7 @@ export class EmployeeRegisterComponent {
       this.companyList = res;
     })
   }
-  
+
   onCompanySelect() {
     const selectedCompany = this.companyList.find(c => c.name === this.selectedCompanyName);
     if (selectedCompany) {

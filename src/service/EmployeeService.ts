@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import Employee from "../app/model/Employee";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn:'root'
@@ -10,8 +11,8 @@ export default  class EmployeeService {
 
   constructor(private http:HttpClient){}
 
-  createAccount(employee: Employee) {
-    return this.http.post("http://localhost:8080/api/employee/create", employee);
+  createAccount(employee: Employee):Observable<Employee> {
+    return this.http.post<Employee>("http://localhost:8080/api/employee/create", employee);
   }
 
   findByUserID(userID:number){
