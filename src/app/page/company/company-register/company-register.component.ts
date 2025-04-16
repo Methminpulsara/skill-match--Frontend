@@ -43,19 +43,45 @@ comfirmPassword:string='';
 nextButtonOnAction(page:number){
   this.nextpagenumber=page;
 }
-  register() {
+  // register() {
 
-   if(this.comfirmPassword === this.user.password)
-    {
-        this.userService.register(this.user).subscribe(res => {
-        this.savedUserID=res.userId;
-        this.company.userId=this.savedUserID;
-        this.registerCompany();
+  //  if(this.comfirmPassword === this.user.password)
+  //   {
+  //       this.userService.register(this.user).subscribe(res => {
+  //       this.savedUserID=res.userId;
+  //       this.company.userId=this.savedUserID;
+  //       this.registerCompany();
+  //     });
+  //   }else{
+  //     alert('password does not match');
+  //   }
+  // }
+  
+  register() {
+    if (this.comfirmPassword === this.user.password) {
+      this.userService.register(this.user).subscribe({
+        next: (res) => {
+          this.savedUserID = res.userId;
+          this.company.userId = this.savedUserID;
+          this.registerCompany();
+        },
+        error: (err) => {
+          console.error('Registration failed:', err);
+  
+          if (err.status === 409) {
+            alert('Email is already registered.');
+          } else if (err.status === 500) {
+            alert('Server error: Please try again later.');
+          } else {
+            alert('An unexpected error occurred. Please check your input or try again.');
+          }
+        }
       });
-    }else{
-      alert('password does not match');
+    } else {
+      alert('Passwords do not match');
     }
   }
+  
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
       console.log('user registered');
