@@ -87,9 +87,8 @@ nextButtonOnAction(page:number){
       console.log('user registered');
       alert("Company Was Registerd !")
       
-      setTimeout(() => {
         this.router.navigate(['/company-dashboard']);
-      }, 1000);
+      
     });
   }
 }
