@@ -85,8 +85,6 @@ export class EmployeeRegisterComponent {
   employeeRegister() {
     this.employeeService.createAccount(this.employee).subscribe(res => {
       alert("Employee is Registerd !");
-      console.log(res.employeeId)
-
     })
   }
 
