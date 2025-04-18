@@ -29,7 +29,7 @@ export class LoginComponent {
     if (this.isValidEmail(this.user.email) && this.user.password.trim() !== '') {
 
 
-
+      alert("✅ Proceeding with login...");
       this.userService.loginRequest(this.user).subscribe({
         next:(res)=>{
           console.log("login sussecfully");
@@ -54,7 +54,7 @@ export class LoginComponent {
 
 
 
-      alert("✅ Proceeding with login...");
+    
       // Call the API here
     } else {
      alert(" Email or password is invalid");
