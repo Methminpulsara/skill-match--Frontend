@@ -18,10 +18,17 @@ export class EmployeeProfileComponent implements OnInit {
     const  user = this.userSerivce.getUser();
     if(user){
       console.log(user.userId);
+      this.getEmployeeDetails(user.userId);
     }else{
       console.log("user not found");
     }
 
+  }
+
+
+
+  getEmployeeDetails(userId:number){
+  
   }
 
 
