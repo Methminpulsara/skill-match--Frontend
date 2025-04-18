@@ -11,8 +11,8 @@ export default class UserService{
       return this.http.post<User>("http://localhost:8080/api/user/register",user);
   }
 
-  login(user:User){
-    return this.http.post("http://localhost:8080/api/user/login",user);
+  loginRequest(user:User):Observable<User>{
+    return this.http.post<User>("http://localhost:8080/api/user/loginrequest",user);
   }
 
 }
