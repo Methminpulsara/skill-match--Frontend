@@ -33,7 +33,13 @@ export class LoginComponent {
       this.userService.loginRequest(this.user).subscribe({
         next:(res)=>{
           console.log("login sussecfully");
-        
+       
+          if(res.role==RoleType.COMPANY){
+            console.log("company loging")
+          }else if(res.role==RoleType.EMPLOYEE){
+            console.log("employee loging");
+          }
+
           
 
 
