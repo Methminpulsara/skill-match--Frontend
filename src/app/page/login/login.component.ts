@@ -33,6 +33,13 @@ export class LoginComponent {
       this.userService.loginRequest(this.user).subscribe({
         next:(res)=>{
           console.log("login sussecfully");
+        
+            
+
+
+
+
+
           
         },
         error:(err)=>{alert("An unexpected error occurred. Please check your input or try again.");}
