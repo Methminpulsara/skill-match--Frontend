@@ -26,6 +26,9 @@ export class LoginComponent {
 
 
   loginRequest() {
+    
+    let logeduserID:number=1;
+
     if (this.isValidEmail(this.user.email) && this.user.password.trim() !== '') {
 
 
@@ -34,10 +37,13 @@ export class LoginComponent {
         next:(res)=>{
           console.log("login sussecfully");
        
+          logeduserID=res.userId;
+
           if(res.role==RoleType.COMPANY){
-            console.log("company loging")
+            console.log(res.userId)
+            
           }else if(res.role==RoleType.EMPLOYEE){
-            console.log("employee loging");
+            console.log(res.userId)
           }
 
           
@@ -55,7 +61,7 @@ export class LoginComponent {
 
 
     
-      // Call the API here
+     
     } else {
      alert(" Email or password is invalid");
     }
