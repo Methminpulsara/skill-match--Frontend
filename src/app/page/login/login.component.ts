@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  RouterLink, RouterModule } from '@angular/router';
+import {  Router, RouterLink, RouterModule } from '@angular/router';
 import User from '../../model/User';
 import { RoleType } from '../../../utils/Role';
 import { FormsModule } from '@angular/forms';
@@ -8,14 +8,14 @@ import UserService from '../../../service/UserService';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule,FormsModule,CommonModule],
+  imports: [RouterModule,FormsModule,CommonModule,RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
 
-  constructor(private userService:UserService) { }
+  constructor(private router:Router,private userService:UserService) { }
 
  public user:User={
     userId:1,
@@ -27,8 +27,7 @@ export class LoginComponent {
 
   loginRequest() {
     
-    let logeduserID:number=1;
-
+    
     if (this.isValidEmail(this.user.email) && this.user.password.trim() !== '') {
 
 
@@ -37,13 +36,19 @@ export class LoginComponent {
         next:(res)=>{
           console.log("login sussecfully");
        
-          logeduserID=res.userId;
+        
+          //store login user 
+          this.userService.setUser(res);
+        
+
 
           if(res.role==RoleType.COMPANY){
-            console.log(res.userId)
+            console.log("company login")
+            this.router.navigate(['/company-dashboard']);
             
           }else if(res.role==RoleType.EMPLOYEE){
-            console.log(res.userId)
+            console.log("employee login")
+            this.router.navigate(['/employee-dashboard']);
           }
 
           
