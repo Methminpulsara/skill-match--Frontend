@@ -43,20 +43,8 @@ comfirmPassword:string='';
 nextButtonOnAction(page:number){
   this.nextpagenumber=page;
 }
-  // register() {
 
-  //  if(this.comfirmPassword === this.user.password)
-  //   {
-  //       this.userService.register(this.user).subscribe(res => {
-  //       this.savedUserID=res.userId;
-  //       this.company.userId=this.savedUserID;
-  //       this.registerCompany();
-  //     });
-  //   }else{
-  //     alert('password does not match');
-  //   }
-  // }
-  
+
   register() {
     if (this.comfirmPassword === this.user.password) {
       this.userService.register(this.user).subscribe({
@@ -67,7 +55,7 @@ nextButtonOnAction(page:number){
         },
         error: (err) => {
           console.error('Registration failed:', err);
-  
+
           if (err.status === 409  || err.status === 500) {
             alert('Email is already registered.');
           } else {
@@ -79,14 +67,14 @@ nextButtonOnAction(page:number){
       alert('Passwords do not match');
     }
   }
-  
+
   registerCompany() {
     this.companyService.create(this.company).subscribe(res => {
       console.log('user registered');
       alert("Company Was Registerd !")
-      
+
         this.router.navigate(['/company-dashboard']);
-      
+
     });
   }
 }
