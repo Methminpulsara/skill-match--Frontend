@@ -15,8 +15,8 @@ export default  class EmployeeService {
     return this.http.post<Employee>("http://localhost:8080/api/employee/create", employee);
   }
 
-  findByUserID(userID:number){
-    return this.http.get("http://localhost:8080/api/employee/user"+userID);
+  findByUserID(userID:number):Observable<Employee>{
+    return this.http.get<Employee>("http://localhost:8080/api/employee/user/"+userID);
   }
 
   findBYName(name:string){

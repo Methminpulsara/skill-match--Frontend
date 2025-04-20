@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import UserService from '../../../../service/UserService';
+import EmployeeService from '../../../../service/EmployeeService';
+import Employee from '../../../model/Employee';
 
 @Component({
   selector: 'app-employee-profile',
@@ -9,15 +11,29 @@ import UserService from '../../../../service/UserService';
 })
 export class EmployeeProfileComponent implements OnInit {
 
+  public employee: Employee = {
+    employeeId: 1,
+    name: '',
+    phoneNumber: '',
+    location: '',
+    position: '',
+    profileImage: '',
+    department: '',
+    userId: 0,
+    companyId: 0
+  }
+   employeeEmail = '';
 
-
-  constructor(private userSerivce:UserService){}
+  constructor(
+    private userSerivce:UserService,
+    private employeeService:EmployeeService
+  ){}
 
   ngOnInit(): void {
-    
+
     const  user = this.userSerivce.getUser();
     if(user){
-      console.log(user.userId);
+      this.employeeEmail = user.email
       this.getEmployeeDetails(user.userId);
     }else{
       console.log("user not found");
@@ -28,7 +44,13 @@ export class EmployeeProfileComponent implements OnInit {
 
 
   getEmployeeDetails(userId:number){
-  
+
+    this.employeeService.findByUserID(userId).subscribe(res => {
+      this.employee=res;
+      console.log(this.employee)
+    });
+
+
   }
 
 

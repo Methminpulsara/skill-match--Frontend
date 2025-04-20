@@ -26,8 +26,8 @@
       <!-- Profile Content -->
       <div class="pt-16 px-6 pb-6">
         <div class="text-center mb-8">
-          <h2 class="text-2xl font-bold text-base-content">Alex Johnson</h2>
-          <div class="badge badge-primary mt-2">Senior Software Engineer</div>
+          <h2 class="text-2xl font-bold text-base-content">{{employee.name}}</h2>
+          <div class="badge badge-primary mt-2">{{employee.position}}</div>
         </div>
 
         <!-- Quick Stats -->
@@ -66,15 +66,15 @@
               <div class="space-y-3">
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Employee ID</span>
-                  <span class="font-medium text-base-content">12345</span>
+                  <span class="font-medium text-base-content">{{employee.employeeId}}</span>
                 </div>
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Department</span>
-                  <span class="font-medium text-base-content">Engineering</span>
+                  <span class="font-medium text-base-content">{{employee.department}}</span>
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-sm font-medium text-base-content/70">Position</span>
-                  <span class="font-medium text-base-content">Senior Software Engineer</span>
+                  <span class="font-medium text-base-content">{{employee.position}}</span>
                 </div>
               </div>
             </div>
@@ -85,11 +85,11 @@
               <div class="space-y-3">
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Email</span>
-                  <span class="font-medium text-base-content">alex.johnmpany.com</span>
+                  <span class="font-medium text-base-content">{{employeeEmail}}</span>
                 </div>
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Phone</span>
-                  <span class="font-medium text-base-content">+1 (555) 123-4567</span>
+                  <span class="font-medium text-base-content">{{employee.phoneNumber}}</span>
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-sm font-medium text-base-content/70">Hire Date</span>
