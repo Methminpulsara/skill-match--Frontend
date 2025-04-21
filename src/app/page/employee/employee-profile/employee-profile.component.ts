@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import UserService from '../../../../service/UserService';
 import EmployeeService from '../../../../service/EmployeeService';
 import Employee from '../../../model/Employee';
+import { CompanyService } from '../../../../service/CompanyService';
+import Company from '../../../model/Company';
 
 @Component({
   selector: 'app-employee-profile',
@@ -24,9 +26,20 @@ export class EmployeeProfileComponent implements OnInit {
   }
    employeeEmail = '';
 
+   public company:Company={
+         companyId: 0,
+         name: "",
+         industry: "",
+         size: "",
+         status: "active",
+         profileImage: "",
+         userId: 0
+       }
+
   constructor(
     private userSerivce:UserService,
-    private employeeService:EmployeeService
+    private employeeService:EmployeeService,
+    private companyService:CompanyService
   ){}
 
   ngOnInit(): void {
@@ -47,9 +60,20 @@ export class EmployeeProfileComponent implements OnInit {
 
     this.employeeService.findByUserID(userId).subscribe(res => {
       this.employee=res;
+      this.getCompanyDetails(this.employee.companyId);
       console.log(this.employee)
     });
   }
 
 
+  getCompanyDetails(companyId:number){
+
+    this.companyService.findByID(companyId).subscribe(res => {
+     this.company=res;
+     
+    });
+  }
+
 }
+
+

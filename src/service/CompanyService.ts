@@ -26,14 +26,17 @@ export class CompanyService {
     return this.http.get("http://localhost:8080/api/company/name/"+name);
   }
 
-  findByID(companyID:number){
-    return this.http.get("http://localhost:8080/api/company/"+companyID);
+  findByID(companyID:number):Observable<Company>{
+    return this.http.get<Company>("http://localhost:8080/api/company/search/"+companyID);
   }
 
   getAll():Observable<Company[]>{
     return this.http.get<Company[]>("http://localhost:8080/api/company/active");
   }
 
+  findByUserID(userID:number):Observable<Company>{
+    return this.http.get<Company>("http://localhost:8080/api/company/user/"+userID);
+  }
 
 
 }
