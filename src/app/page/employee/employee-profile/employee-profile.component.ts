@@ -49,8 +49,6 @@ export class EmployeeProfileComponent implements OnInit {
       this.employee=res;
       console.log(this.employee)
     });
-
-
   }
 
 
