@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import Skill from '../../../model/Skill';
 
 @Component({
   selector: 'app-sikll',
@@ -10,11 +11,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class SikllComponent {
   isModalOpen = false;
-
-  skill = {
-    name: '',
-    proficiencyLevel: ''
-  };
+ 
+ public skill:Skill= {
+  skillId:  1,
+  name:"",
+  proficiencyLevel:"",
+  employeeId:1
+}
 
   openModal() {
     this.isModalOpen = true;
@@ -22,10 +25,10 @@ export class SikllComponent {
 
   closeModal() {
     this.isModalOpen = false;
-    this.skill = {
-      name: '',
-      proficiencyLevel: ''
-    };
+    // this.skill = {
+    //   name: '',
+    //   proficiencyLevel: ''
+    // };
   }
 
   submitSkill() {
