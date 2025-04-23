@@ -1,13 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import Employee from "../app/model/Employee";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn:'root'
 })
 
 export default  class EmployeeService {
+
+  private currentEmployeeSubject = new BehaviorSubject<Employee | null>(null);
+    currentEmployee$ = this.currentEmployeeSubject.asObservable();
+
 
   constructor(private http:HttpClient){}
 
@@ -32,6 +36,33 @@ export default  class EmployeeService {
   }
 
 
+
+//local storage to save
+ setEmployee(employee: Employee): void {
+    this.currentEmployeeSubject.next(employee);
+    localStorage.setItem('employeeId', JSON.stringify(employee)); // Optional: persist between refreshes
+  }
+
+  getEmployee(): Employee | null {
+    const employee = this.currentEmployeeSubject.value;
+    if (employee) return employee
+    ;
+
+    // Fallback to localStorage if page was refreshed
+    const stored = localStorage.getItem('employeeId');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      this.currentEmployeeSubject.next(parsed);
+      return parsed;
+    }
+
+    return null;
+  }
+
+  clearUser(): void {
+    this.currentEmployeeSubject.next(null);
+    localStorage.removeItem('user');
+  }
 
 
 }

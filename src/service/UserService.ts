@@ -17,7 +17,7 @@ export default class UserService{
     return this.http.post<User>("http://localhost:8080/api/user/loginrequest",user);
   }
 
-  //explain kr gnn meeka chategen gththe 
+  //explain kr gnn meeka chategen gththe
   setUser(user: User): void {
     this.currentUserSubject.next(user);
     localStorage.setItem('user', JSON.stringify(user)); // Optional: persist between refreshes
