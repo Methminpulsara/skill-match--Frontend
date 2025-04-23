@@ -15,6 +15,9 @@ export default class SkillService{
      return this.http.post<Skill>("http://localhost:8080/api/skill/create", skill);
    }
 
+   getEmployeeSkills(employeeId:number):Observable<Skill[]>{
+    return this.http.get<Skill[]>("http://localhost:8080/api/skill/active/"+employeeId);
+   }
 
 
 
