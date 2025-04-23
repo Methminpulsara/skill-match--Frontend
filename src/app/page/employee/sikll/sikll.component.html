@@ -11,7 +11,7 @@
           <button class="btn btn-primary" (click)="openModal()">Add Skill</button>
         </div>
       </div>
-      <div *ngIf="isModalOpen" 
+      <div *ngIf="isModalOpen"
       class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
    <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
         [ngClass]="{'scale-95 opacity-0': !isModalOpen}">
@@ -24,7 +24,7 @@
          </svg>
        </button>
      </div>
-     
+
      <!-- Form -->
      <form (ngSubmit)="submitSkill()" #skillForm="ngForm" class="space-y-5">
        <!-- Skill Name -->
@@ -41,7 +41,7 @@
            />
          </div>
        </div>
-       
+
        <!-- Proficiency Level -->
        <div>
          <label class="block text-sm font-medium mb-2 text-base-content">Proficiency Level</label>
@@ -65,32 +65,20 @@
            </div>
          </div>
        </div>
-       
-       <!-- Related Tags (Optional additional field) -->
-       <div>
-         <label class="block text-sm font-medium mb-2 text-base-content">
-           Related Tags <span class="text-xs text-base-content/70">(Optional, comma separated)</span>
-         </label>
-         <input
-           type="text"
-           class="input input-bordered w-full focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
-           name="tags"
-          
-           placeholder="e.g. ES6, Redux, Hooks"
-         />
-       </div>
-       
+
+
+
        <!-- Buttons -->
        <div class="flex justify-end gap-3 pt-2">
-         <button 
-           type="button" 
-           class="btn btn-ghost hover:bg-base-200 transition-colors duration-200" 
+         <button
+           type="button"
+           class="btn btn-ghost hover:bg-base-200 transition-colors duration-200"
            (click)="closeModal()">
            Cancel
          </button>
-         <button 
-           class="btn btn-primary hover:brightness-105 transition-all duration-200" 
-           type="submit" 
+         <button (click)="skillRequest()"
+           class="btn btn-primary hover:brightness-105 transition-all duration-200"
+           type="submit"
            [disabled]="!skillForm.form.valid">
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

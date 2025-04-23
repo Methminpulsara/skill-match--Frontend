@@ -11,7 +11,7 @@ import Skill from '../../../model/Skill';
 })
 export class SikllComponent {
   isModalOpen = false;
- 
+
  public skill:Skill= {
   skillId:  1,
   name:"",
@@ -25,14 +25,15 @@ export class SikllComponent {
 
   closeModal() {
     this.isModalOpen = false;
-    // this.skill = {
-    //   name: '',
-    //   proficiencyLevel: ''
-    // };
   }
 
   submitSkill() {
     console.log('Skill Submitted:', this.skill);
     this.closeModal();
+  }
+
+  skillRequest(){
+    console.log("cliked");
+
   }
 }
