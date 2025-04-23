@@ -28,7 +28,6 @@ export class SikllComponent {
   }
 
   submitSkill() {
-    console.log('Skill Submitted:', this.skill);
     this.closeModal();
   }
 
