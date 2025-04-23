@@ -27,19 +27,21 @@ export class SikllComponent implements OnInit {
     time:"",
     employeeId:1
   }
-   
- time = new Date().toLocaleString(); // Date and time, nicely formatted
-
+  
+  skillList: Skill[] =[] 
+  filteredSkills: Skill[] = [];
+  time = new Date().toLocaleString(); // Date and time, nicely formatted
+  selectLevel:string ="";  
+  search:string=""
 
   ngOnInit(): void {
-
-    
-    const employee=this.employeeService.getEmployee();
+    const employee = this.employeeService.getEmployee();
     this.skill.time = this.time;
-    if(employee){
-      this.skill.employeeId=employee.employeeId;
+    if (employee) {
+      this.skill.employeeId = employee.employeeId;
       this.getEmployeeSkills(employee.employeeId);
     }
+
   }
 
   isModalOpen = false;
@@ -54,8 +56,7 @@ export class SikllComponent implements OnInit {
     this.isModalOpen = false;
   }
 
-  skillList: Skill[] =[]
-
+ 
 
 
   skillRequest(){
@@ -66,7 +67,28 @@ export class SikllComponent implements OnInit {
   getEmployeeSkills(employeeId:number){
     this.skillService.getEmployeeSkills(employeeId).subscribe(res=>{
       this.skillList=res;
+      this.filterSkills()
     });
   }
+
+  onLevelChange(){
+    console.log(this.selectLevel)
+    this.filterSkills();
+  }
+
+  onSearchChanege(){
+    console.log('Search term changed:', this.search);
+    this.filterSkills();
+  }
+
+  filterSkills() {
+    this.filteredSkills = this.skillList.filter(skill =>
+      skill.name.toLowerCase().includes(this.search.toLowerCase()) &&
+      (this.selectLevel === '' || skill.proficiencyLevel === this.selectLevel)
+    );
+    console.log(this.filteredSkills);
+  }
+  
+
 
 }

@@ -106,23 +106,29 @@
       <!-- Search and Filter -->
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
         <div class="relative flex-grow">
-          <input type="text" placeholder="Search skills..." class="input input-bordered w-full pl-10" />
+          <input  type="text" placeholder="Search skills..." class="input input-bordered w-full pl-10" 
+          [(ngModel)]="search"
+          (input)="onSearchChanege()"
+          />
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/50">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
           </svg>
         </div>
-        <select class="select select-bordered w-full sm:w-40">
-          <option selected>All Levels</option>
-          <option>Beginner</option>
-          <option>Intermediate</option>
-          <option>Advanced</option>
-          <option>Expert</option>
+        <select class="select select-bordered w-full sm:w-40"
+        [(ngModel)]="selectLevel"
+        (change)="onLevelChange()"     
+        >
+        <option value="">All Levels</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Expert">Expert</option>
         </select>
       </div>
 
       <!-- Skills List -->
       <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div *ngFor="let skill of skillList" class="card bg-base-100 border border-base-300 hover:border-primary transition-colors duration-200">
+        <div *ngFor="let skill of filteredSkills" class="card bg-base-100 border border-base-300 hover:border-primary transition-colors duration-200">
           <div class="card-body p-4">
             <div class="flex justify-between items-start">
               <div>
@@ -171,14 +177,7 @@
             </div>
           </div>
         </div>
-
-    
-
-     
-      </div>
-
-      <!-- Pagination -->
-    
+      </div>    
     </div>
   </div>
 </div>
