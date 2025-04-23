@@ -29,8 +29,10 @@ export class SikllComponent implements OnInit {
   }
   
   skillList: Skill[] =[] 
+  
+  // fillter krana arrays tika meke save wenw me array eka psse html eke wada krnw 
   filteredSkills: Skill[] = [];
-  time = new Date().toLocaleString(); // Date and time, nicely formatted
+  time = new Date().toLocaleString(); 
   selectLevel:string ="";  
   search:string=""
 
@@ -57,8 +59,6 @@ export class SikllComponent implements OnInit {
   }
 
  
-
-
   skillRequest(){
     this.skillService.addSkill(this.skill).subscribe(res=>{});
     this.closeModal()
@@ -72,12 +72,10 @@ export class SikllComponent implements OnInit {
   }
 
   onLevelChange(){
-    console.log(this.selectLevel)
     this.filterSkills();
   }
 
   onSearchChanege(){
-    console.log('Search term changed:', this.search);
     this.filterSkills();
   }
 
@@ -86,7 +84,6 @@ export class SikllComponent implements OnInit {
       skill.name.toLowerCase().includes(this.search.toLowerCase()) &&
       (this.selectLevel === '' || skill.proficiencyLevel === this.selectLevel)
     );
-    console.log(this.filteredSkills);
   }
   
 
