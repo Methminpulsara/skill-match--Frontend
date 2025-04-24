@@ -67,7 +67,6 @@ export class TrainingsComponent implements OnInit {
   submitTrainingProgram() {
   
     this.addTrainingProgram();
-
     this.closeTrainingModal();
   }
 
@@ -86,6 +85,7 @@ export class TrainingsComponent implements OnInit {
     this.badgeInput = '';
   }
 
+  trainingProgramsList :TrainingProgram []=[]
 
 addTrainingProgram(){
   this.programService.addTraingProgarm(this.trainingProgram).subscribe(res=>{})
