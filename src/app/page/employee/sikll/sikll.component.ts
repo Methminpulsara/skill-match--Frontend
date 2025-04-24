@@ -27,13 +27,13 @@ export class SikllComponent implements OnInit {
     time:"",
     employeeId:1
   }
-  
-  skillList: Skill[] =[] 
-  
-  // fillter krana arrays tika meke save wenw me array eka psse html eke wada krnw 
+
+  skillList: Skill[] =[]
+
+  // fillter krana arrays tika meke save wenw me array eka psse html eke wada krnw
   filteredSkills: Skill[] = [];
-  time = new Date().toLocaleString(); 
-  selectLevel:string ="";  
+  time = new Date().toLocaleString();
+  selectLevel:string ="";
   search:string=""
 
   ngOnInit(): void {
@@ -58,7 +58,7 @@ export class SikllComponent implements OnInit {
     this.isModalOpen = false;
   }
 
- 
+
   skillRequest(){
     this.skillService.addSkill(this.skill).subscribe(res=>{});
     this.closeModal()
@@ -85,7 +85,7 @@ export class SikllComponent implements OnInit {
       (this.selectLevel === '' || skill.proficiencyLevel === this.selectLevel)
     );
   }
-  
+
 
 
 }
