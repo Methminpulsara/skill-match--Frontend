@@ -1,38 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import TrainingProgram from '../app/model/TrainingProgram';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import TrainingProgram from "../app/model/TrainingProgram";
+import { Observable } from "rxjs";
+
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:"root"
 })
-export class TrainingProgramService {
+export default class TrainingProgramsService{
 
-  private baseUrl = 'http://localhost:8080/api/trainingPrograms';
+constructor(private http:HttpClient){}
 
-  constructor(private http: HttpClient) {}
+   addTraingProgarm(training: TrainingProgram):Observable<TrainingProgram> {
+     return this.http.post<TrainingProgram>("http://localhost:8080/api/trainingPrograms/create", training);
+   }
 
-  create(program: TrainingProgram): Observable<TrainingProgram> {
-    return this.http.post<TrainingProgram>(`${this.baseUrl}/create`, program);
-  }
+   getEmployeeSkills(companyId:number):Observable<TrainingProgram[]>{
+    return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/active/programs/"+companyId);
+   }
 
-  update(program: TrainingProgram): Observable<string> {
-    return this.http.put(`${this.baseUrl}/update`, program, { responseType: 'text' });
-  }
-
-  delete(id: number): Observable<string> {
-    return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
-  }
-
-  getAll(): Observable<TrainingProgram[]> {
-    return this.http.get<TrainingProgram[]>(`${this.baseUrl}/all`);
-  }
-
-  searchById(id: number): Observable<TrainingProgram> {
-    return this.http.get<TrainingProgram>(`${this.baseUrl}/search/${id}`);
-  }
-
-  searchByName(name: string): Observable<TrainingProgram[]> {
-    return this.http.get<TrainingProgram[]>(`${this.baseUrl}/searchName/${name}`);
-  }
 }
