@@ -65,16 +65,14 @@ export class LoginComponent {
 
           if(res.role==RoleType.COMPANY){
             console.log("company login")
+            this.getCompanyDetails(res.userId);
             this.router.navigate(['/company-dashboard']);
 
           }else if(res.role==RoleType.EMPLOYEE){
 
 
             this.getEmployeeDetails(res.userId)
-
-
             console.log("employee login")
-
             this.router.navigate(['/employee-dashboard']);
           }
 
@@ -97,6 +95,11 @@ export class LoginComponent {
     this.employeeService.findByUserID(userId).subscribe(res => {
      this.employeeService.setEmployee(res);
     });
+  }
+  getCompanyDetails(userId:number){
+    this.companyService.findByUserID(userId).subscribe(res=>{
+      this.companyService.setCompany(res)
+    })
   }
 
 

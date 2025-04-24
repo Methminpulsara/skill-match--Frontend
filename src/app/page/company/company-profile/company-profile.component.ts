@@ -33,21 +33,20 @@ export class CompanyProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const user = this.userService.getUser();
-    if(user){
-      this.companyEmail = user.email
-      this.getCompanyDetails(user.userId);
-    }
+   const company = this.companyService.getCompany();
+   if(company){
+    this.company=company;
+   }
 
   }
-  getCompanyDetails(userId: number) {
+  // getCompanyDetails(userId: number) {
    
-    this.companyService.findByUserID(userId).subscribe(res => {
-      this.company=res;
-    });
+  //   this.companyService.findByUserID(userId).subscribe(res => {
+  //     this.company=res;
+  //   });
 
     
   }
 
 
-}
+

@@ -5,8 +5,8 @@ export default class TrainingProgram {
   companyId: number;
   startDate: string;
   endDate: string;
+  badges: string[]; 
   enrolledEmployeeId: Set<number>;
-
   constructor(
     trainingId: number,
     name: string,
@@ -14,6 +14,7 @@ export default class TrainingProgram {
     companyId: number,
     startDate: string,
     endDate: string,
+    badges: string[], 
     enrolledEmployeeId: Set<number>
   ){
     this.trainingId =trainingId
@@ -22,6 +23,7 @@ export default class TrainingProgram {
     this.startDate=startDate
     this.companyId=companyId
     this.endDate=endDate
+    this.badges=badges
     this.enrolledEmployeeId=enrolledEmployeeId
   }
 
