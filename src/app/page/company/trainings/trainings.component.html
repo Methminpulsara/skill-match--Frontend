@@ -1,174 +1,131 @@
 <div class="min-h-screen bg-base-200 p-6">
   <div class="max-w-4xl mx-auto bg-base-100 shadow-xl rounded-lg p-6">
+    <!-- Header -->
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-2xl font-bold">Manage Training Programs</h2>
     </div>
+
+    <!-- Top Controls -->
     <div class="flex justify-between items-center mb-4">
+      <!-- Add Program Button -->
       <button (click)="openTrainingModal()" class="btn btn-primary btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
         Add New Training Program
       </button>
 
-      <!--  -->
-      <div *ngIf="isTrainingModalOpen"
-  class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
-  <div
-    class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
-    [ngClass]="{ 'scale-95 opacity-0': !isTrainingModalOpen }">
-
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-xl font-bold text-base-content">Add Training Program</h2>
-      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeTrainingModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-          stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Form -->
-    <form class="space-y-5">
-      <!-- Name -->
-      <div>
-        <label class="block text-sm font-medium mb-2 text-base-content">Program Name</label>
-        <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.name" name="name" required />
-      </div>
-
-      <!-- Description -->
-      <div>
-        <label class="block text-sm font-medium mb-2 text-base-content">Description</label>
-        <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.description" name="description" required />
-      </div>
-
-      <!-- Start Date -->
-      <div>
-        <label class="block text-sm font-medium mb-2 text-base-content">Start Date</label>
-        <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.startDate" name="startDate" required />
-      </div>
-
-      <!-- End Date -->
-      <div>
-        <label class="block text-sm font-medium mb-2 text-base-content">End Date</label>
-        <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.endDate" name="endDate" required />
-      </div>
-
-      <!-- Badges -->
-      <div>
-        <label class="block text-sm font-medium mb-2 text-base-content">Badges</label>
-        <div class="flex items-center gap-2 mb-2">
-          <input type="text" class="input input-bordered flex-grow" [(ngModel)]="badgeInput" name="badgeInput"
-            placeholder="Type badge and press Add" (keyup.enter)="addBadge()" />
-          <button type="button" class="btn btn-sm btn-primary" (click)="addBadge()">Add</button>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span *ngFor="let badge of trainingProgram.badges; let i = index" class="badge badge-primary gap-1">
-            {{ badge }}
-            <button type="button" class="btn btn-xs btn-circle btn-ghost" (click)="removeBadge(i)">✕</button>
-          </span>
-        </div>
-      </div>
-
-      <!-- Submit Buttons -->
-      <div class="flex justify-end gap-3 pt-2">
-        <button type="button" class="btn btn-ghost" (click)="closeTrainingModal()">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="submitTrainingProgram()"
-          [disabled]="!trainingProgram.name || !trainingProgram.startDate || !trainingProgram.endDate">
-          Add Program
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
+      <!-- Search -->
       <div class="form-control">
         <div class="input-group input-group-sm">
           <input type="text" placeholder="Search programs..." class="input input-bordered input-sm" />
           <button class="btn btn-square btn-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
           </button>
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="card bg-base-200 shadow-md">
-        <div class="card-body p-4">
-          <h3 class="card-title text-lg">Advanced Python</h3>
-          <p class="text-sm">Deep dive into Python for advanced data manipulation and automation.</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <span class="badge badge-primary">Technical</span>
-            <span class="badge badge-outline">Data Skills</span>
+
+    <!-- Modal -->
+    <div *ngIf="isTrainingModalOpen"
+      class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+      <div
+        class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+        [ngClass]="{ 'scale-95 opacity-0': !isTrainingModalOpen }">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold text-base-content">Add Training Program</h2>
+          <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeTrainingModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Modal Form -->
+        <form class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium mb-2 text-base-content">Program Name</label>
+            <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.name" name="name"
+              required />
           </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2 text-base-content">Description</label>
+            <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.description"
+              name="description" required />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2 text-base-content">Start Date</label>
+            <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.startDate"
+              name="startDate" required />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2 text-base-content">End Date</label>
+            <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.endDate"
+              name="endDate" required />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2 text-base-content">Badges</label>
+            <div class="flex items-center gap-2 mb-2">
+              <input type="text" class="input input-bordered flex-grow" [(ngModel)]="badgeInput" name="badgeInput"
+                placeholder="Type badge and press Add" (keyup.enter)="addBadge()" />
+              <button type="button" class="btn btn-sm btn-primary" (click)="addBadge()">Add</button>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let badge of trainingProgram.badges; let i = index" class="badge badge-primary gap-1">
+                {{ badge }}
+                <button type="button" class="btn btn-xs btn-circle btn-ghost" (click)="removeBadge(i)">✕</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="flex justify-end gap-3 pt-2">
+            <button type="button" class="btn btn-ghost" (click)="closeTrainingModal()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="submitTrainingProgram()"
+              [disabled]="!trainingProgram.name || !trainingProgram.startDate || !trainingProgram.endDate">
+              Add Program
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      <div *ngFor="let program of trainingProgramsList" class="card bg-base-200 shadow-md">
+        <div class="card-body p-4">
+          <h3 class="card-title text-lg">{{ program.name || 'Unnamed Program' }}</h3>
+          <p class="text-sm">{{ program.description || 'No description provided.' }}</p>
+
+          <div class="mt-2 flex flex-wrap gap-2">
+            <span *ngFor="let badge of program.badges" class="badge badge-primary">
+              {{ badge }}
+            </span>
+          </div>
+
           <div class="flex justify-between items-center mt-3">
-            <p class="text-sm">Enrolled: <span class="font-bold">12 Employees</span></p>
+            <p class="text-sm">
+              Enrolled: <span class="font-bold">{{ program.enrolledEmployeeId?.length || 0 }} Employees</span>
+            </p>
             <div class="tooltip" data-tip="Recommended for career growth">
               <span class="badge badge-accent">Key Skill</span>
             </div>
           </div>
-          <div class="card-actions mt-3 justify-end">
-            <button class="btn btn-warning btn-sm">Edit</button>
-            <button class="btn btn-error btn-sm">Delete</button>
-          </div>
-        </div>
-      </div>
-      <div class="card bg-base-200 shadow-md">
-        <div class="card-body p-4">
-          <h3 class="card-title text-lg">Leadership Training</h3>
-          <p class="text-sm">Enhance leadership and communication skills to lead teams effectively.</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <span class="badge badge-secondary">Soft Skills</span>
-            <span class="badge badge-outline">Management</span>
-          </div>
-          <div class="flex justify-between items-center mt-3">
-            <p class="text-sm">Enrolled: <span class="font-bold">20 Employees</span></p>
-            <div class="tooltip" data-tip="Promotion pathway">
-              <span class="badge badge-accent">Career Growth</span>
-            </div>
-          </div>
-          <div class="card-actions mt-3 justify-end">
-            <button class="btn btn-warning btn-sm">Edit</button>
-            <button class="btn btn-error btn-sm">Delete</button>
-          </div>
-        </div>
-      </div>
 
-      <div class="card bg-base-200 shadow-md">
-        <div class="card-body p-4">
-          <h3 class="card-title text-lg">Data Analytics</h3>
-          <p class="text-sm">Learn how to analyze and visualize data with industry tools.</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <span class="badge badge-primary">Technical</span>
-            <span class="badge badge-outline">Analytics</span>
-          </div>
-          <div class="flex justify-between items-center mt-3">
-            <p class="text-sm">Enrolled: <span class="font-bold">8 Employees</span></p>
-            <div class="tooltip" data-tip="High demand skill">
-              <span class="badge badge-accent">In Demand</span>
-            </div>
-          </div>
           <div class="card-actions mt-3 justify-end">
             <button class="btn btn-warning btn-sm">Edit</button>
-            <button class="btn btn-error btn-sm">Delete</button>
-          </div>
-        </div>
-      </div>
-      <div class="card bg-base-200 shadow-md">
-        <div class="card-body p-4">
-          <h3 class="card-title text-lg">Cloud Computing</h3>
-          <p class="text-sm">Understand cloud architectures and deployment strategies.</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <span class="badge badge-primary">Technical</span>
-            <span class="badge badge-outline">Infrastructure</span>
-          </div>
-          <div class="flex justify-between items-center mt-3">
-            <p class="text-sm">Enrolled: <span class="font-bold">15 Employees</span></p>
-            <div class="tooltip" data-tip="Emerging technology">
-              <span class="badge badge-accent">Future Skills</span>
-            </div>
-          </div>
-          <div class="card-actions mt-3 justify-end">
-            <button class="btn btn-warning btn-sm">Edit</button>
-            <button class="btn btn-error btn-sm">Delete</button>
+            <button class="btn btn-error btn-sm" >Delete</button>
           </div>
         </div>
       </div>

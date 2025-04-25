@@ -58,14 +58,14 @@ export class TrainingsComponent implements OnInit {
     }
     this.badgeInput = '';  // Clear input field after adding badge
   }
-  
+
 
   removeBadge(index: number) {
     this.trainingProgram.badges.splice(index, 1);
   }
 
   submitTrainingProgram() {
-  
+
     this.addTrainingProgram();
     this.closeTrainingModal();
   }
@@ -95,7 +95,7 @@ addTrainingProgram(){
 getActiveTrainings(companyId:number){
   this.programService.getEmployeeSkills(companyId).subscribe(res=>{
       console.log(res);
-    
+      this.trainingProgramsList=res;
   })
 }
 }
