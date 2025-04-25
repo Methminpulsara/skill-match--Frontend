@@ -17,7 +17,7 @@ constructor(private http:HttpClient){}
    }
 
    getEmployeeSkills(companyId:number,status:string):Observable<TrainingProgram[]>{
-    return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/programs/"+companyId+"/"+status);
+    return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/programs/"+companyId);
    }
 
 }
