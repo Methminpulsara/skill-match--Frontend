@@ -26,59 +26,26 @@
   <!-- Featured Training Programs -->
   <h2 class="mb-3 text-lg font-semibold text-base-content">Recommended Training</h2>
   <div class="grid grid-cols-1 gap-4 mb-6 md:grid-cols-2 lg:grid-cols-3">
-    <!-- Program 1 -->
-    <div class="card bg-base-100 border-l-4 border-primary shadow-md hover:shadow-lg transition-shadow">
+    <!-- Dynamic Training Cards -->
+    <div *ngFor="let program of programsList" class="card bg-base-100 border-l-4 border-primary shadow-md hover:shadow-lg transition-shadow">
       <div class="card-body p-4">
-        <div class="flex justify-between">
-          <h3 class="text-lg font-semibold text-base-content">Python Programming</h3>
-          <span class="badge badge-success">Intermediate</span>
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-semibold text-base-content">{{ program.name }}</h3>
+          <span class="badge badge-info capitalize">{{ program.status }}</span>
         </div>
-        <p class="mt-2 text-sm text-base-content/70">A deep dive into Python's advanced features including async programming, decorators, and more.</p>
-        <div class="flex flex-wrap gap-1 mt-3">
-          <span class="badge badge-sm badge-outline">Python</span>
-          <span class="badge badge-sm badge-outline">Backend</span>
-          <span class="badge badge-sm badge-outline">Programming</span>
-        </div>
-        <div class="card-actions flex mt-4 space-x-2">
-          <button class="btn btn-sm btn-primary">Enroll Now</button>
-          <button class="btn btn-sm btn-outline btn-primary">Details</button>
-        </div>
-      </div>
-    </div>
+        <p class="mt-2 text-sm text-base-content/70">{{ program.description }}</p>
 
-    <!-- Program 2 -->
-    <div class="card bg-base-100 border-l-4 border-primary shadow-md hover:shadow-lg transition-shadow">
-      <div class="card-body p-4">
-        <div class="flex justify-between">
-          <h3 class="text-lg font-semibold text-base-content">React Development</h3>
-          <span class="badge badge-success">Beginner</span>
-        </div>
-        <p class="mt-2 text-sm text-base-content/70">Learn modern React with hooks, context, and state management for building interactive UIs.</p>
+        <!-- Badges -->
         <div class="flex flex-wrap gap-1 mt-3">
-          <span class="badge badge-sm badge-outline">React</span>
-          <span class="badge badge-sm badge-outline">Frontend</span>
-          <span class="badge badge-sm badge-outline">JavaScript</span>
+          <span *ngFor="let badge of program.badges" class="badge badge-sm badge-outline bg-blue-500 text-black ">{{ badge }}</span>
         </div>
-        <div class="card-actions flex mt-4 space-x-2">
-          <button class="btn btn-sm btn-primary">Enroll Now</button>
-          <button class="btn btn-sm btn-outline btn-primary">Details</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Program 3 -->
-    <div class="card bg-base-100 border-l-4 border-base-300 shadow-md hover:shadow-lg transition-shadow">
-      <div class="card-body p-4">
-        <div class="flex justify-between">
-          <h3 class="text-lg font-semibold text-base-content">Cloud DevOps</h3>
-          <span class="badge badge-warning">Advanced</span>
+        <!-- Dates -->
+        <div class="mt-4 text-xs text-base-content/70">
+          <p><strong>Start:</strong> {{ program.startDate | date: 'mediumDate' }}</p>
+          <p><strong>End:</strong> {{ program.endDate | date: 'mediumDate' }}</p>
         </div>
-        <p class="mt-2 text-sm text-base-content/70">Master deployment pipelines, containerization, and cloud infrastructure management.</p>
-        <div class="flex flex-wrap gap-1 mt-3">
-          <span class="badge badge-sm badge-outline">AWS</span>
-          <span class="badge badge-sm badge-outline">Docker</span>
-          <span class="badge badge-sm badge-outline badge-ghost">Kubernetes</span>
-        </div>
+
         <div class="card-actions flex mt-4 space-x-2">
           <button class="btn btn-sm btn-primary">Enroll Now</button>
           <button class="btn btn-sm btn-outline btn-primary">Details</button>
