@@ -14,6 +14,7 @@ import { LandingpageComponent } from './page/landingpage/landingpage.component';
 import { EmployeeRegisterComponent } from './page/employee/employee-register/employee-register.component';
 import { CompanyRegisterComponent } from './page/company/company-register/company-register.component';
 import { CompanyProfileComponent } from './page/company/company-profile/company-profile.component';
+import { TraingprogramsComponent } from './page/employee/traingprograms/traingprograms.component';
 
 
 
@@ -67,7 +68,10 @@ export const routes: Routes = [
       },{
         path:"career",
         component:CareerGrowthComponent
-      },
+      },{
+        path:"trainingprograms",
+        component:TraingprogramsComponent
+      }
     ]
   },
 

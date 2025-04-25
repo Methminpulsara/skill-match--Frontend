@@ -16,8 +16,8 @@ constructor(private http:HttpClient){}
      return this.http.post<TrainingProgram>("http://localhost:8080/api/trainingPrograms/create", training);
    }
 
-   getEmployeeSkills(companyId:number):Observable<TrainingProgram[]>{
-    return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/active/programs/"+companyId);
+   getEmployeeSkills(companyId:number,status:string):Observable<TrainingProgram[]>{
+    return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/programs/"+companyId+"/"+status);
    }
 
 }

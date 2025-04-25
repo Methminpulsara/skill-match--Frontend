@@ -93,7 +93,7 @@ addTrainingProgram(){
 
 
 getActiveTrainings(companyId:number){
-  this.programService.getEmployeeSkills(companyId).subscribe(res=>{
+  this.programService.getEmployeeSkills(companyId,"active").subscribe(res=>{
       console.log(res);
       this.trainingProgramsList=res;
   })
