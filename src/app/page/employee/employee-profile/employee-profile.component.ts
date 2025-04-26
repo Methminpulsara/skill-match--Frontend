@@ -4,10 +4,12 @@ import EmployeeService from '../../../../service/EmployeeService';
 import Employee from '../../../model/Employee';
 import { CompanyService } from '../../../../service/CompanyService';
 import Company from '../../../model/Company';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-profile',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-profile.component.html',
   styleUrl: './employee-profile.component.css'
 })
@@ -42,6 +44,10 @@ export class EmployeeProfileComponent implements OnInit {
     private companyService:CompanyService
   ){}
 
+  isImageModalOpen: boolean = false; 
+  imageUrl: string = '';
+
+
   ngOnInit(): void {
     const employee = this.employeeService.getEmployee();
     if(employee){
@@ -54,12 +60,26 @@ export class EmployeeProfileComponent implements OnInit {
   }
 
 
-
-
   getCompanyDetails(companyId:number){
     this.companyService.findByID(companyId).subscribe(res => {
      this.company=res;
     });
+  }
+
+
+
+  openImageModal() {
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.isImageModalOpen = false;
+  }
+
+  updateProfileImage() {
+   console.log(this.imageUrl)
+    this.closeImageModal();
+   
   }
 
 }

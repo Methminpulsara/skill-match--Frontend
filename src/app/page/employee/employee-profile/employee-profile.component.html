@@ -8,12 +8,12 @@
             <div class="relative">
               <div class="w-32 h-32 rounded-full border-4 border-base-100 bg-base-300 flex items-center justify-center overflow-hidden shadow-lg">
                 <img
-                  src="/api/placeholder/128/128"
+                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Profile"
                   class="w-full h-full object-cover"
                 >
               </div>
-              <button class="absolute bottom-0 right-0 bg-primary text-base-100 p-2 rounded-full hover:bg-secondary transition-all duration-300 shadow-md">
+              <button class="absolute bottom-0 right-0 bg-primary text-base-100 p-2 rounded-full hover:bg-secondary transition-all duration-300 shadow-md" (click)="openImageModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                 </svg>
@@ -23,14 +23,14 @@
         </div>
       </div>
 
-      <!-- Profile Content -->
+     
       <div class="pt-16 px-6 pb-6">
         <div class="text-center mb-8">
           <h2 class="text-2xl font-bold text-base-content">{{employee.name}}</h2>
           <div class="badge badge-primary mt-2">{{employee.position}}</div>
         </div>
 
-        <!-- Quick Stats -->
+       
         <div class="flex justify-center space-x-6 mb-8">
           <div class="text-center">
             <div class="stats shadow">
@@ -58,7 +58,6 @@
           </div>
         </div>
 
-        <!-- Profile Details Grid with Cards -->
         <div class="grid md:grid-cols-2 gap-6">
           <div class="card bg-base-200 shadow-md">
             <div class="card-body p-5">
@@ -193,14 +192,8 @@
           </div>
         </div>
 
-        <!-- Skills Section -->
         <div class="mt-8">
-          <div class="flex items-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-            </svg>
-            <h4 class="font-semibold text-base-content">Skills & Expertise</h4>
-          </div>
+       
 
           <div class="flex flex-wrap gap-2">
             <span class="badge badge-primary badge-outline">JavaScript</span>
@@ -214,6 +207,34 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isImageModalOpen"
+     class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+       [ngClass]="{'scale-95 opacity-0': !isImageModalOpen}">
+    <!-- Header with close button -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Update Profile Image</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeImageModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Image URL</span>
+      </label>
+      <input type="text" [(ngModel)]="imageUrl" placeholder="Enter image URL" class="input input-bordered w-full" />
+    </div>
+    
+    <div class="flex justify-end gap-2">
+      <button class="btn btn-outline" (click)="closeImageModal()">Cancel</button>
+      <button class="btn btn-primary" (click)="updateProfileImage()">Update Image</button>
     </div>
   </div>
 </div>

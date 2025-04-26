@@ -1,15 +1,15 @@
 export default class Employee {
 
 
-  employeeId:number;
-  name:string;
-  phoneNumber:string;
-  location:string;
-  position:string;
-  profileImage:string;
-  department:string;
-  userId:number;
-  companyId:number;
+    employeeId:number;
+    name:string;
+    phoneNumber:string;
+    location:string;
+    position:string;
+    profileImage:string;
+    department:string;
+    userId:number;
+    companyId:number;
 
 
   constructor(

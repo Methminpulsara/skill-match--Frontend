@@ -35,6 +35,18 @@ export default  class EmployeeService {
     return this.http.put("http://localhost:8080/api/employee/update",employee);
   }
 
+  updateImage(employeeId: number, url: string) {
+    return this.http.put(`http://localhost:8080/api/employee/${employeeId}`, url, {
+      
+    });
+  }
+
+
+  getAllWithCompanyId(comapanyId:number):Observable<Employee[]>{
+    return this.http.get<Employee[]>("http://localhost:8080/api/employee/all/"+comapanyId)
+  }
+  
+
 
 
 //local storage to save
