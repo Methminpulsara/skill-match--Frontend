@@ -49,6 +49,7 @@ export class TraingprogramsComponent implements OnInit {
   }
 
   loadEnrollments() {
+    
     this.enrollmentsService.getByEmployeeId(this.employeeId).subscribe(res => {
       console.log('Response from enrolledEMID:', res);  
   
