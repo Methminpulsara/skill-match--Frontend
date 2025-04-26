@@ -39,7 +39,6 @@ export class TrainingsComponent implements OnInit {
     endDate: '',
     status:"active",
     badges:  [] =[],
-    enrolledEmployeeId: [] =[]
   };
 
   openTrainingModal() {
@@ -80,7 +79,6 @@ export class TrainingsComponent implements OnInit {
     endDate: '',
     status :'',
     badges:  [] =[],
-    enrolledEmployeeId: []=[]
   }
     this.badgeInput = '';
   }

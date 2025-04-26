@@ -47,8 +47,17 @@
         </div>
 
         <div class="card-actions flex mt-4 space-x-2">
-          <button class="btn btn-sm btn-primary">Enroll Now</button>
-          <button class="btn btn-sm btn-outline btn-primary">Details</button>
+          <button 
+            class="btn btn-sm btn-primary"
+            (click)="enroll(program.trainingId)"
+            [disabled]="program.alreadyEnrolled"
+          >
+            {{ program.alreadyEnrolled ? 'Enrolled' : 'Enroll Now' }}
+          </button>
+        
+          <button class="btn btn-sm btn-outline btn-primary">
+            Details
+          </button>
         </div>
       </div>
     </div>

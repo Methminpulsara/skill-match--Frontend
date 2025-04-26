@@ -6,8 +6,8 @@ export default class TrainingProgram {
   startDate: string;
   endDate: string;
   status:string;
-  badges: string[]; 
-  enrolledEmployeeId: number[];
+  badges: string[];
+ 
   constructor(
     trainingId: number,
     name: string,
@@ -16,8 +16,8 @@ export default class TrainingProgram {
     startDate: string,
     endDate: string,
     status:string,
-    badges: string[], 
-    enrolledEmployeeId: number[]
+    badges: string[],
+
   ){
     this.trainingId =trainingId
     this.name=name
@@ -27,7 +27,7 @@ export default class TrainingProgram {
     this.endDate=endDate
     this.status=status
     this.badges=badges
-    this.enrolledEmployeeId=enrolledEmployeeId
+
   }
 
 
