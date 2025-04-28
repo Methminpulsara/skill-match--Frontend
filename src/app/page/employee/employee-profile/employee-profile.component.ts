@@ -35,7 +35,10 @@ export class EmployeeProfileComponent implements OnInit {
     size: "",
     status: "active",
     profileImage: "",
-    userId: 0
+    userId: 0,
+    location:"",
+    about:"",
+    contact:""
   };
 
   isImageModalOpen: boolean = false;

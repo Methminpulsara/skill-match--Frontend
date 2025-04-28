@@ -37,7 +37,10 @@ comfirmPassword:string='';
     size: "",
     status: "active",
     profileImage: "",
-    userId: 0
+    userId: 0,
+    location:"",
+    about:"",
+    contact:""
   }
 
 nextButtonOnAction(page:number){

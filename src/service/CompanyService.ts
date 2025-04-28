@@ -22,9 +22,7 @@ export class CompanyService {
     return this.http.post("http://localhost:8080/api/company/create",company);
   }
 
-  update(company:Company){
-    return this.http.put("http://localhost:8080/api/company/update",company);
-  }
+
 
   findByName(name:string){
     return this.http.get("http://localhost:8080/api/company/name/"+name);
@@ -41,6 +39,16 @@ export class CompanyService {
   findByUserID(userID:number):Observable<Company>{
     return this.http.get<Company>("http://localhost:8080/api/company/user/"+userID);
   }
+
+   updateImage(companyId: number, url: string):Observable<Company> {
+      const body =  url ; // Pass the URL in the request body
+      const apiUrl = `http://localhost:8080/api/company/${companyId}/profile-image`; // Correct URL with backticks
+      return this.http.put<Company>(apiUrl, body);
+    }
+
+    update(companyId: number, company: Company): Observable<Company> {
+      return this.http.put<Company>(`http://localhost:8080/api/company/update/${companyId}`, company);
+    }
 
 
 

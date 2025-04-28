@@ -3,15 +3,16 @@
     <!-- Company Profile Header with Gradient -->
     <div class="bg-base-100 shadow-lg rounded-2xl overflow-hidden mb-6">
       <div class="relative">
-        <div class="h-48 bg-gradient-to-r from-secondary via-accent to-primary flex items-end justify-center">
-          <!-- Company Logo Container -->
+        <div class="h-48 bg-gradient-to-r from-purple-900 via-fuchsia-800 to-purple-800 flex items-end justify-center">
+          <!-- Your content here -->
+        
           <div class="absolute bottom-0 transform translate-y-1/2 flex flex-col items-center">
             <div class="relative">
               <div class="w-40 h-40 rounded-xl border-4 border-base-100 bg-base-300 flex items-center justify-center overflow-hidden shadow-lg">
                 <img
-                  src="https://images.pexels.com/photos/3184613/pexels-photo-3184613.jpeg?auto=compress&cs=tinysrgb&w=600"class="w-full h-full object-cover">
+                  src={{company.profileImage}}>
               </div>
-              <button class="absolute bottom-0 right-0 bg-secondary text-base-100 p-2 rounded-full hover:bg-primary transition-all duration-300 shadow-md">
+              <button class="absolute bottom-0 right-0 bg-primary text-base-100 p-2 rounded-full hover:bg-secondary transition-all duration-300 shadow-md" (click)="openImageModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                 </svg>
@@ -59,10 +60,7 @@
             <div class="card-body p-5">
               <h3 class="card-title text-sm text-secondary mb-3">Company Details</h3>
               <div class="space-y-3">
-                <div class="flex justify-between items-center border-b border-base-300 pb-2">
-                  <span class="text-sm font-medium text-base-content/70">Company ID</span>
-                  <span class="font-medium text-base-content">companyID</span>
-                </div>
+               
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Industry</span>
                   <span class="font-medium text-base-content"> {{company.industry}} </span>
@@ -82,10 +80,7 @@
                   <span class="text-sm font-medium text-base-content/70">Status</span>
                   <span class="badge badge-outline badge-accent"> {{company.status}} </span>
                 </div>
-                <div class="flex justify-between items-center border-b border-base-300 pb-2">
-                  <span class="text-sm font-medium text-base-content/70">Admin ID</span>
-                  <span class="font-medium text-base-content"> {{company.userId}} </span>
-                </div>
+               
                 <div class="flex justify-between items-center">
                   <span class="text-sm font-medium text-base-content/70">Verification</span>
                   <span class="text-success font-medium">Verified</span>
@@ -96,18 +91,19 @@
         </div>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <button class="btn btn-secondary flex-1 gap-2">
+          <button (click)=" openUpdateModal()
+          " class="btn  flex-1 gap-2  bg-purple-700 hover:bg-purple-800 text-white font-semibold">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
             </svg>
             Edit Company
           </button>
-          <!-- <button class="btn btn-outline btn-accent flex-1 gap-2">
+          <button class="btn btn-outline btn-accent flex-1 gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
             View Reports
-          </button> -->
+          </button>
         </div>
       </div>
     </div>
@@ -126,13 +122,13 @@
             <div class="card-body p-4">
               <div class="flex items-start space-x-3">
                 <div class="rounded-full bg-secondary/10 p-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                  </svg>
+               <button c>   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" viewBox="0 0 20 20" fill="currentColor" >
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg></button>
                 </div>
                 <div>
                   <p class="text-sm font-medium text-base-content/70">Headquarters</p>
-                  <p class="font-medium text-base-content"> location</p>
+                  <p class="font-medium text-base-content"> {{company.location|| "add location"}}</p>
                 </div>
               </div>
             </div>
@@ -148,7 +144,7 @@
                 </div>
                 <div>
                   <p class="text-sm font-medium text-base-content/70">Contact</p>
-                  <p class="font-medium text-base-content">{{companyEmail}}</p>
+                  <p class="font-medium text-base-content">{{company.contact ||"add contact email or number"}}</p>
                 </div>
               </div>
             </div>
@@ -164,7 +160,7 @@
                 </div>
                 <div>
                   <p class="text-sm font-medium text-base-content/70">Website</p>
-                  <p class="font-medium text-base-content">anthropic.com</p>
+                  <p class="font-medium text-base-content">SkillMatch.com</p>
                 </div>
               </div>
             </div>
@@ -198,7 +194,7 @@
           <div class="card bg-base-200 shadow-sm">
             <div class="card-body p-4">
               <p class="text-base-content">
-                  about              
+                  {{company.about}}          
               </p>
             </div>
           </div>
@@ -302,6 +298,100 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isImageModalOpen"
+     class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+       [ngClass]="{'scale-95 opacity-0': !isImageModalOpen}">
+    <!-- Header with close button -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Update Profile Image</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeImageModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Image URL</span>
+      </label>
+      <input type="text" [(ngModel)]="imageUrl" placeholder="Enter image URL" class="input input-bordered w-full" />
+    </div>
+
+    <div class="flex justify-end gap-2">
+      <button class="btn btn-outline" (click)="closeImageModal()">Cancel</button>
+      <button class="btn btn-primary" (click)="updateProfileImage()">Update Image</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isUpdateModalOpen"
+     class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+       [ngClass]="{'scale-95 opacity-0': !isUpdateModalOpen}">
+
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Update Company Profile</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeUpdateModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Company Name</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedCompany.name" placeholder="Enter Company name" class="input input-bordered w-full" />
+    </div>
+
+  
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Contact</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedCompany.contact" placeholder="Contact" class="input input-bordered w-full" />
+    </div>
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Location</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedCompany.location" placeholder="Location" class="input input-bordered w-full" />
+    </div>
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">About</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedCompany.about" placeholder="About Company" class="input input-bordered w-full" />
+    </div>
+    <div class="mb-4">
+      <label for="companySize" class="block text-sm font-medium text-purple-300 mb-1">Company Size</label>
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <select [(ngModel)]="updatedCompany.size" id="companySize" name="size"
+          class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white appearance-none">
+          <option value="" disabled selected>Select company size</option>
+          <option value="1-10">1-10 employees</option>
+          <option value="11-50">11-50 employees</option>
+          <option value="51-200">51-200 employees</option>
+          <option value="201-500">201-500 employees</option>
+          <option value="501+">501+ employees</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-2">
+      <button class="btn btn-outline" (click)="closeUpdateModal()">Cancel</button>
+      <button class="btn btn-primary" (click)="updateProfile()">Update Profile</button>
     </div>
   </div>
 </div>

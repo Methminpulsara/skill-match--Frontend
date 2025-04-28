@@ -9,6 +9,10 @@ export default class Company {
     status: string;
     profileImage: string;
     userId: number;
+    location:string;
+    about:string;
+    contact:string
+
 
     constructor(
         companyId: number,
@@ -17,7 +21,11 @@ export default class Company {
         size: string,
         status:string,
         profileImage: string,
-        userId: number
+        userId: number,
+        location:string,
+        about:string,
+        contact:string
+    
     ){
         this.companyId = companyId;
         this.name = name;
@@ -26,5 +34,8 @@ export default class Company {
         this.status = status;
         this.profileImage = profileImage;
         this.userId = userId;
+        this.location=location
+        this.contact=contact
+        this.about=about
     }
 }
