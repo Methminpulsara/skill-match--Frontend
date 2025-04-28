@@ -35,46 +35,50 @@ export default  class EmployeeService {
     return this.http.put("http://localhost:8080/api/employee/update",employee);
   }
 
-  updateImage(employeeId: number, url: string) {
-    return this.http.put(`http://localhost:8080/api/employee/${employeeId}`, url, {
-      
-    });
+  updateImage(employeeId: number, url: string):Observable<Employee> {
+    const body =  url ; // Pass the URL in the request body
+    const apiUrl = `http://localhost:8080/api/employee/${employeeId}/profile-image`; // Correct URL with backticks
+    return this.http.put<Employee>(apiUrl, body);
   }
 
 
   getAllWithCompanyId(comapanyId:number):Observable<Employee[]>{
     return this.http.get<Employee[]>("http://localhost:8080/api/employee/all/"+comapanyId)
   }
-  
+
 
 
 
 //local storage to save
- setEmployee(employee: Employee): void {
-    this.currentEmployeeSubject.next(employee);
-    localStorage.setItem('employeeId', JSON.stringify(employee)); // Optional: persist between refreshes
+// Save employee object to localStorage and the current state
+setEmployee(employee: Employee): void {
+  this.currentEmployeeSubject.next(employee);
+  // Save the full employee object to localStorage
+  localStorage.setItem('employee', JSON.stringify(employee)); // Save entire employee object
+}
+
+// Get employee from the service or localStorage
+getEmployee(): Employee | null {
+  // Check the service for the current employee
+  const employee = this.currentEmployeeSubject.value;
+  if (employee) return employee;
+
+  // Fallback to localStorage if page was refreshed
+  const stored = localStorage.getItem('employee');
+  if (stored) {
+    const parsed = JSON.parse(stored);
+    this.currentEmployeeSubject.next(parsed);
+    return parsed;
   }
 
-  getEmployee(): Employee | null {
-    const employee = this.currentEmployeeSubject.value;
-    if (employee) return employee
-    ;
+  return null;
+}
 
-    // Fallback to localStorage if page was refreshed
-    const stored = localStorage.getItem('employeeId');
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      this.currentEmployeeSubject.next(parsed);
-      return parsed;
-    }
-
-    return null;
-  }
-
-  clearUser(): void {
-    this.currentEmployeeSubject.next(null);
-    localStorage.removeItem('user');
-  }
+// Clear employee data from service and localStorage
+clearUser(): void {
+  this.currentEmployeeSubject.next(null);
+  localStorage.removeItem('employee');
+}
 
 
 }

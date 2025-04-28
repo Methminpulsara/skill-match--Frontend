@@ -20,14 +20,20 @@ export class CompanyEmployeesComponent implements OnInit {
 
   searchText: string = '';
   selectedPosition: string = '';
-  positionList: string[] = []; // Positions will be dynamically loaded
+  positionList: string[] = []; 
 
   ngOnInit(): void {
-    this.loadEmployees();
+    const employee = this.employeeService.getEmployee()
+    if(employee){
+      
+      
+      this.loadEmployees(employee.companyId);
+
+    }
   }
 
-  loadEmployees() {
-    this.employeeService.getAllWithCompanyId(1).subscribe(res => {
+  loadEmployees(companyId:number) {
+    this.employeeService.getAllWithCompanyId(companyId).subscribe(res => {
       console.log(res);
       this.employeeList = res;
       this.filteredEmployeeList = [...this.employeeList];

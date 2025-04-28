@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import EmployeeService from '../../../../service/EmployeeService';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,7 @@ import { RoleType } from '../../../../utils/Role';
 import UserService from '../../../../service/UserService';
 import { CompanyService } from '../../../../service/CompanyService';
 import Company from '../../../model/Company';
+import { routes } from '../../../app.routes';
 
 @Component({
   selector: 'app-employee-register',
@@ -45,8 +46,10 @@ export class EmployeeRegisterComponent {
   constructor(
     private companyServie: CompanyService,
     private userService: UserService,
+    private routes:Router,
     private employeeService: EmployeeService) {
     this.getCompany();
+
   }
 
   nextPageOnAction(page: number) {
@@ -85,6 +88,7 @@ export class EmployeeRegisterComponent {
   employeeRegister() {
     this.employeeService.createAccount(this.employee).subscribe(res => {
       alert("Employee is Registerd !");
+          this.routes.navigate(['/login'])
     })
   }
 

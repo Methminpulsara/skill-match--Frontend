@@ -8,7 +8,7 @@
             <div class="relative">
               <div class="w-32 h-32 rounded-full border-4 border-base-100 bg-base-300 flex items-center justify-center overflow-hidden shadow-lg">
                 <img
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src={{employee.profileImage}}
                   alt="Profile"
                   class="w-full h-full object-cover"
                 >
@@ -23,14 +23,14 @@
         </div>
       </div>
 
-     
+
       <div class="pt-16 px-6 pb-6">
         <div class="text-center mb-8">
           <h2 class="text-2xl font-bold text-base-content">{{employee.name}}</h2>
           <div class="badge badge-primary mt-2">{{employee.position}}</div>
         </div>
 
-       
+
         <div class="flex justify-center space-x-6 mb-8">
           <div class="text-center">
             <div class="stats shadow">
@@ -99,7 +99,7 @@
           </div>
         </div>
 
-    
+
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
           <button class="btn btn-primary flex-1 gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -116,7 +116,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="bg-base-100 shadow-lg rounded-2xl overflow-hidden">
       <div class="p-6">
         <div class="flex items-center mb-6">
@@ -193,7 +193,7 @@
         </div>
 
         <div class="mt-8">
-       
+
 
           <div class="flex flex-wrap gap-2">
             <span class="badge badge-primary badge-outline">JavaScript</span>
@@ -224,14 +224,14 @@
         </svg>
       </button>
     </div>
-    
+
     <div class="form-control w-full mb-6">
       <label class="label">
         <span class="label-text">Image URL</span>
       </label>
       <input type="text" [(ngModel)]="imageUrl" placeholder="Enter image URL" class="input input-bordered w-full" />
     </div>
-    
+
     <div class="flex justify-end gap-2">
       <button class="btn btn-outline" (click)="closeImageModal()">Cancel</button>
       <button class="btn btn-primary" (click)="updateProfileImage()">Update Image</button>
