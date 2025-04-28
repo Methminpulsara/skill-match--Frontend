@@ -26,8 +26,6 @@ export class EmployeeProfileComponent implements OnInit {
     companyId: 0
   };
 
-  employeeEmail = '';
-
   public company: Company = {
     companyId: 0,
     name: "",
@@ -41,7 +39,16 @@ export class EmployeeProfileComponent implements OnInit {
     contact:""
   };
 
+  public updatedemployee = {
+    name: '',
+    position:'',
+    phoneNumber: '',
+    location: '',
+  };
+  
+
   isImageModalOpen: boolean = false;
+  isUpdateModalOpen:boolean=  false;
   imageUrl: string = '';
 
   constructor(
@@ -71,6 +78,47 @@ export class EmployeeProfileComponent implements OnInit {
 
   closeImageModal() {
     this.isImageModalOpen = false;
+  }
+  openUpdateModel(){
+
+    this.updatedemployee.name=  this.employee.name
+    this.updatedemployee.phoneNumber =this.employee.phoneNumber
+    this.updatedemployee.location = this.employee.location
+    this.updatedemployee.position = this.employee.position
+
+
+
+
+    this.isUpdateModalOpen= true;
+  }
+  closeUpdateModal(){
+    this.isUpdateModalOpen=false;
+  }
+
+
+  updateProfile(){
+  
+    const updatedEmployee : Employee ={
+        ...this.employee,
+        name:this.updatedemployee.name ? this.updatedemployee.name.trim() : '',
+        phoneNumber:this.updatedemployee.phoneNumber ? this.updatedemployee.phoneNumber.trim() : '',
+        position:this.updatedemployee.position ? this.updatedemployee.position.trim() : '',
+        location:this.updatedemployee.location ? this.updatedemployee.location.trim() : ''
+
+    };
+    this.employeeService.update(this.employee.employeeId, updatedEmployee).subscribe(
+      res => {
+        console.log('Employee updated successfully:', res);
+        this.employee = res;
+        this.employeeService.setEmployee(this.employee);
+        // localStorage.setItem('company', JSON.stringify(this.company));
+        this.closeUpdateModal();
+      },
+      error => {
+        console.error('Failed to update Employee profile:', error);
+      }
+    );
+
   }
 
   updateProfileImage() {

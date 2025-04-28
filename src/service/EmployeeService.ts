@@ -31,9 +31,10 @@ export default  class EmployeeService {
       return this.http.get("http://localhost:8080/api/employee/"+employeeID);
   }
 
-  update(employee:Employee){
-    return this.http.put("http://localhost:8080/api/employee/update",employee);
-  }
+    update(employeeId: number, employee: Employee): Observable<Employee> {
+      return this.http.put<Employee>(`http://localhost:8080/api/employee/update/${employeeId}`, employee);
+    }
+
 
   updateImage(employeeId: number, url: string):Observable<Employee> {
     const body =  url ; // Pass the URL in the request body

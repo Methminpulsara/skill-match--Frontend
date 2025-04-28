@@ -94,7 +94,7 @@ export class CompanyProfileComponent implements OnInit {
         console.log('Company updated successfully:', res);
         this.company = res;
         this.companyService.setCompany(this.company);
-        localStorage.setItem('company', JSON.stringify(this.company));
+        // localStorage.setItem('company', JSON.stringify(this.company));
         this.closeUpdateModal();
       },
       error => {

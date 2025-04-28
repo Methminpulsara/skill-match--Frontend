@@ -4,13 +4,13 @@
     <!-- Profile Summary -->
     <div class="p-5 border-b border-base-300 flex items-center">
       <div class="avatar online">
-        <div class="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src="/api/placeholder/50/50" alt="User avatar">
+        <div class="w-12 h-12 rounded-full ring ring-cyan-600 ring-offset-base-100 ring-offset-2">
+          <img src="{{employee.profileImage}}" alt="User avatar">
         </div>
       </div>
       <div class="ml-3">
-        <p class="text-base font-semibold text-primary">John Smith</p>
-        <p class="text-xs text-secondary">Senior Software Engineer</p>
+        <p class="text-base font-semibold text-primary">{{employee.name}}</p>
+        <p class="text-xs text-secondary">{{employee.position}}</p>
       </div>
     </div>
     

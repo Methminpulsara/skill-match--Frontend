@@ -64,12 +64,8 @@
               <h3 class="card-title text-sm text-primary mb-3">Personal Info</h3>
               <div class="space-y-3">
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
-                  <span class="text-sm font-medium text-base-content/70">Employee ID</span>
-                  <span class="font-medium text-base-content">{{employee.employeeId}}</span>
-                </div>
-                <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Department</span>
-                  <span class="font-medium text-base-content">{{employee.department}}</span>
+                  <span class="font-medium text-base-content">{{employee.department||"department"}}</span>
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-sm font-medium text-base-content/70">Position</span>
@@ -84,15 +80,7 @@
               <div class="space-y-3">
                 <div class="flex justify-between items-center border-b border-base-300 pb-2">
                   <span class="text-sm font-medium text-base-content/70">Email</span>
-                  <span class="font-medium text-base-content">{{employeeEmail}}</span>
-                </div>
-                <div class="flex justify-between items-center border-b border-base-300 pb-2">
-                  <span class="text-sm font-medium text-base-content/70">Phone</span>
-                  <span class="font-medium text-base-content">{{employee.phoneNumber}}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-sm font-medium text-base-content/70">Hire Date</span>
-                  <span class="font-medium text-base-content">March 15, 2022</span>
+                  <span class="font-medium text-base-content">{{employee.phoneNumber|| "Contact"}}</span>
                 </div>
               </div>
             </div>
@@ -101,7 +89,7 @@
 
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <button class="btn btn-primary flex-1 gap-2">
+          <button (click)="openUpdateModel()" class="btn btn-primary flex-1 gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
             </svg>
@@ -153,7 +141,7 @@
                 </div>
                 <div>
                   <p class="text-sm font-medium text-base-content/70">Work Location</p>
-                  <p class="font-medium text-base-content">company location</p>
+                  <p class="font-medium text-base-content"> {{company.location||"work location"}}</p>
                 </div>
               </div>
             </div>
@@ -183,10 +171,7 @@
                     <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                   </svg>
                 </div>
-                <div>
-                  <p class="text-sm font-medium text-base-content/70">Manager</p>
-                  <p class="font-medium text-base-content">Sarah Thompson</p>
-                </div>
+          
               </div>
             </div>
           </div>
@@ -235,6 +220,56 @@
     <div class="flex justify-end gap-2">
       <button class="btn btn-outline" (click)="closeImageModal()">Cancel</button>
       <button class="btn btn-primary" (click)="updateProfileImage()">Update Image</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isUpdateModalOpen"
+     class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+       [ngClass]="{'scale-95 opacity-0': !isUpdateModalOpen}">
+    <!-- Header with close button -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Update Profile</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeUpdateModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Your Name</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedemployee.name" placeholder="Enter Your name" class="input input-bordered w-full" />
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Position</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedemployee.position" placeholder="position" class="input input-bordered w-full" />
+    </div>
+
+    
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Contact information</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedemployee.phoneNumber" placeholder="Enter Contact information" class="input input-bordered w-full" />
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Location</span>
+      </label>
+      <input type="text" [(ngModel)]="updatedemployee.location" placeholder="location" class="input input-bordered w-full" />
+    </div>
+
+    <div class="flex justify-end gap-2">
+      <button class="btn btn-outline" (click)="closeUpdateModal()">Cancel</button>
+      <button class="btn btn-primary" (click)="updateProfile()">Update Image</button>
     </div>
   </div>
 </div>
