@@ -85,10 +85,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.updatedemployee.phoneNumber =this.employee.phoneNumber
     this.updatedemployee.location = this.employee.location
     this.updatedemployee.position = this.employee.position
-
-
-
-
     this.isUpdateModalOpen= true;
   }
   closeUpdateModal(){
@@ -111,7 +107,6 @@ export class EmployeeProfileComponent implements OnInit {
         console.log('Employee updated successfully:', res);
         this.employee = res;
         this.employeeService.setEmployee(this.employee);
-        // localStorage.setItem('company', JSON.stringify(this.company));
         this.closeUpdateModal();
       },
       error => {
