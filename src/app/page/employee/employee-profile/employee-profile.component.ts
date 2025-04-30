@@ -45,7 +45,7 @@ export class EmployeeProfileComponent implements OnInit {
     phoneNumber: '',
     location: '',
   };
-  
+
 
   isImageModalOpen: boolean = false;
   isUpdateModalOpen:boolean=  false;
@@ -97,7 +97,7 @@ export class EmployeeProfileComponent implements OnInit {
 
 
   updateProfile(){
-  
+
     const updatedEmployee : Employee ={
         ...this.employee,
         name:this.updatedemployee.name ? this.updatedemployee.name.trim() : '',
