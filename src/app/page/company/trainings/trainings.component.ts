@@ -7,6 +7,7 @@ import { CompanyService } from '../../../../service/CompanyService';
 
 import { Notyf } from 'notyf';               // ✅ Import Notyf
 import 'notyf/notyf.min.css';               // ✅ Import Notyf styles
+import Swal from 'sweetalert2';             // ✅ Import SweetAlert2
 
 @Component({
   selector: 'app-trainings',
@@ -116,25 +117,34 @@ export class TrainingsComponent implements OnInit {
   }
 
   deleteTraining(trainingId: number) {
-    const confirmed = window.confirm('Are you sure you want to delete this training program?');
-
-    if (confirmed) {
-      this.programService.removeTrainings(trainingId).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.notyf.success('Training deleted successfully.');
-          const company = this.companyService.getCompany();
-          if (company) {
-            this.getActiveTrainings(company.companyId); // Refresh list
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This action will delete the training program.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.programService.removeTrainings(trainingId).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.notyf.success('Training deleted successfully.');
+            const company = this.companyService.getCompany();
+            if (company) {
+              this.getActiveTrainings(company.companyId); // Refresh list
+            }
+          },
+          error: (err) => {
+            console.error(err);
+            this.notyf.error('Failed to delete training.');
           }
-        },
-        error: (err) => {
-          console.error(err);
-          this.notyf.error('Failed to delete training.');
-        }
-      });
-    } else {
-      this.notyf.open({ type: 'info', message: 'Deletion cancelled.' });
-    }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        this.notyf.open({ type: 'info', message: 'Deletion cancelled.' });
+      }
+    });
   }
 }
