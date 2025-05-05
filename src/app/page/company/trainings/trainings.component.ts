@@ -5,41 +5,49 @@ import { FormsModule } from '@angular/forms';
 import TrainingService from '../../../../service/TrainingProgramsService';
 import { CompanyService } from '../../../../service/CompanyService';
 
+import { Notyf } from 'notyf';               // ✅ Import Notyf
+import 'notyf/notyf.min.css';               // ✅ Import Notyf styles
+
 @Component({
   selector: 'app-trainings',
-  imports: [CommonModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './trainings.component.html',
   styleUrl: './trainings.component.css'
 })
 export class TrainingsComponent implements OnInit {
-
-
-
   isTrainingModalOpen = false;
   badgeInput: string = '';
 
-  constructor(
-    private programService:TrainingService,
-    private companyService:CompanyService
-  ){}
-  ngOnInit(): void {
-    const company = this.companyService.getCompany()
-    if(company){
-      this.trainingProgram.companyId = company.companyId
-      this.getActiveTrainings(company.companyId)
-    }
-  }
+  trainingProgramsList: TrainingProgram[] = [];
 
-  public  trainingProgram :TrainingProgram = {
-    trainingId:1,
-    companyId:1,
+  public trainingProgram: TrainingProgram = {
+    trainingId: 1,
+    companyId: 1,
     name: '',
     description: '',
     startDate: '',
     endDate: '',
-    status:"active",
-    badges:  [] =[],
+    status: 'active',
+    badges: [],
   };
+
+  private notyf: Notyf; // ✅ Notyf instance
+
+  constructor(
+    private programService: TrainingService,
+    private companyService: CompanyService
+  ) {
+    this.notyf = new Notyf(); // ✅ Initialize Notyf
+  }
+
+  ngOnInit(): void {
+    const company = this.companyService.getCompany();
+    if (company) {
+      this.trainingProgram.companyId = company.companyId;
+      this.getActiveTrainings(company.companyId);
+    }
+  }
 
   openTrainingModal() {
     this.isTrainingModalOpen = true;
@@ -53,47 +61,80 @@ export class TrainingsComponent implements OnInit {
   addBadge() {
     const badge = this.badgeInput.trim();
     if (badge && !this.trainingProgram.badges.includes(badge)) {
-      this.trainingProgram.badges.push(badge);  // Add badge as a string
+      this.trainingProgram.badges.push(badge);
     }
-    this.badgeInput = '';  // Clear input field after adding badge
+    this.badgeInput = '';
   }
-
 
   removeBadge(index: number) {
     this.trainingProgram.badges.splice(index, 1);
   }
 
   submitTrainingProgram() {
-
     this.addTrainingProgram();
     this.closeTrainingModal();
   }
 
   resetForm() {
     this.trainingProgram = {
-    trainingId:1,
-    companyId:1,
-    name: '',
-    description: '',
-    startDate: '',
-    endDate: '',
-    status :'',
-    badges:  [] =[],
-  }
+      trainingId: 1,
+      companyId: 1,
+      name: '',
+      description: '',
+      startDate: '',
+      endDate: '',
+      status: '',
+      badges: [],
+    };
     this.badgeInput = '';
   }
 
-  trainingProgramsList :TrainingProgram []=[]
+  addTrainingProgram() {
+    this.programService.addTraingProgarm(this.trainingProgram).subscribe({
+      next: (res) => {
+        this.notyf.success('Training program added successfully.');
+        this.getActiveTrainings(this.trainingProgram.companyId);
+      },
+      error: (err) => {
+        console.error(err);
+        this.notyf.error('Failed to add training program.');
+      }
+    });
+  }
 
-addTrainingProgram(){
-  this.programService.addTraingProgarm(this.trainingProgram).subscribe(res=>{})
-}
+  getActiveTrainings(companyId: number) {
+    this.programService.getEmployeeSkills(companyId, 'active').subscribe({
+      next: (res) => {
+        console.log(res);
+        this.trainingProgramsList = res;
+      },
+      error: (err) => {
+        console.error(err);
+        this.notyf.error('Failed to fetch active training programs.');
+      }
+    });
+  }
 
+  deleteTraining(trainingId: number) {
+    const confirmed = window.confirm('Are you sure you want to delete this training program?');
 
-getActiveTrainings(companyId:number){
-  this.programService.getEmployeeSkills(companyId,"active").subscribe(res=>{
-      console.log(res);
-      this.trainingProgramsList=res;
-  })
-}
+    if (confirmed) {
+      this.programService.removeTrainings(trainingId).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.notyf.success('Training deleted successfully.');
+          const company = this.companyService.getCompany();
+          if (company) {
+            this.getActiveTrainings(company.companyId); // Refresh list
+          }
+        },
+        error: (err) => {
+          console.error(err);
+          this.notyf.error('Failed to delete training.');
+        }
+      });
+    } else {
+      this.notyf.open({ type: 'info', message: 'Deletion cancelled.' });
+    }
+  }
 }

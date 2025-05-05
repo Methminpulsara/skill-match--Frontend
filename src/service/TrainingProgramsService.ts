@@ -20,4 +20,11 @@ constructor(private http:HttpClient){}
     return this.http.get<TrainingProgram[]>("http://localhost:8080/api/trainingPrograms/programs/"+companyId);
    }
 
+   removeTrainings(trainingId: number) {
+    return this.http.put("http://localhost:8080/api/trainingPrograms/updateStatus/" + trainingId, null, {
+      responseType: 'text'
+    });
+  }
+  
+
 }
