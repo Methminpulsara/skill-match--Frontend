@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import TrainingService from '../../../../service/TrainingProgramsService';
 import { CompanyService } from '../../../../service/CompanyService';
-
-import { Notyf } from 'notyf';               // ✅ Import Notyf
-import 'notyf/notyf.min.css';               // ✅ Import Notyf styles
-import Swal from 'sweetalert2';             // ✅ Import SweetAlert2
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trainings',
@@ -17,18 +16,39 @@ import Swal from 'sweetalert2';             // ✅ Import SweetAlert2
   styleUrl: './trainings.component.css'
 })
 export class TrainingsComponent implements OnInit {
-
-
   constructor(
     private programService: TrainingService,
     private companyService: CompanyService
   ) {
-    this.notyf = new Notyf();
+    this.notyf = new Notyf({
+      types: [
+        {
+          type: 'success',
+          background: '#4CAF50',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'check_circle' }
+        },
+        {
+          type: 'error',
+          background: '#F44336',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'error' }
+        },
+        {
+          type: 'info',
+          background: '#2196F3',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'info' }
+        }
+      ]
+    });
   }
 
   isTrainingModalOpen = false;
   badgeInput: string = '';
-
+  selectedTrainingId: number | null = null;  
+  private notyf: Notyf;
+  public isupdate: boolean = false;
   trainingProgramsList: TrainingProgram[] = [];
 
   public trainingProgram: TrainingProgram = {
@@ -38,22 +58,17 @@ export class TrainingsComponent implements OnInit {
     description: '',
     startDate: '',
     endDate: '',
-    status: 'active',
+    status: '',
     badges: [],
   };
 
-  public update ={
-    name :"",
-    description:"",
-    startDate:"",
-    endDate:'',
-    badges:[]
-  }
-
-  private notyf: Notyf;
-  public isupdate:boolean=false;
-
-
+  public update = {
+    name: '',
+    description: '',
+    startDate: '',
+    endDate: '',
+    badges: [] as string[]
+  };
 
   ngOnInit(): void {
     const company = this.companyService.getCompany();
@@ -80,8 +95,20 @@ export class TrainingsComponent implements OnInit {
     this.badgeInput = '';
   }
 
+  addBadgeToUpdate() {
+    const badge = this.badgeInput.trim();
+    if (badge && !this.update.badges.includes(badge)) {
+      this.update.badges.push(badge);
+    }
+    this.badgeInput = '';
+  }
+
   removeBadge(index: number) {
     this.trainingProgram.badges.splice(index, 1);
+  }
+
+  removeUpdateBadge(index: number) {
+    this.update.badges.splice(index, 1);
   }
 
   submitTrainingProgram() {
@@ -89,16 +116,24 @@ export class TrainingsComponent implements OnInit {
     this.closeTrainingModal();
   }
 
+  openUpdate(program: TrainingProgram) {
+    this.selectedTrainingId = program.trainingId;
 
-  openUpdate() {
+    this.update = {
+      name: program.name,
+      description: program.description,
+      startDate: program.startDate,
+      endDate: program.endDate,
+      badges: [...program.badges]
+    };
+
     this.isupdate = true;
   }
 
   closeUpdate() {
     this.isupdate = false;
+    this.selectedTrainingId = null;
   }
-
-
 
   resetForm() {
     this.trainingProgram = {
@@ -130,7 +165,6 @@ export class TrainingsComponent implements OnInit {
   getActiveTrainings(companyId: number) {
     this.programService.getTrainins(companyId, 'active').subscribe({
       next: (res) => {
-        console.log(res);
         this.trainingProgramsList = res;
       },
       error: (err) => {
@@ -153,12 +187,11 @@ export class TrainingsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.programService.removeTrainings(trainingId).subscribe({
-          next: (res) => {
-            console.log(res);
+          next: () => {
             this.notyf.success('Training deleted successfully.');
             const company = this.companyService.getCompany();
             if (company) {
-              this.getActiveTrainings(company.companyId); // Refresh list
+              this.getActiveTrainings(company.companyId);
             }
           },
           error: (err) => {
@@ -172,10 +205,31 @@ export class TrainingsComponent implements OnInit {
     });
   }
 
+  updateTraining() {
+    if (!this.selectedTrainingId) return;
 
-  updateTraining(){
+    const updatedProgram: TrainingProgram = {
+      trainingId: this.selectedTrainingId,
+      companyId: this.trainingProgram.companyId,
+      name: this.update.name.trim(),
+      description: this.update.description.trim(),
+      startDate: this.update.startDate,
+      endDate: this.update.endDate,
+      status: 'active',
+      badges: [...this.update.badges]
+    };
 
+    this.programService.updateTraining(this.selectedTrainingId, updatedProgram).subscribe({
+      next: (res) => {
+        this.notyf.success('Training updated successfully.');
+        this.isupdate = false;
+        this.selectedTrainingId = null;
+        this.getActiveTrainings(this.trainingProgram.companyId);
+      },
+      error: (err) => {
+        console.error(err);
+        this.notyf.error('Failed to update training.');
+      }
+    });
   }
-
-
 }

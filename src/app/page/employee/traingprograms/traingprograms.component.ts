@@ -42,25 +42,25 @@ export class TraingprogramsComponent implements OnInit {
   }
 
   getTrainings(companyId: number, status: string) {
-    this.trainingProgramsService.getEmployeeSkills(companyId, status).subscribe(res => {
+    this.trainingProgramsService.getTrainins(companyId, status).subscribe(res => {
       this.programsList = res;
       this.loadEnrollments();
     });
   }
 
   loadEnrollments() {
-    
+
     this.enrollmentsService.getByEmployeeId(this.employeeId).subscribe(res => {
-      console.log('Response from enrolledEMID:', res);  
-  
+      console.log('Response from enrolledEMID:', res);
+
       this.enrolledTrainingIds = (Array.isArray(res) ? res : []).map((enrollment: any) => enrollment.trainingId);
-  
+
       this.programsList.forEach(program => {
         program.alreadyEnrolled = this.enrolledTrainingIds.includes(program.trainingId);
       });
     });
   }
-  
+
   enroll(trainingId: number) {
     this.enrollment.trainingId = trainingId;
     this.enrollment.employeeId = this.employeeId;
@@ -69,7 +69,7 @@ export class TraingprogramsComponent implements OnInit {
       next: (res) => {
         console.log('Enrolled successfully:', res);
         alert('Successfully enrolled!');
-        this.loadEnrollments(); 
+        this.loadEnrollments();
       },
       error: (err) => {
         if (err.status === 400 && err.error === "Already enrolled in this training.") {

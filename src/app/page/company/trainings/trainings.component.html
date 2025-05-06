@@ -21,86 +21,11 @@
       <div class="form-control">
         <div class="input-group input-group-sm">
           <input type="text" placeholder="Search programs..." class="input input-bordered input-sm" />
-          <button class="btn btn-square btn-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
         </div>
       </div>
     </div>
 
-    <!-- Modal -->
-    <div *ngIf="isTrainingModalOpen"
-      class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
-      <div
-        class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
-        [ngClass]="{ 'scale-95 opacity-0': !isTrainingModalOpen }">
-        <!-- Modal Header -->
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-xl font-bold text-base-content">Add Training Program</h2>
-          <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeTrainingModal()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-              stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Modal Form -->
-        <form class="space-y-5">
-          <div>
-            <label class="block text-sm font-medium mb-2 text-base-content">Program Name</label>
-            <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.name" name="name"
-              required />
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium mb-2 text-base-content">Description</label>
-            <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.description"
-              name="description" required />
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium mb-2 text-base-content">Start Date</label>
-            <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.startDate"
-              name="startDate" required />
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium mb-2 text-base-content">End Date</label>
-            <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.endDate"
-              name="endDate" required />
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium mb-2 text-base-content">Badges</label>
-            <div class="flex items-center gap-2 mb-2">
-              <input type="text" class="input input-bordered flex-grow" [(ngModel)]="badgeInput" name="badgeInput"
-                placeholder="Type badge and press Add" (keyup.enter)="addBadge()" />
-              <button type="button" class="btn btn-sm btn-primary" (click)="addBadge()">Add</button>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span *ngFor="let badge of trainingProgram.badges; let i = index" class="badge badge-primary gap-1">
-                {{ badge }}
-                <button type="button" class="btn btn-xs btn-circle btn-ghost" (click)="removeBadge(i)">✕</button>
-              </span>
-            </div>
-          </div>
-
-          <div class="flex justify-end gap-3 pt-2">
-            <button type="button" class="btn btn-ghost" (click)="closeTrainingModal()">Cancel</button>
-            <button type="button" class="btn btn-primary" (click)="submitTrainingProgram()"
-              [disabled]="!trainingProgram.name || !trainingProgram.startDate || !trainingProgram.endDate">
-              Add Program
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
+  
     <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
       <div *ngFor="let program of trainingProgramsList" class="card bg-base-200 shadow-md">
@@ -118,18 +43,89 @@
             <p class="text-sm">
               Enrolled: <span class="font-bold">10</span>
             </p>
-            <div class="tooltip" data-tip="Recommended for career growth">Je
+            <div class="tooltip" data-tip="Recommended for career growth">
               <span class="badge badge-accent">Key Skill</span>
             </div>
           </div>
 
           <div class="card-actions mt-3 justify-end">
-            <button class="btn btn-warning btn-sm"(click)="openUpdate()" >Edit</button>
+            <button class="btn btn-warning btn-sm"(click)="openUpdate(program)" >Edit</button>
             <button class="btn btn-error btn-sm" (click)="deleteTraining(program.trainingId)">Delete</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+
+  <!-- Modal -->
+  <div *ngIf="isTrainingModalOpen"
+  class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div
+    class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+    [ngClass]="{ 'scale-95 opacity-0': !isTrainingModalOpen }">
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Add Training Program</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeTrainingModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Modal Form -->
+    <form class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium mb-2 text-base-content">Program Name</label>
+        <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.name" name="name"
+          required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2 text-base-content">Description</label>
+        <input type="text" class="input input-bordered w-full" [(ngModel)]="trainingProgram.description"
+          name="description" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2 text-base-content">Start Date</label>
+        <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.startDate"
+          name="startDate" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2 text-base-content">End Date</label>
+        <input type="date" class="input input-bordered w-full" [(ngModel)]="trainingProgram.endDate"
+          name="endDate" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2 text-base-content">Badges</label>
+        <div class="flex items-center gap-2 mb-2">
+          <input type="text" class="input input-bordered flex-grow" [(ngModel)]="badgeInput" name="badgeInput"
+            placeholder="Type badge and press Add" (keyup.enter)="addBadge()" />
+          <button type="button" class="btn btn-sm btn-primary" (click)="addBadge()">Add</button>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span *ngFor="let badge of trainingProgram.badges; let i = index" class="badge badge-primary gap-1">
+            {{ badge }}
+            <button type="button" class="btn btn-xs btn-circle btn-ghost" (click)="removeBadge(i)">✕</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 pt-2">
+        <button type="button" class="btn btn-ghost" (click)="closeTrainingModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="submitTrainingProgram()"
+          [disabled]="!trainingProgram.name || !trainingProgram.startDate || !trainingProgram.endDate">
+          Add Program
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -147,12 +143,43 @@
         </svg>
       </button>
     </div>
+    <div>
+      <label class="block text-sm font-medium mb-2 text-base-content">Program Name</label>
+      <input type="text" class="input input-bordered w-full" [(ngModel)]="update.name" name="name"
+        required />
+    </div>
 
-    <div class="form-control w-full mb-6">
-      <label class="label">
-        <span class="label-text">Name</span>
-      </label>
-      <input type="text" [(ngModel)]="update.name" placeholder="Enter image URL" class="input input-bordered w-full" />
+    <div>
+      <label class="block text-sm font-medium mb-2 text-base-content">Description</label>
+      <input type="text" class="input input-bordered w-full" [(ngModel)]="update.description"
+        name="description" required />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2 text-base-content">Start Date</label>
+      <input type="date" class="input input-bordered w-full" [(ngModel)]="update.startDate"
+        name="startDate" required />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2 text-base-content">End Date</label>
+      <input type="date" class="input input-bordered w-full" [(ngModel)]="update.endDate"
+        name="endDate" required />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2 text-base-content">Badges</label>
+      <div class="flex items-center gap-2 mb-2">
+        <input type="text" class="input input-bordered flex-grow" [(ngModel)]="badgeInput" name="badgeInput"
+          placeholder="Type badge and press Add" (keyup.enter)="addBadge()" />
+        <button type="button" class="btn btn-sm btn-primary" (click)="addBadge()">Add</button>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let badge of trainingProgram.badges; let i = index" class="badge badge-primary gap-1">
+          {{ update.badges[i] }}
+          <button type="button" class="btn btn-xs btn-circle btn-ghost" (click)="removeBadge(i)">✕</button>
+        </span>
+      </div>
     </div>
 
     <div class="flex justify-end gap-2">

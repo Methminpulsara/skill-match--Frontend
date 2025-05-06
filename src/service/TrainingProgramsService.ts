@@ -26,5 +26,9 @@ constructor(private http:HttpClient){}
     });
   }
 
+  updateTraining(trainingId: number, updatedProgram: TrainingProgram): Observable<TrainingProgram> {
+    return this.http.put<TrainingProgram>(`http://localhost:8080/api/trainingPrograms/update/${trainingId}`, updatedProgram);
+  }
+
 
 }
