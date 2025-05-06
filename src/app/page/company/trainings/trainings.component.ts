@@ -165,7 +165,6 @@ export class TrainingsComponent implements OnInit {
   }
 
   getActiveTrainings(companyId: number) {
-   
     this.programService.getTrainins(companyId, 'active').subscribe({
       next: (res) => {
         this.trainingProgramsList = res;
@@ -230,7 +229,6 @@ export class TrainingsComponent implements OnInit {
         this.selectedTrainingId = null;
         this.getActiveTrainings(this.trainingProgram.companyId);
       },
-
       error: (err) => {
         console.error(err);
         this.notyf.error('Failed to update training.');
@@ -239,17 +237,17 @@ export class TrainingsComponent implements OnInit {
   }
 
   //search fillter 
-  onSearchChange(){
-    this.fillterTrainings()
 
+  onSearchChange(){
+    this.fillterTrainings() 
   }
+
 
   fillterTrainings() {
     this.fillterList = this.trainingProgramsList.filter(program =>
       program.name.toLowerCase().includes(this.search.toLowerCase())
     );
   }
-  
 
 
 }
