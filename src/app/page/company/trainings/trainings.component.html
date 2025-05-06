@@ -124,11 +124,40 @@
           </div>
 
           <div class="card-actions mt-3 justify-end">
-            <button class="btn btn-warning btn-sm">Edit</button>
+            <button class="btn btn-warning btn-sm"(click)="openUpdate()" >Edit</button>
             <button class="btn btn-error btn-sm" (click)="deleteTraining(program.trainingId)">Delete</button>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isupdate"
+     class="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 ease-in-out">
+  <div class="relative bg-base-100 rounded-xl shadow-xl p-6 w-full max-w-md border border-base-300 transform transition-all duration-300 ease-in-out scale-100"
+       [ngClass]="{'scale-95 opacity-0': !isupdate}">
+    <!-- Header with close button -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-base-content">Update Profile Image</h2>
+      <button type="button" class="btn btn-sm btn-circle btn-ghost" (click)="closeUpdate()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="form-control w-full mb-6">
+      <label class="label">
+        <span class="label-text">Name</span>
+      </label>
+      <input type="text" [(ngModel)]="update.name" placeholder="Enter image URL" class="input input-bordered w-full" />
+    </div>
+
+    <div class="flex justify-end gap-2">
+      <button class="btn btn-outline" (click)="closeUpdate()">Cancel</button>
+      <button class="btn btn-primary" (click)="updateTraining()">Update Image</button>
     </div>
   </div>
 </div>

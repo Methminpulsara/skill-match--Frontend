@@ -17,6 +17,15 @@ import Swal from 'sweetalert2';             // ✅ Import SweetAlert2
   styleUrl: './trainings.component.css'
 })
 export class TrainingsComponent implements OnInit {
+
+
+  constructor(
+    private programService: TrainingService,
+    private companyService: CompanyService
+  ) {
+    this.notyf = new Notyf();
+  }
+
   isTrainingModalOpen = false;
   badgeInput: string = '';
 
@@ -33,14 +42,18 @@ export class TrainingsComponent implements OnInit {
     badges: [],
   };
 
-  private notyf: Notyf; // ✅ Notyf instance
-
-  constructor(
-    private programService: TrainingService,
-    private companyService: CompanyService
-  ) {
-    this.notyf = new Notyf(); // ✅ Initialize Notyf
+  public update ={
+    name :"",
+    description:"",
+    startDate:"",
+    endDate:'',
+    badges:[]
   }
+
+  private notyf: Notyf;
+  public isupdate:boolean=false;
+
+
 
   ngOnInit(): void {
     const company = this.companyService.getCompany();
@@ -76,6 +89,17 @@ export class TrainingsComponent implements OnInit {
     this.closeTrainingModal();
   }
 
+
+  openUpdate() {
+    this.isupdate = true;
+  }
+
+  closeUpdate() {
+    this.isupdate = false;
+  }
+
+
+
   resetForm() {
     this.trainingProgram = {
       trainingId: 1,
@@ -104,7 +128,7 @@ export class TrainingsComponent implements OnInit {
   }
 
   getActiveTrainings(companyId: number) {
-    this.programService.getEmployeeSkills(companyId, 'active').subscribe({
+    this.programService.getTrainins(companyId, 'active').subscribe({
       next: (res) => {
         console.log(res);
         this.trainingProgramsList = res;
@@ -147,4 +171,11 @@ export class TrainingsComponent implements OnInit {
       }
     });
   }
+
+
+  updateTraining(){
+
+  }
+
+
 }
