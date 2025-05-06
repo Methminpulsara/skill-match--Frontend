@@ -44,12 +44,14 @@ export class TrainingsComponent implements OnInit {
     });
   }
 
+  search:string='';
   isTrainingModalOpen = false;
   badgeInput: string = '';
   selectedTrainingId: number | null = null;  
   private notyf: Notyf;
   public isupdate: boolean = false;
   trainingProgramsList: TrainingProgram[] = [];
+  fillterList : TrainingProgram [] = [];
 
   public trainingProgram: TrainingProgram = {
     trainingId: 1,
@@ -163,9 +165,11 @@ export class TrainingsComponent implements OnInit {
   }
 
   getActiveTrainings(companyId: number) {
+   
     this.programService.getTrainins(companyId, 'active').subscribe({
       next: (res) => {
         this.trainingProgramsList = res;
+        this.fillterTrainings()
       },
       error: (err) => {
         console.error(err);
@@ -226,10 +230,26 @@ export class TrainingsComponent implements OnInit {
         this.selectedTrainingId = null;
         this.getActiveTrainings(this.trainingProgram.companyId);
       },
+
       error: (err) => {
         console.error(err);
         this.notyf.error('Failed to update training.');
       }
     });
   }
+
+  //search fillter 
+  onSearchChange(){
+    this.fillterTrainings()
+
+  }
+
+  fillterTrainings() {
+    this.fillterList = this.trainingProgramsList.filter(program =>
+      program.name.toLowerCase().includes(this.search.toLowerCase())
+    );
+  }
+  
+
+
 }

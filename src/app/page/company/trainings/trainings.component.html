@@ -20,7 +20,10 @@
       <!-- Search -->
       <div class="form-control">
         <div class="input-group input-group-sm">
-          <input type="text" placeholder="Search programs..." class="input input-bordered input-sm" />
+          <input 
+          [(ngModel)]="search"
+          (input)="onSearchChange()"
+          type="text" placeholder="Search programs..." class="input input-bordered input-sm" />
         </div>
       </div>
     </div>
@@ -28,7 +31,7 @@
   
     <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-      <div *ngFor="let program of trainingProgramsList" class="card bg-base-200 shadow-md">
+      <div *ngFor="let program of fillterList" class="card bg-base-200 shadow-md">
         <div class="card-body p-4">
           <h3 class="card-title text-lg">{{ program.name || 'Unnamed Program' }}</h3>
           <p class="text-sm">{{ program.description || 'No description provided.' }}</p>
