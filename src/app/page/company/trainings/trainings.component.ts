@@ -7,6 +7,7 @@ import { CompanyService } from '../../../../service/CompanyService';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 import Swal from 'sweetalert2';
+import EnrollmentsService from '../../../../service/EnrollmentService';
 
 @Component({
   selector: 'app-trainings',
@@ -18,7 +19,8 @@ import Swal from 'sweetalert2';
 export class TrainingsComponent implements OnInit {
   constructor(
     private programService: TrainingService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private enrollmentService:EnrollmentsService
   ) {
     this.notyf = new Notyf({
       types: [
@@ -47,11 +49,14 @@ export class TrainingsComponent implements OnInit {
   search:string='';
   isTrainingModalOpen = false;
   badgeInput: string = '';
-  selectedTrainingId: number | null = null;  
+  selectedTrainingId: number | null = null;
   private notyf: Notyf;
   public isupdate: boolean = false;
   trainingProgramsList: TrainingProgram[] = [];
   fillterList : TrainingProgram [] = [];
+  enrollmentCounts: { [key: number]: number } = {};
+
+
 
   public trainingProgram: TrainingProgram = {
     trainingId: 1,
@@ -168,7 +173,20 @@ export class TrainingsComponent implements OnInit {
     this.programService.getTrainins(companyId, 'active').subscribe({
       next: (res) => {
         this.trainingProgramsList = res;
-        this.fillterTrainings()
+        this.fillterTrainings();
+
+        // Fetch enrollment counts
+        this.trainingProgramsList.forEach(training => {
+          this.enrollmentService.getEnrollmentCount(training.trainingId).subscribe({
+            next: (count) => {
+              this.enrollmentCounts[training.trainingId] = count;
+            },
+            error: (err) => {
+              console.error(`Failed to get count for trainingId ${training.trainingId}`, err);
+              this.enrollmentCounts[training.trainingId] = 0;
+            }
+          });
+        });
       },
       error: (err) => {
         console.error(err);
@@ -176,6 +194,7 @@ export class TrainingsComponent implements OnInit {
       }
     });
   }
+
 
   deleteTraining(trainingId: number) {
     Swal.fire({
@@ -236,10 +255,10 @@ export class TrainingsComponent implements OnInit {
     });
   }
 
-  //search fillter 
+  //search fillter
 
   onSearchChange(){
-    this.fillterTrainings() 
+    this.fillterTrainings()
   }
 
 

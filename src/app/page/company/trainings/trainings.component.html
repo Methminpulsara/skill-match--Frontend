@@ -20,7 +20,7 @@
       <!-- Search -->
       <div class="form-control">
         <div class="input-group input-group-sm">
-          <input 
+          <input
           [(ngModel)]="search"
           (input)="onSearchChange()"
           type="text" placeholder="Search programs..." class="input input-bordered input-sm" />
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-  
+
     <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
       <div *ngFor="let program of fillterList" class="card bg-base-200 shadow-md">
@@ -42,14 +42,14 @@
             </span>
           </div>
 
-          <div class="flex justify-between items-center mt-3">
-            <p class="text-sm">
-              Enrolled: <span class="font-bold">10</span>
-            </p>
-            <div class="tooltip" data-tip="Recommended for career growth">
-              <span class="badge badge-accent">Key Skill</span>
+            <div class="flex justify-between items-center mt-3">
+              <p class="text-sm">
+                Enrolled: <span class="font-bold"> {{ enrollmentCounts[program.trainingId] ?? 'Loading...' }}</span>
+              </p>
+              <div class="tooltip" data-tip="Recommended for career growth">
+                <span class="badge badge-accent">Key Skill</span>
+              </div>
             </div>
-          </div>
 
           <div class="card-actions mt-3 justify-end">
             <button class="btn btn-warning btn-sm"(click)="openUpdate(program)" >Edit</button>

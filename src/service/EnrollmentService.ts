@@ -19,7 +19,9 @@ export default class EnrollmentsService{
   }
 
   getEnrollmentCount(trainingId:number):Observable<number>{
-    return this.http.get<number>("http://localhost:8080/api/enrollments/training/"+trainingId);
+    return this.http.get<number>("http://localhost:8080/api/enrollments/count/"+trainingId);
   }
+
+
 
 }
