@@ -60,8 +60,12 @@ export class SikllComponent implements OnInit {
 
 
   skillRequest(){
-    this.skillService.addSkill(this.skill).subscribe(res=>{});
+    this.skillService.addSkill(this.skill).subscribe(res=>{
+      this.getEmployeeSkills(this.skill.employeeId);
+      this.closeModal()
+    });
     this.closeModal()
+
   }
 
   getEmployeeSkills(employeeId:number){

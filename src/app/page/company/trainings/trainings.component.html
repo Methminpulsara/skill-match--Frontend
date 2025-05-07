@@ -44,7 +44,8 @@
 
             <div class="flex justify-between items-center mt-3">
               <p class="text-sm">
-                Enrolled: <span class="font-bold"> {{ enrollmentCounts[program.trainingId] ?? 'Loading...' }}</span>
+                Enrolled: <span class="font-bold"> {{ enrollmentCounts[program.trainingId] || 0 }}</span>
+ 
               </p>
               <div class="tooltip" data-tip="Recommended for career growth">
                 <span class="badge badge-accent">Key Skill</span>
