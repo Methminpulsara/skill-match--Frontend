@@ -4,6 +4,8 @@ import { CompanyService } from '../../../../service/CompanyService';
 import Company from '../../../model/Company';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
 @Component({
   selector: 'app-company-profile',
@@ -14,9 +16,32 @@ import { FormsModule } from '@angular/forms';
 })
 export class CompanyProfileComponent implements OnInit {
 
-  constructor(
-    private companyService: CompanyService
-  ) {}
+  constructor(private companyService: CompanyService) {
+    this.notyf = new Notyf({
+      types: [
+        {
+          type: 'success',
+          background: '#4CAF50',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'check_circle' }
+        },
+        {
+          type: 'error',
+          background: '#F44336',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'error' }
+        },
+        {
+          type: 'info',
+          background: '#2196F3',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'info' }
+        }
+      ]
+    });
+  }
+
+  private notyf: Notyf;
 
   isImageModalOpen: boolean = false;
   isUpdateModalOpen: boolean = false;
@@ -37,13 +62,12 @@ export class CompanyProfileComponent implements OnInit {
     contact: ""
   };
 
-  // This will hold the update form data temporarily
   public updatedCompany = {
     name: '',
     size: '',
     contact: '',
     about: '',
-    location:'  '
+    location: ''
   };
 
   ngOnInit(): void {
@@ -62,13 +86,12 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   openUpdateModal() {
-    // pre-fill update form with existing data
     this.updatedCompany = {
       name: this.company.name,
       size: this.company.size,
       contact: this.company.contact,
       about: this.company.about,
-      location : this.company.location
+      location: this.company.location
     };
     this.isUpdateModalOpen = true;
   }
@@ -78,49 +101,46 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   updateProfile() {
-    // Build updated company object with null/undefined checks
     const updatedCompany: Company = {
       ...this.company,
-      name: this.updatedCompany.name ? this.updatedCompany.name.trim() : '', // Default to empty string if name is null/undefined
-      size: this.updatedCompany.size ? this.updatedCompany.size.trim() : '', // Default to empty string if size is null/undefined
-      contact: this.updatedCompany.contact ? this.updatedCompany.contact.trim() : '', // Default to empty string if contact is null/undefined
-      about: this.updatedCompany.about ? this.updatedCompany.about.trim() : '', // Default to empty string if about is null/undefined
-      location:this.updatedCompany.location ? this.updatedCompany.location.trim():''
+      name: this.updatedCompany.name?.trim() || '',
+      size: this.updatedCompany.size?.trim() || '',
+      contact: this.updatedCompany.contact?.trim() || '',
+      about: this.updatedCompany.about?.trim() || '',
+  location: this.updatedCompany.location?.trim() || ''
     };
-  
-    // Call the service to update the company details
+
     this.companyService.update(this.company.companyId, updatedCompany).subscribe(
       res => {
-        console.log('Company updated successfully:', res);
         this.company = res;
         this.companyService.setCompany(this.company);
-        // localStorage.setItem('company', JSON.stringify(this.company));
+        this.notyf.success('Company profile updated successfully.');
         this.closeUpdateModal();
       },
       error => {
         console.error('Failed to update company profile:', error);
+        this.notyf.error('Failed to update company profile.');
       }
-    );
+    )
   }
-  
 
   updateProfileImage() {
     if (this.imageUrl) {
-      this.companyService.updateImage(this.company.companyId, this.imageUrl).subscribe(res => {
-        console.log(res.profileImage);
-        this.company.profileImage = res.profileImage;
-        console.log('Updated profile image:', this.company.profileImage);
-
-        this.companyService.setCompany(this.company);
-        localStorage.setItem('company', JSON.stringify(this.company));
-      },
-      error => {
-        console.error('Failed to update profile image:', error);
-      });
-
-      this.closeImageModal();
+      this.companyService.updateImage(this.company.companyId, this.imageUrl).subscribe(
+        res => {
+          this.company.profileImage = res.profileImage;
+          this.companyService.setCompany(this.company);
+          localStorage.setItem('company', JSON.stringify(this.company));
+          this.notyf.success('Profile image updated successfully.');
+          this.closeImageModal();
+        },
+        error => {
+          console.error('Failed to update profile image:', error);
+          this.notyf.error('Failed to update profile image.');
+        }
+      );
     } else {
-      console.error('Image URL is empty!');
+      this.notyf.open({ type: 'info', message: 'Image URL is empty!' });
     }
   }
 }

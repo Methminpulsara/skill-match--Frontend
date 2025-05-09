@@ -18,6 +18,7 @@
             <input [(ngModel)]="company.name" type="text" id="companyName" name="name" required
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" 
               placeholder="Tech Solutions Inc.">
+              <small *ngIf="formSubmitted && !company.name" class="text-red-400">Company name is required.</small>
           </div>
         </div>
 
@@ -40,6 +41,7 @@
               <option value="manufacturing">Manufacturing</option>
               <option value="other">Other</option>
             </select>
+            <small *ngIf="formSubmitted && !company.industry" class="text-red-400">Your industry is required.</small>
             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
               <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -65,6 +67,7 @@
               <option value="201-500">201-500 employees</option>
               <option value="501+">501+ employees</option>
             </select>
+            <small *ngIf="formSubmitted && !company.size" class="text-red-400">Your company size is required.</small>
             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
               <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -78,20 +81,7 @@
       </div>
        
 
-        <!-- Contact Person Name -->
-        <div class="mb-4">
-          <label for="contactName" class="block text-sm font-medium text-purple-300 mb-1">Contact Person Name</label>
-          <div class="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <input [(ngModel)]="company.contact" type="text" id="contactName" name="contactName" required
-              class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" 
-              placeholder="Jane Smith">
-          </div>
-        </div>
-
-        <!-- Password Input -->
+     
 
         <div  *ngIf="nextpagenumber===2">
         <div class="mb-4">
@@ -103,6 +93,8 @@
             <input [(ngModel)]="user.email" type="text" id="companyEmail" name="email" required
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white" 
               placeholder="contact@yourcompany.com">
+              <small *ngIf="formSubmitted && !user.email" class="text-red-400"> company email is required.</small>
+
           </div>
         </div>
 
@@ -115,6 +107,8 @@
             <input type="password" id="companyPassword" name="password"[(ngModel)]="user.password" required
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
               placeholder="••••••••">
+              <small *ngIf="formSubmitted && !user.password" class="text-red-400">Your company password is required.</small>
+
           </div>
         </div>
 

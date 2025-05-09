@@ -7,77 +7,93 @@ import Company from '../../../model/Company';
 import UserService from '../../../../service/UserService';
 import { CompanyService } from '../../../../service/CompanyService';
 import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-company-register',
   standalone: true,
-  imports: [FormsModule ,CommonModule,NgIf,RouterModule],
+  imports: [FormsModule, CommonModule, NgIf, RouterModule],
   templateUrl: './company-register.component.html',
   styleUrl: './company-register.component.css'
 })
 export class CompanyRegisterComponent {
+  constructor(
+    private userService: UserService,
+    private companyService: CompanyService,
+    private router: Router
+  ) {}
 
-constructor(
-  private userService:UserService,private companyService:CompanyService,private router: Router){}
+  nextpagenumber: number = 1;
+  savedUserID: number = 0;
+  comfirmPassword: string = '';
+  formSubmitted: boolean = false;
 
-nextpagenumber:number=1;
-savedUserID:number=0;
-comfirmPassword:string='';
+  public user: User = {
+    userId: 1,
+    email: '',
+    password: '',
+    role: RoleType.COMPANY
+  };
 
-  public user:User={
-    userId:1,
-    email:'',
-    password:'',
-    role:RoleType.COMPANY
-  }
-
-  public company:Company={
+  public company: Company = {
     companyId: 0,
-    name: "",
-    industry: "",
-    size: "",
-    status: "active",
-    profileImage: "",
+    name: '',
+    industry: '',
+    size: '',
+    status: 'active',
+    profileImage: '',
     userId: 0,
-    location:"",
-    about:"",
-    contact:""
-  }
+    location: '',
+    about: '',
+    contact: ''
+  };
 
-nextButtonOnAction(page:number){
-  this.nextpagenumber=page;
-}
+  nextButtonOnAction(page: number) {
+    this.formSubmitted = true;
 
-
-  register() {
-    if (this.comfirmPassword === this.user.password) {
-      this.userService.register(this.user).subscribe({
-        next: (res) => {
-          this.savedUserID = res.userId;
-          this.company.userId = this.savedUserID;
-          this.registerCompany();
-        },
-        error: (err) => {
-          console.error('Registration failed:', err);
-
-          if (err.status === 409  || err.status === 500) {
-            alert('Email is already registered.');
-          } else {
-            alert('An unexpected error occurred. Please check your input or try again.');
-          }
-        }
-      });
+    if (this.company.name && this.company.industry && this.company.size) {
+      this.nextpagenumber = page;
+      this.formSubmitted = false;
     } else {
-      alert('Passwords do not match');
+      alert('Please fill all required fields before proceeding.');
     }
   }
 
+  register() {
+    this.formSubmitted = true;
+
+    const isUserValid = this.user.email && this.user.password && this.comfirmPassword;
+    const isCompanyValid = this.company.name && this.company.industry && this.company.size;
+
+    if (!isUserValid || !isCompanyValid || this.comfirmPassword !== this.user.password) {
+      if (this.comfirmPassword !== this.user.password) {
+        alert('Passwords do not match');
+      } else {
+        alert('Please fill all the required fields.');
+      }
+      return;
+    }
+
+    this.userService.register(this.user).subscribe({
+      next: (res) => {
+        this.savedUserID = res.userId;
+        this.company.userId = this.savedUserID;
+        this.registerCompany();
+      },
+      error: (err) => {
+        console.error('Registration failed:', err);
+        if (err.status === 409 || err.status === 500) {
+          alert('Email is already registered.');
+        } else {
+          alert('An unexpected error occurred. Please try again.');
+        }
+      }
+    });
+  }
+
   registerCompany() {
-    this.companyService.create(this.company).subscribe(res => {
-      console.log('user registered');
-      alert("Company Was Registerd !")
-
-        this.router.navigate(['/login']);
-
+    this.companyService.create(this.company).subscribe(() => {
+      alert('Company was registered successfully!');
+      this.router.navigate(['/login']);
     });
   }
 }
