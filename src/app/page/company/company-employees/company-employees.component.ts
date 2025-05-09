@@ -3,6 +3,7 @@ import EmployeeService from '../../../../service/EmployeeService';
 import Employee from '../../../model/Employee';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CompanyService } from '../../../../service/CompanyService';
 
 @Component({
   selector: 'app-company-employees',
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CompanyEmployeesComponent implements OnInit {
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService,private companyService:CompanyService) {}
 
   employeeList: Employee[] = [];
   filteredEmployeeList: Employee[] = [];
@@ -23,12 +24,9 @@ export class CompanyEmployeesComponent implements OnInit {
   positionList: string[] = []; 
 
   ngOnInit(): void {
-    const employee = this.employeeService.getEmployee()
-    if(employee){
-      
-      
-      this.loadEmployees(employee.companyId);
-
+    const company = this.companyService.getCompany()
+    if(company){
+      this.loadEmployees(company.companyId);
     }
   }
 
