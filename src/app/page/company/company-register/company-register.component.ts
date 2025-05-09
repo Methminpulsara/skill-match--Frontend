@@ -8,6 +8,10 @@ import UserService from '../../../../service/UserService';
 import { CompanyService } from '../../../../service/CompanyService';
 import { Router, RouterModule } from '@angular/router';
 
+import Swal from 'sweetalert2';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 @Component({
   selector: 'app-company-register',
   standalone: true,
@@ -16,16 +20,11 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './company-register.component.css'
 })
 export class CompanyRegisterComponent {
-  constructor(
-    private userService: UserService,
-    private companyService: CompanyService,
-    private router: Router
-  ) {}
-
   nextpagenumber: number = 1;
   savedUserID: number = 0;
   comfirmPassword: string = '';
   formSubmitted: boolean = false;
+  private notyf: Notyf;
 
   public user: User = {
     userId: 1,
@@ -47,6 +46,35 @@ export class CompanyRegisterComponent {
     contact: ''
   };
 
+  constructor(
+    private userService: UserService,
+    private companyService: CompanyService,
+    private router: Router
+  ) {
+    this.notyf = new Notyf({
+      types: [
+        {
+          type: 'success',
+          background: '#4CAF50',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'check_circle' }
+        },
+        {
+          type: 'error',
+          background: '#F44336',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'error' }
+        },
+        {
+          type: 'info',
+          background: '#2196F3',
+          duration: 3000,
+          icon: { className: 'material-icons', tagName: 'i', text: 'info' }
+        }
+      ]
+    });
+  }
+
   nextButtonOnAction(page: number) {
     this.formSubmitted = true;
 
@@ -54,7 +82,11 @@ export class CompanyRegisterComponent {
       this.nextpagenumber = page;
       this.formSubmitted = false;
     } else {
-      alert('Please fill all required fields before proceeding.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Info',
+        text: 'Please fill all required fields before proceeding.'
+      });
     }
   }
 
@@ -66,9 +98,9 @@ export class CompanyRegisterComponent {
 
     if (!isUserValid || !isCompanyValid || this.comfirmPassword !== this.user.password) {
       if (this.comfirmPassword !== this.user.password) {
-        alert('Passwords do not match');
+        this.notyf.error('Passwords do not match');
       } else {
-        alert('Please fill all the required fields.');
+        this.notyf.error('Please fill all the required fields.');
       }
       return;
     }
@@ -82,9 +114,17 @@ export class CompanyRegisterComponent {
       error: (err) => {
         console.error('Registration failed:', err);
         if (err.status === 409 || err.status === 500) {
-          alert('Email is already registered.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Duplicate Email',
+            text: 'Email is already registered.'
+          });
         } else {
-          alert('An unexpected error occurred. Please try again.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Unexpected Error',
+            text: 'An unexpected error occurred. Please try again.'
+          });
         }
       }
     });
@@ -92,7 +132,7 @@ export class CompanyRegisterComponent {
 
   registerCompany() {
     this.companyService.create(this.company).subscribe(() => {
-      alert('Company was registered successfully!');
+      this.notyf.success('Company was registered successfully!');
       this.router.navigate(['/login']);
     });
   }
