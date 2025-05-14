@@ -90,46 +90,49 @@ export class CompanyRegisterComponent {
     }
   }
 
-  register() {
-    this.formSubmitted = true;
+ register() {
+  this.formSubmitted = true;
 
-    const isUserValid = this.user.email && this.user.password && this.comfirmPassword;
-    const isCompanyValid = this.company.name && this.company.industry && this.company.size;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isEmailValid = emailRegex.test(this.user.email);
+  const isUserValid = this.user.email && this.user.password && this.comfirmPassword;
+  const isCompanyValid = this.company.name && this.company.industry && this.company.size;
 
-    if (!isUserValid || !isCompanyValid || this.comfirmPassword !== this.user.password) {
-      if (this.comfirmPassword !== this.user.password) {
-        this.notyf.error('Passwords do not match');
-      } else {
-        this.notyf.error('Please fill all the required fields.');
-      }
-      return;
+  if (!isUserValid || !isCompanyValid || this.comfirmPassword !== this.user.password || !isEmailValid) {
+    if (!isEmailValid) {
+      this.notyf.error('Invalid email format');
+    } else if (this.comfirmPassword !== this.user.password) {
+      this.notyf.error('Passwords do not match');
+    } else {
+      this.notyf.error('Please fill all the required fields.');
     }
-
-    this.userService.register(this.user).subscribe({
-      next: (res) => {
-        this.savedUserID = res.userId;
-        this.company.userId = this.savedUserID;
-        this.registerCompany();
-      },
-      error: (err) => {
-        console.error('Registration failed:', err);
-        if (err.status === 409 || err.status === 500) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Duplicate Email',
-            text: 'Email is already registered.'
-          });
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Unexpected Error',
-            text: 'An unexpected error occurred. Please try again.'
-          });
-        }
-      }
-    });
+    return;
   }
 
+  this.userService.register(this.user).subscribe({
+    next: (res) => {
+      this.savedUserID = res.userId;
+      this.company.userId = this.savedUserID;
+      this.registerCompany();
+    },
+    error: (err) => {
+      console.error('Registration failed:', err);
+      if (err.status === 409 || err.status === 500) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Duplicate Email',
+          text: 'Email is already registered.'
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Unexpected Error',
+          text: 'An unexpected error occurred. Please try again.'
+        });
+      }
+    }
+  });
+}
   registerCompany() {
     this.companyService.create(this.company).subscribe(() => {
       this.notyf.success('Company was registered successfully!');

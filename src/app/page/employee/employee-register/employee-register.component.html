@@ -16,6 +16,8 @@
             <input [(ngModel)]="employee.name" type="text" id="name" name="name" required
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
               placeholder="John Doe">
+              <small *ngIf="formSubmitted && !employee.name" class="text-red-400">Your Name is required.</small>
+
           </div>
         </div>
         <div class="mb-4">
@@ -27,6 +29,7 @@
             <input [(ngModel)]="employee.position" type="text" id="jobTitle" name="jobTitle"
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
               placeholder="Software Developer">
+              <small *ngIf="formSubmitted && !employee.position" class="text-red-400">Your position is required.</small>
           </div>
         </div>
 
@@ -39,6 +42,7 @@
             <input [(ngModel)]="employee.location" type="text" id="locationame="location
               class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white"
               placeholder="Colombo,Horana,Panadura">
+                <small *ngIf="formSubmitted && !employee.location" class="text-red-400">Your location is required.</small>
           </div>
         </div>
 
@@ -55,8 +59,12 @@
             (change)="onCompanySelect()"
             class="w-full pl-10 pr-4 py-2 rounded-lg bg-black/40 border border-purple-600/30 focus:border-purple-500 focus:ring focus:ring-purple-500/20 focus:outline-none text-white appearance-none">
             <option value="" disabled selected>Select your company</option>
-            <option *ngFor="let company of companyList">{{ company.name }}</option>
+            <option *ngFor="let company of companyList">{{ company.name }}
+            </option>
+            <small *ngIf="formSubmitted && !selectedCompanyName" class="text-red-400">Your company is required.</small>
+
           </select>
+
 
 
             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
