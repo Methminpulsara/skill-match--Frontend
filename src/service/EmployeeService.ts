@@ -52,34 +52,32 @@ export default  class EmployeeService {
 
 //local storage to save
 // Save employee object to localStorage and the current state
-setEmployee(employee: Employee): void {
-  this.currentEmployeeSubject.next(employee);
-  // Save the full employee object to localStorage
-  localStorage.setItem('employee', JSON.stringify(employee)); // Save entire employee object
-}
-
-// Get employee from the service or localStorage
-getEmployee(): Employee | null {
-  // Check the service for the current employee
-  const employee = this.currentEmployeeSubject.value;
-  if (employee) return employee;
-
-  // Fallback to localStorage if page was refreshed
-  const stored = localStorage.getItem('employee');
-  if (stored) {
-    const parsed = JSON.parse(stored);
-    this.currentEmployeeSubject.next(parsed);
-    return parsed;
+ // Save the employee to the service and sessionStorage
+  setEmployee(employee: Employee): void {
+    this.currentEmployeeSubject.next(employee);
+    sessionStorage.setItem('employee', JSON.stringify(employee)); // Use sessionStorage
   }
 
-  return null;
-}
+  // Get employee from the service or sessionStorage
+  getEmployee(): Employee | null {
+    const employee = this.currentEmployeeSubject.value;
+    if (employee) return employee;
 
-// Clear employee data from service and localStorage
-clearUser(): void {
-  this.currentEmployeeSubject.next(null);
-  localStorage.removeItem('employee');
-}
+    const stored = sessionStorage.getItem('employee');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      this.currentEmployeeSubject.next(parsed);
+      return parsed;
+    }
+
+    return null;
+  }
+
+  // Clear employee data
+  clearEmployee(): void {
+    this.currentEmployeeSubject.next(null);
+    sessionStorage.removeItem('employee');
+  }
 
 
 }

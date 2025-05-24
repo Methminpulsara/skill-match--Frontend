@@ -18,17 +18,17 @@ export default class UserService{
   }
 
   //explain kr gnn meeka chategen gththe
-  setUser(user: User): void {
+setUser(user: User): void {
     this.currentUserSubject.next(user);
-    localStorage.setItem('user', JSON.stringify(user)); // Optional: persist between refreshes
+    sessionStorage.setItem('user', JSON.stringify(user)); // Persist for session only
   }
 
   getUser(): User | null {
     const user = this.currentUserSubject.value;
     if (user) return user;
 
-    // Fallback to localStorage if page was refreshed
-    const stored = localStorage.getItem('user');
+    // Fallback to sessionStorage if page was refreshed
+    const stored = sessionStorage.getItem('user');
     if (stored) {
       const parsed = JSON.parse(stored);
       this.currentUserSubject.next(parsed);
@@ -40,7 +40,7 @@ export default class UserService{
 
   clearUser(): void {
     this.currentUserSubject.next(null);
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
   }
 
 }

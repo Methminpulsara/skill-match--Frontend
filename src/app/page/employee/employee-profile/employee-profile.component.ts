@@ -59,8 +59,6 @@ export class EmployeeProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-
     const employee = this.employeeService.getEmployee();
     if (employee) {
       this.employee = employee;
@@ -69,13 +67,6 @@ export class EmployeeProfileComponent implements OnInit {
     } else {
       console.log("user not found");
     }
-  }
-
-
-  getEmployeeDetails(userId:number){
-    this.employeeService.findByUserID(userId).subscribe((res) => {
-     console.log (res);
-    });
   }
 
   getCompanyDetails(companyId: number) {

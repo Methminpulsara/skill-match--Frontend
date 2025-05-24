@@ -59,7 +59,7 @@ export class CompanyService {
   //local storage to save
    setCompany(company: Company): void {
       this.currentCompanySubject.next(company);
-      localStorage.setItem('company', JSON.stringify(company)); // Optional: persist between refreshes
+      sessionStorage.setItem('company', JSON.stringify(company)); // Optional: persist between refreshes
     }
   
     getCompany(): Company | null {
@@ -68,7 +68,7 @@ export class CompanyService {
       ;
   
       // Fallback to localStorage if page was refreshed
-      const stored = localStorage.getItem('company');
+      const stored = sessionStorage.getItem('company');
       if (stored) {
         const parsed = JSON.parse(stored);
         this.currentCompanySubject.next(parsed);
@@ -80,7 +80,7 @@ export class CompanyService {
   
     clearUser(): void {
       this.currentCompanySubject.next(null);
-      localStorage.removeItem('company');
+      sessionStorage.removeItem('company');
     }
   
 
