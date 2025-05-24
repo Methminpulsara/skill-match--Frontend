@@ -5,6 +5,7 @@ import Employee from '../../../model/Employee';
 import Company from '../../../model/Company';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import UserService from '../../../../service/UserService';
 
 @Component({
   selector: 'app-employee-profile',
@@ -53,17 +54,28 @@ export class EmployeeProfileComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private userService :UserService
   ) {}
 
   ngOnInit(): void {
+
+
     const employee = this.employeeService.getEmployee();
     if (employee) {
       this.employee = employee;
+      console.log("localstorage" + employee.name)
       this.getCompanyDetails(this.employee.companyId);
     } else {
       console.log("user not found");
     }
+  }
+
+
+  getEmployeeDetails(userId:number){
+    this.employeeService.findByUserID(userId).subscribe((res) => {
+     console.log (res);
+    });
   }
 
   getCompanyDetails(companyId: number) {
