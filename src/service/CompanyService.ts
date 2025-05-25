@@ -16,7 +16,7 @@ export class CompanyService {
 
     private currentCompanySubject = new BehaviorSubject<Company | null>(null);
       currentCompany$ = this.currentCompanySubject.asObservable();
-  
+
 
   create(company:Company){
     return this.http.post("http://localhost:8080/api/company/create",company);
@@ -51,22 +51,17 @@ export class CompanyService {
     }
 
 
-
-
-
-
-  
-  //local storage to save
+  //sessionStorage to save
    setCompany(company: Company): void {
       this.currentCompanySubject.next(company);
       sessionStorage.setItem('company', JSON.stringify(company)); // Optional: persist between refreshes
     }
-  
+
     getCompany(): Company | null {
       const company = this.currentCompanySubject.value;
       if (company) return company
       ;
-  
+
       // Fallback to localStorage if page was refreshed
       const stored = sessionStorage.getItem('company');
       if (stored) {
@@ -74,14 +69,14 @@ export class CompanyService {
         this.currentCompanySubject.next(parsed);
         return parsed;
       }
-  
+
       return null;
     }
-  
+
     clearUser(): void {
       this.currentCompanySubject.next(null);
       sessionStorage.removeItem('company');
     }
-  
+
 
 }
