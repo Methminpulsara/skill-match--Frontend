@@ -40,5 +40,4 @@ export class CareerGrowthComponent implements OnInit {
       console.log(res);
     })
   }
-
 }
