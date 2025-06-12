@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import Skill from '../../../model/Skill';
 import EmployeeService from '../../../../service/EmployeeService';
 import SkillService from '../../../../service/SkillService';
+import { SkillCardComponent } from "../../cards/skill-card/skill-card.component";
 
 @Component({
   selector: 'app-sikll',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, SkillCardComponent],
   templateUrl: './sikll.component.html',
   styleUrl: './sikll.component.css'
 })
