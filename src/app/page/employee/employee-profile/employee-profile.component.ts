@@ -3,13 +3,17 @@ import { CompanyService } from '../../../../service/CompanyService';
 import EmployeeService from '../../../../service/EmployeeService';
 import Employee from '../../../model/Employee';
 import Company from '../../../model/Company';
+import UserService from '../../../../service/UserService';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import UserService from '../../../../service/UserService';
+import { Notyf } from 'notyf';
+import Swal from 'sweetalert2';
+import 'notyf/notyf.min.css';
 
 @Component({
   selector: 'app-employee-profile',
-  imports:[FormsModule,CommonModule],
+  standalone: true,
+  imports: [FormsModule, CommonModule],
   templateUrl: './employee-profile.component.html',
   styleUrls: ['./employee-profile.component.css']
 })
@@ -35,37 +39,45 @@ export class EmployeeProfileComponent implements OnInit {
     status: "active",
     profileImage: "",
     userId: 0,
-    location:"",
-    about:"",
-    contact:""
+    location: "",
+    about: "",
+    contact: ""
   };
 
   public updatedemployee = {
     name: '',
-    position:'',
+    position: '',
     phoneNumber: '',
-    location: '',
+    location: ''
   };
 
-
   isImageModalOpen: boolean = false;
-  isUpdateModalOpen:boolean=  false;
+  isUpdateModalOpen: boolean = false;
   imageUrl: string = '';
+
+  private notyf: Notyf;
 
   constructor(
     private employeeService: EmployeeService,
     private companyService: CompanyService,
-    private userService :UserService
-  ) {}
+    private userService: UserService
+  ) {
+    this.notyf = new Notyf({
+      types: [
+        { type: 'success', background: '#4CAF50', duration: 3000 },
+        { type: 'error', background: '#F44336', duration: 3000 },
+        { type: 'info', background: '#2196F3', duration: 3000 }
+      ]
+    });
+  }
 
   ngOnInit(): void {
     const employee = this.employeeService.getEmployee();
     if (employee) {
       this.employee = employee;
-      console.log("localstorage" + employee.name)
       this.getCompanyDetails(this.employee.companyId);
     } else {
-      console.log("user not found");
+      this.notyf.error("Employee not found in local storage.");
     }
   }
 
@@ -82,61 +94,76 @@ export class EmployeeProfileComponent implements OnInit {
   closeImageModal() {
     this.isImageModalOpen = false;
   }
-  openUpdateModel(){
 
-    this.updatedemployee.name=  this.employee.name
-    this.updatedemployee.phoneNumber =this.employee.phoneNumber
-    this.updatedemployee.location = this.employee.location
-    this.updatedemployee.position = this.employee.position
-    this.isUpdateModalOpen= true;
-  }
-  closeUpdateModal(){
-    this.isUpdateModalOpen=false;
+  openUpdateModel() {
+    this.updatedemployee.name = this.employee.name;
+    this.updatedemployee.phoneNumber = this.employee.phoneNumber;
+    this.updatedemployee.location = this.employee.location;
+    this.updatedemployee.position = this.employee.position;
+    this.isUpdateModalOpen = true;
   }
 
+  closeUpdateModal() {
+    this.isUpdateModalOpen = false;
+  }
 
-  updateProfile(){
-
-    const updatedEmployee : Employee ={
-        ...this.employee,
-        name:this.updatedemployee.name ? this.updatedemployee.name.trim() : '',
-        phoneNumber:this.updatedemployee.phoneNumber ? this.updatedemployee.phoneNumber.trim() : '',
-        position:this.updatedemployee.position ? this.updatedemployee.position.trim() : '',
-        location:this.updatedemployee.location ? this.updatedemployee.location.trim() : ''
-
+  updateProfile() {
+    const updatedEmployee: Employee = {
+      ...this.employee,
+      name: this.updatedemployee.name?.trim() || '',
+      phoneNumber: this.updatedemployee.phoneNumber?.trim() || '',
+      position: this.updatedemployee.position?.trim() || '',
+      location: this.updatedemployee.location?.trim() || ''
     };
+
     this.employeeService.update(this.employee.employeeId, updatedEmployee).subscribe(
       res => {
-        console.log('Employee updated successfully:', res);
         this.employee = res;
         this.employeeService.setEmployee(this.employee);
+        this.notyf.success('Employee profile updated successfully.');
         this.closeUpdateModal();
       },
       error => {
-        console.error('Failed to update Employee profile:', error);
+        console.error('Failed to update profile:', error);
+        this.notyf.error('Failed to update employee profile.');
       }
     );
-
   }
 
   updateProfileImage() {
     if (this.imageUrl) {
-      this.employeeService.updateImage(this.employee.employeeId, this.imageUrl).subscribe(res => {
-        console.log(res.profileImage); // Log the updated profile image URL
-        this.employee.profileImage = res.profileImage;
+      this.employeeService.updateImage(this.employee.employeeId, this.imageUrl).subscribe(
+        res => {
+          this.employee.profileImage = res.profileImage;
+          this.employeeService.setEmployee(this.employee);
+          localStorage.setItem('employee', JSON.stringify(this.employee));
 
-        console.log('Updated profile image:', this.employee.profileImage);
+          Swal.fire({
+            icon: 'success',
+            title: 'Image Updated',
+            text: 'Profile image updated successfully.',
+            confirmButtonColor: '#4CAF50'
+          });
 
-        // Update the employee object in the service
-        this.employeeService.setEmployee(this.employee);
-
-        // Save the updated employee object to localStorage
-        localStorage.setItem('employee', JSON.stringify(this.employee));
-      });
-
-      this.closeImageModal();
+          this.closeImageModal();
+        },
+        error => {
+          console.error('Image update failed:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to update profile image.',
+            confirmButtonColor: '#F44336'
+          });
+        }
+      );
     } else {
-      console.error('Image URL is empty!');
+      Swal.fire({
+        icon: 'info',
+        title: 'Empty Image URL',
+        text: 'Please provide an image URL before updating.',
+        confirmButtonColor: '#2196F3'
+      });
     }
   }
 }
