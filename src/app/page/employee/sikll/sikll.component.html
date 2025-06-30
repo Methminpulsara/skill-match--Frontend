@@ -127,9 +127,15 @@
 
       <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
 
-        <app-skill-card *ngFor="let skill of filteredSkills"[skill]="skill"></app-skill-card>
+        <app-skill-card
+
+        *ngFor="let skill of filteredSkills"
+       [skill]="skill"
+
+
+        ></app-skill-card>
       </div>
-   
+
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Skill from '../../../model/Skill';
 import { CommonModule } from '@angular/common';
 
@@ -9,5 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './skill-card.component.css',
 })
 export class SkillCardComponent {
-  @Input() skill !: Skill;
+  @Input() skill!: Skill;
+
+  @Output() oncick = new EventEmitter<Skill>();
+
+
+  onCardClick() {
+    this.oncick.emit(this.skill);
+  }
+
 }
+
